@@ -1,4 +1,4 @@
-package kr.dopamine.dolbom;
+package kr.dopamine.dolbom.controller;
 
 import java.util.Map;
 
