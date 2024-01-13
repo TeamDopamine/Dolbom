@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.BoardMapper">
+
+	<insert id="insertBoard" parameterType="kr.smhrd.entity.Board">
+		insert into board(title, writer, filename, content)
+		values(#{title}, #{writer}, #{filename}, #{content})
+	</insert>
+	
+	<select id="boardList" resultType="kr.smhrd.entity.Board">
+		select * from board order by b_date desc
+	</select>
+	
+	<select id="boardContent" parameterType="int" resultType="kr.smhrd.entity.Board">
+		select * from board where idx = #{idx} 
+	</select>
+	
+	<delete id="boardDelete" parameterType="int">
+		delete from board where idx = #{idx}
+	</delete>
+
+</mapper>
