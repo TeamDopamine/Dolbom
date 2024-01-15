@@ -88,8 +88,6 @@ public class RecordController {
 	// 일지 작성
 	@PostMapping("/recordWrite")
 	public String recordWrite(@ModelAttribute("record") Record record) {
-		System.out.println("@@@@@@@@@@ 어디까지 ");
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@"+record.toString());
 		recordMapper.insertRecord(record);
 		return "redirect:/goRecordList";
 	}

@@ -71,7 +71,7 @@
 								<%if(loginUser.getUser_type().equals("a")) {%>
 									<a href="" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
 								<%} else {%>
-									<a href="" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
+									<a href="Profile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
 								<%System.out.println(loginUser.getUser_type()); %>
 								<%} %>
 							<%} %>

@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class User {
-	
 	private String user_id;
 	private String user_pw;
 	private String user_nick;
@@ -15,4 +14,5 @@ public class User {
 	private String user_type;
 	private Date joined_at;
 
+	
 }

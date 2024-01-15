@@ -9,5 +9,9 @@
 	<select id="userSelect" parameterType="kr.smhrd.entity.User" resultType="kr.smhrd.entity.User">
 		select * from tb_user where user_id=#{user_id} and user_pw=#{user_pw}
 	</select>
+	
+	<update id="updateUser" parameterType="kr.smhrd.entity.Profile">
+		UPDATE TB_USER SET USER_NICK = #{user_name}, USER_PW=#{user_pw}, USER_PHONE=#{user_tel}, USER_ADDR=#{user_addr} WHERE USER_ID=#{user_id}
+	</update>
 
 </mapper>
