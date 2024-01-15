@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.Record"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="IncludeStyle.jsp" %>
@@ -25,11 +26,6 @@
 
 <body>
 
-
-		<% 
-				List<Record> RecordList = (List<Record>)request.getAttribute("RecordList");
-			%> 
-
     <!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
 
@@ -48,32 +44,21 @@
                                   <thead>
                                     <tr>
                                       <th scope="col">순번</th>
-                                      <th scope="col">날짜</th>
+                                      <th scope="col">작성일</th>
                                       <th scope="col">교육명</th>
                                       <th scope="col">작성자</th>
                                       <th scope="col">삭제</th>
                                     </tr>
                                   </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td scope="row">Tiger Nixon</td>
-                                      <td>System Architect</td>
-                                      <td><a href="" style="color: #666666a1;">테스트용 교육명 입니다</a></td>
-                                      <td>61</td>
-                                      <td><a href=""><img src="${path}/resources/img/delete.png" style="width: 20px; height: 20px;"></a></td>
-                                    </tr>
-<%-- 									<c:forEach items="${RecordList }" var="r" varStatus="s">
+ 									<c:forEach items="${rcList }" var="rc" varStatus="s">
 										<tr>
 											<td scope="row">${s.count }</td>
-											<td><a href="RecordBoard?idx=${r.record_idx }">${r.edu_name }</a></td>
-											<td>${r.edu_time }</td>
-											<td>${r.user_id }</td>
-											<td>삭제</td>
+											<td>${rc.edu_time.substring(0,10) }</td>
+											<td><a href="goRecordContent?idx=${rc.record_idx }" style="color: #666666a1;">${rc.edu_name }</a></td>
+											<td>${rc.user_id }</td>
+											<td><a href="recordDelete?idx=${rc.record_idx }"><img src="${path}/resources/img/delete.png" style="width: 20px; height: 20px;"></a></td>
 										</tr>
-									</c:forEach> --%>
-<%-- 									<tr>
-										<td><%= boardList.get(0).get %></td>
-									</tr> --%>
+									</c:forEach>  
                                   </tbody>
                                 </table>
                               </div>

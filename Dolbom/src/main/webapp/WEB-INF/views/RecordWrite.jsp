@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="IncludeStyle.jsp" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +26,14 @@
 </head>
 
 <body>
+
+	<!-- 현재 날짜 가져오기 -->
+	<% 
+		Date currentDate = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String formattedDate = dateFormat.format(currentDate);
+	
+	%>
     <!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
     
@@ -44,31 +54,33 @@
                                     <h4 style="text-align: center; padding-right: 38%;">일지 작성</h4>
                                     <div class="col-md-6 offset-md-3">
                                       <hr style="width: 750px;">
+                                      
+                                      <form action="recordWrite" method="post">
                                       <div class="mb-3 row" style="width: 900px;">
-                                          <label for="DOC_DATE" class="col-sm-2 col-form-label text-center" style="width: 10%;">작성일자</label>
+                                          <label for="DOC_DATE" class="col-sm-2 col-form-label text-center" style="width: 10%;"> 작성일자</label>
                                           <div class="col-sm-3 col-form-label text-center" style="width: 19%;">
-                                              <input type="date" class="form-control " id="DOC_DATE" >
+                                              <input type="text" class="form-control " id="DOC_DATE" value="<%=formattedDate.substring(0,10) %>" readonly>
                                           </div>
                                           <label for="DOC_TOPIC" class="col-sm-2 col-form-label text-center" style="width: 11%;">교육주제</label>
                                           <div class="col-sm-3 col-form-label text-center" style="width: 20%;">
-                                              <input type="text" class="form-control" id="DOC_TOPIC">
+                                              <input type="text" class="form-control" id="DOC_TOPIC" name="edu_subject">
                                           </div> 
                                           <label for="DOC_TIME" class="col-sm-2 col-form-label text-center" style="width: 10%;">교육시간</label>
                                           <div class="col-sm-3 col-form-label text-center" style="width: 15%;">
-                                              <input type="text" class="form-control" id="DOC_TIME">
+                                              <input type="text" class="form-control" id="DOC_TIME" value="<%=formattedDate.substring(11) %>" readonly>
                                           </div>
                                           <div class="mb-3 row">
                                               <label for="DOC_WRITER" class="col-sm-2 col-form-label text-center" style="width: 10%;">작성자</label>
                                                 <div class="col-sm-3 col-form-label text-center" style="width: 19.7%;">
-                                                    <input type="text" class="form-control" id="DOC_WRITER ">
+                                                    <input type="text" class="form-control" id="DOC_WRITER " value="${record.user_id}" readonly>
                                                 </div>
                                               <label for="DOC_NM" class="col-sm-2 col-form-label text-center" style="width: 11%;">교육명</label>
                                                 <div class="col-sm-3 col-form-label text-center" style="width: 20.8%;">
-                                                    <input type="text"  class="form-control" id="DOC_NM">
+                                                    <input type="text"  class="form-control" id="DOC_NM" name="edu_name">
                                                 </div>
                                               <label for="DOC_CNT" class="col-sm-2 col-form-label text-center" style="width: 10%;">인원 수</label>
                                                 <div class="col-sm-3 col-form-label text-center" style="width: 15.7%;">
-                                                    <input type="number" class="form-control" id="DOC_CNT" value="DOC_CNT from DB">
+                                                    <input type="number" class="form-control" id="DOC_CNT" name="edu_headcount">
                                                 </div>
                                           </div>
                                       </div>
@@ -76,22 +88,23 @@
                                       <div>
                                         <label for="DOC_CTX">내용</label>
                                         <div class="col-sm-3">
-                                          <textarea type="text" class="form-control" id="DOC_CTX" style="width:750px; height: 300px;"></textarea>
+                                          <textarea type="text" class="form-control" id="DOC_CTX" style="width:750px; height: 300px;" name="edu_content"></textarea>
                                         </div>
                                       </div>
 
                                       <div style="padding-top: 2%;">
                                         <label for="DOC_CTX">특이사항</label>
                                         <div class="col-sm-3">
-                                          <textarea type="text" class="form-control" id="DOC_CTX" style="width:750px; height: 300px;"></textarea>
+                                          <textarea type="text" class="form-control" id="DOC_CTX" style="width:750px; height: 300px;" name="edu_etc"></textarea>
                                         </div>
                                       </div>
                                     
 
                                       <div class="col-auto text-end" style="padding-top: 3%; padding-left: 70%;" >
-                                          <button type="submit" class="btn btn-light mb-3">취소</button>
+                                          <button type="reset" class="btn btn-light mb-3">취소</button>
                                           <button type="submit" class="btn btn-warning mb-3">작성완료</button>
                                       </div>
+                                      </form>
                                   </div>
                                   </tbody>
                                 </table>

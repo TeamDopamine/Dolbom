@@ -36,7 +36,7 @@
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" >
             <b class="m-0 text-primary" style="padding-right: 5%; font-size: 32px; padding-left: 50%; font-family: 'Pretendard'">돌봄</b>
-            <img class="icon21" alt="" src="${path}/resources/img/logo.png" />
+            <img class="icon21" alt="" src="${path}/resources/img/logo.png"/>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -49,9 +49,9 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">일지</a>
                     <div class="dropdown-menu bg-light m-0">
-                        <a href="feature.html" class="dropdown-item">일지 목록</a>
-                        <a href="quote.html" class="dropdown-item">일지 작성</a>
-                        <a href="team.html" class="dropdown-item">일지 요약</a>
+                        <a href="goRecordList" class="dropdown-item">일지 목록</a>
+                        <a href="goRecordWrite" class="dropdown-item">일지 작성</a>
+                        <a href="goRecordSummary" class="dropdown-item">일지 요약</a>
                     </div>
                 </div>
                 <a href="contact.html" class="nav-item nav-link active">로그인</a>

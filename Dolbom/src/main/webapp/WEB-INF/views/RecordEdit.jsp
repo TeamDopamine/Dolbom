@@ -45,54 +45,58 @@
                                     <h4 style="text-align: center; padding-right: 38%;">일지 수정</h4>
                                     <div class="col-md-6 offset-md-3">
                                       <hr style="width: 750px;">
+                                      
+					                  <form action="recordEdit?idx=${record.record_idx}" method="post">
                                       <div class="mb-3 row" style="width: 900px;">
-                                          <label for="DOC_DATE" class="col-sm-2 col-form-label text-center" style="width: 11%;">작성일자</label>
+                                          <label for="edu_time2" class="col-sm-2 col-form-label text-center" style="width: 11%;">작성일자</label>
                                           <div class="col-sm-3 col-form-label text-center" style="width: 19%;">
-                                              <input type="date" class="form-control " id="DOC_DATE" >
+                                              <input value="${record.edu_time.substring(0,10)}" type="date" class="form-control " id="edu_time2" readonly >
                                           </div>
-                                          <label for="DOC_TOPIC" class="col-sm-2 col-form-label text-center" style="width: 11%;">교육주제</label>
+                                          <label for="edu_subject" class="col-sm-2 col-form-label text-center" style="width: 11%;">교육주제</label>
                                           <div class="col-sm-3 col-form-label text-center" style="width: 19%;">
-                                              <input type="text" class="form-control" id="DOC_TOPIC">
+                                              <input value="${record.edu_subject}" type="text" class="form-control" id="edu_subject" name="edu_subject">
                                           </div> 
-                                          <label for="DOC_TIME" class="col-sm-2 col-form-label text-center" style="width: 10%;">교육시간</label>
+                                          <label for="edu_time" class="col-sm-2 col-form-label text-center" style="width: 10%;">교육시간</label>
                                           <div class="col-sm-3 col-form-label text-center" style="width: 15%;">
-                                              <input type="text" class="form-control" id="DOC_TIME">
+                                              <input value="${record.edu_time.substring(11)}" type="text" class="form-control" id="edu_time" readonly>
                                           </div>
+                                          
                                           <div class="mb-3 row">
-                                              <label for="DOC_WRITER" class="col-sm-2 col-form-label text-center" style="width: 11%;">작성자</label>
+                                              <label for="user_id" class="col-sm-2 col-form-label text-center" style="width: 11%;">작성자</label>
                                                 <div class="col-sm-3 col-form-label text-center" style="width: 19.7%;">
-                                                    <input type="text" class="form-control" id="DOC_WRITER ">
+                                                    <input value="${record.user_id}" type="text" class="form-control" id="user_id" name="user_id">
                                                 </div>
-                                              <label for="DOC_NM" class="col-sm-2 col-form-label text-center" style="width: 11%;">교육명</label>
+                                              <label for="edu_name" class="col-sm-2 col-form-label text-center" style="width: 11%;">교육명</label>
                                                 <div class="col-sm-3 col-form-label text-center" style="width: 20%;">
-                                                    <input type="text"  class="form-control" id="DOC_NM">
+                                                    <input value="${record.edu_name}" type="text"  class="form-control" id="edu_name" name="edu_name">
                                                 </div>
-                                              <label for="DOC_CNT" class="col-sm-2 col-form-label text-center" style="width: 10%;">인원 수</label>
+                                              <label for="edu_headcount" class="col-sm-2 col-form-label text-center" style="width: 10%;">인원 수</label>
                                                 <div class="col-sm-3 col-form-label text-center" style="width: 15.7%;">
-                                                    <input type="number" class="form-control" id="DOC_CNT" value="DOC_CNT from DB">
+                                                    <input value="${record.edu_headcount}" type="number" class="form-control" id="record_cnt" value="edu_headcount" name="edu_headcount">
                                                 </div>
                                           </div>
                                       </div>
                                     
                                       <div>
-                                        <label for="DOC_CTX">내용</label>
+                                        <label for="edu_content">내용</label>
                                         <div class="col-sm-3">
-                                          <textarea type="text" class="form-control" id="DOC_CTX" style="width:750px; height: 300px;"></textarea>
+                                          <textarea type="text" class="form-control" id="edu_content" style="width:750px; height: 300px;" name="edu_content">${record.edu_content}</textarea>
                                         </div>
                                       </div>
 
                                       <div style="padding-top: 2%;">
-                                        <label for="DOC_CTX">특이사항</label>
+                                        <label for="edu_etc">특이사항</label>
                                         <div class="col-sm-3">
-                                          <textarea type="text" class="form-control" id="DOC_CTX" style="width:750px; height: 300px;"></textarea>
+                                          <textarea type="text" class="form-control" id="edu_etc" style="width:750px; height: 300px;" name="edu_etc">${record.edu_etc}</textarea>
                                         </div>
                                       </div>
                                     
 
                                       <div class="col-auto text-end" style="padding-top: 3%; padding-left: 70%;" >
-                                          <button type="submit" class="btn btn-light mb-3">취소</button>
+                                          <button type="reset" class="btn btn-light mb-3">초기화</button></a>
                                           <button type="submit" class="btn btn-warning mb-3">수정완료</button>
                                       </div>
+					                  </form>
                                   </div>
                                   </tbody>
                                 </table>
