@@ -29,12 +29,6 @@ public class RecordController {
 	@Autowired
 	private RecordMapper recordMapper;
 	
-	// 메인페이지로 이동
-	@RequestMapping("/")
-	public String Intro() {
-		return "Intro";
-	}
-	
 	// 일지 목록 페이지로 이동
 	@RequestMapping("/goRecordList")
 	public String goRecordList(Model model) {

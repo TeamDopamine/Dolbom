@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,17 +33,25 @@
 </head>
 
 <body>
+
+	<%User loginUser = (User)session.getAttribute("loginUser"); %>
     <!-- Header Start -->
+    
+   		
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" >
+        <a href="Intro" class="navbar-brand d-flex align-items-center px-4 px-lg-5" >
             <b class="m-0 text-primary" style="padding-right: 5%; font-size: 32px; padding-left: 50%; font-family: 'Pretendard'">돌봄</b>
-            <img class="icon21" alt="" src="${path}/resources/img/logo.png"/>
+            <img class="icon21" alt="" src="${path}/resources/img/logo.png" />
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
+             <%if(loginUser == null){ %>
+			 <%}else { %>
+			 	<%if(loginUser.getUser_type().equals("a")) {%>
+			 	<%}else {%>
                 <a href="index.html" class="nav-item nav-link">원생관리</a>
                 <a href="about.html" class="nav-item nav-link">출석부</a>
                 <a href="service.html" class="nav-item nav-link">일정관리</a>
@@ -54,10 +63,27 @@
                         <a href="goRecordSummary" class="dropdown-item">일지 요약</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link active">로그인</a>
+                <%} %>
+                <%} %>
+                			<%if(loginUser == null){ %>
+								<a href="goLogin" class="nav-item nav-link active">로그인</a>
+							<%}else { %>
+								<%if(loginUser.getUser_type().equals("a")) {%>
+									<a href="" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
+								<%} else {%>
+									<a href="" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
+								<%System.out.println(loginUser.getUser_type()); %>
+								<%} %>
+							<%} %>
+                
             </div>
-            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">로그아웃<i class="fa fa-arrow-right ms-3"></i></a>
+           					<%if(loginUser == null){ %>
+								<a href="goSignUp" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">회원가입<i class="fa fa-arrow-right ms-3"></i></a>
+							<%}else { %>
+								<a href="logoutUser" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">로그아웃<i class="fa fa-arrow-right ms-3"></i></a>
+							<%} %>
         </div>
+        
     </nav>
     <!-- Header End -->
 
