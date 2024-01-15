@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.KindergartenMapper">
+
+	<update id="updateKindergarten" parameterType="kr.smhrd.entity.Profile">
+		UPDATE TB_KINDERGARTEN SET KG_NAME = #{user_name}, KG_TEL=#{user_tel}, KG_ADDR=#{user_addr} WHERE USER_ID=#{user_id}
+	</update>
+
+</mapper>
+

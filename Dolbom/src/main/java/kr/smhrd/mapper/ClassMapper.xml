@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.ClassMapper">
+
+	<select id="showLoginUserClass" parameterType="String" resultType="kr.smhrd.entity.Class">
+		SELECT * 
+   		  FROM TB_CLASS
+         WHERE KG_IDX = (SELECT KG_IDX 
+                           FROM TB_KINDERGARTEN 
+                          WHERE USER_ID = #{user_id})
+	</select>
+	
+	<delete id="deleteClass" parameterType="int">
+		DELETE FROM TB_CLASS WHERE CLASS_IDX=#{clss_idx}
+	</delete>
+
+</mapper>
