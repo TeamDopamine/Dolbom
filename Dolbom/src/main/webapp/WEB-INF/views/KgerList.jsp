@@ -1,5 +1,8 @@
+<%@page import="kr.smhrd.entity.KgerList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="IncludeStyle.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,15 +57,17 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr>
-                                      <td scope="row">1</td>
-                                      <td>양서현</td>
-                                      <td>1996.07.08</td>
-                                      <td>여</td>
-                                      <td>광주 동구 어쩌구저쩌구로 17-3, 돌봄아파트 203호</td>
-                                      <td>010-1234-5678</td>
-                                      <td><a href=""><img src="./img/delete.png" style="width: 20px; height: 20px;"></a></td>
-                                    </tr>
+                                  	<c:forEach items="${kgerList }" var="kg" varStatus="s">
+                                    	<tr>
+                                      		<td>${s.count }</td>
+                                      		<td>${kg.KGER_NAME }</td>
+                                      		<td>${kg.KGER_BIRTHDATE }</td>
+                                      		<td>${kg.KGER_GENDER}</td>
+                                      		<td>${kg.KGER_ADDR }</td>
+                                      		<td>${kg.KGER_PARENT_PHONE }</td>
+                                      		<td><a href="kgerDelete?idx=${kg.KGER_IDX }"><img src="${img}/delete.png" style="width: 20px; height: 20px;"></a></td>
+                                    	</tr>
+                                    </c:forEach>
                                   </tbody>
                                 </table>
                               </div>

@@ -52,7 +52,7 @@
 			 <%}else { %>
 			 	<%if(loginUser.getUser_type().equals("a")) {%>
 			 	<%}else {%>
-                <a href="index.html" class="nav-item nav-link">원생관리</a>
+                <a href="goKgerList" class="nav-item nav-link">원생관리</a>
                 <a href="about.html" class="nav-item nav-link">출석부</a>
                 <a href="service.html" class="nav-item nav-link">일정관리</a>
                 <div class="nav-item dropdown">
@@ -66,7 +66,7 @@
                 <%} %>
                 <%} %>
                 			<%if(loginUser == null){ %>
-								<a href="goLoginButton" class="nav-item nav-link active">로그인</a>
+								<a href="goLogin" class="nav-item nav-link active">로그인</a>
 							<%}else { %>
 								<%if(loginUser.getUser_type().equals("a")) {%>
 									<a href="goAdmin" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>

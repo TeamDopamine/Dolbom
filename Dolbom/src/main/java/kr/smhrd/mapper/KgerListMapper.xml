@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.KgerListMapper">
+
+	<select id="kgerList" resultType="kr.smhrd.entity.KgerList">
+		SELECT * FROM TB_KINDERGARTENER 
+	</select>
+	
+	<delete id="kgerDelete" parameterType="int">
+		DELETE FROM TB_KINDERGARTENER WHERE KGER_IDX = #{idx}
+	</delete>
+	
+</mapper>
