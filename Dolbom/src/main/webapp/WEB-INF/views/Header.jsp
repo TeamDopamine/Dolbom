@@ -58,9 +58,9 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">일지</a>
                     <div class="dropdown-menu bg-light m-0">
-                        <a href="feature.html" class="dropdown-item">일지 목록</a>
-                        <a href="quote.html" class="dropdown-item">일지 작성</a>
-                        <a href="team.html" class="dropdown-item">일지 요약</a>
+                        <a href="goRecordList" class="dropdown-item">일지 목록</a>
+                        <a href="goRecordWrite" class="dropdown-item">일지 작성</a>
+                        <a href="goRecordSummary" class="dropdown-item">일지 요약</a>
                     </div>
                 </div>
                 <%} %>
