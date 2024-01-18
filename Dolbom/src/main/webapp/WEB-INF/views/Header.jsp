@@ -58,18 +58,18 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">일지</a>
                     <div class="dropdown-menu bg-light m-0">
-                        <a href="goRecordList" class="dropdown-item">일지 목록</a>
-                        <a href="goRecordWrite" class="dropdown-item">일지 작성</a>
-                        <a href="goRecordSummary" class="dropdown-item">일지 요약</a>
+                        <a href="feature.html" class="dropdown-item">일지 목록</a>
+                        <a href="quote.html" class="dropdown-item">일지 작성</a>
+                        <a href="team.html" class="dropdown-item">일지 요약</a>
                     </div>
                 </div>
                 <%} %>
                 <%} %>
                 			<%if(loginUser == null){ %>
-								<a href="goLogin" class="nav-item nav-link active">로그인</a>
+								<a href="goLoginButton" class="nav-item nav-link active">로그인</a>
 							<%}else { %>
 								<%if(loginUser.getUser_type().equals("a")) {%>
-									<a href="" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
+									<a href="goAdmin" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
 								<%} else {%>
 									<a href="Profile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
 								<%System.out.println(loginUser.getUser_type()); %>

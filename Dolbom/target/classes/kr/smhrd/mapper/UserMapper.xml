@@ -3,15 +3,29 @@
 <mapper namespace="kr.smhrd.mapper.UserMapper">
 
 	<insert id="userInsert" parameterType="kr.smhrd.entity.User">
-		INSERT INTO TB_USER VALUES(#{user_id}, #{user_pw}, #{user_nick}, #{user_phone}, #{user_addr}, 'k', SYSDATE)
+		INSERT INTO TB_USER VALUES(#{user_id}, #{user_pw}, #{user_nick},
+		#{user_phone}, #{user_addr}, 'k', SYSDATE)
 	</insert>
-	
-	<select id="userSelect" parameterType="kr.smhrd.entity.User" resultType="kr.smhrd.entity.User">
+
+	<select id="userSelect" parameterType="kr.smhrd.entity.User"
+		resultType="kr.smhrd.entity.User">
 		select * from tb_user where user_id=#{user_id} and user_pw=#{user_pw}
 	</select>
-	
+
 	<update id="updateUser" parameterType="kr.smhrd.entity.Profile">
-		UPDATE TB_USER SET USER_NICK = #{user_name}, USER_PW=#{user_pw}, USER_PHONE=#{user_tel}, USER_ADDR=#{user_addr} WHERE USER_ID=#{user_id}
+		UPDATE TB_USER SET USER_NICK = #{user_name}, USER_PW=#{user_pw},
+		USER_PHONE=#{user_tel}, USER_ADDR=#{user_addr} WHERE
+		USER_ID=#{user_id}
 	</update>
+
+	<select id="goAdmin" resultType="kr.smhrd.entity.User">
+		select * from tb_user where
+		not(user_id='admin')
+	</select>
+
+	<delete id="deleteUser" parameterType="String">
+		delete from tb_user where
+		user_id=#{user_id}
+	</delete>
 
 </mapper>
