@@ -1,0 +1,1159 @@
+.stretch-card {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+  -webkit-justify-content: stretch;
+  justify-content: stretch;
+}
+
+.stretch-card > .card {
+  width: 100%;
+  min-width: 100%;
+}
+
+.text-gray, .card .card-subtitle {
+  color: #8c8c8c;
+}
+
+.accordion > .card {
+  margin-bottom: .75rem;
+  box-shadow: 0px 1px 15px 1px rgba(230, 234, 236, 0.35);
+  border-radius: .25rem;
+  border-radius: 8px;
+}
+
+.accordion > .card:not(:last-of-type) {
+  border-bottom: 0;
+  border-bottom-right-radius: 8;
+  border-bottom-left-radius: 8;
+  border-radius: 8px;
+}
+
+.accordion > .card:not(:first-of-type) {
+  border-top-left-radius: 8;
+  border-top-right-radius: 8;
+  border-radius: 8px;
+}
+
+
+
+.accordion > .card .card-body {
+  font-size: 14px;
+  padding: 0 2rem 2rem 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.accordion > .card .card-body i {
+  font-size: 1.25rem;
+}
+
+.accordion.accordion-bordered .card {
+  margin: 0 2rem;
+  border-top: 1px solid #CED4DA;
+  box-shadow: none;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+
+
+.accordion.accordion-bordered .card:first-child {
+  border-top: 0;
+}
+
+.accordion.accordion-bordered .card:last-child {
+  border-bottom: 0;
+}
+
+.accordion.accordion-filled .card {
+  padding: 0;
+}
+
+.accordion.accordion-filled .card .card-body {
+  padding: 0 2rem 2rem 2rem;
+  background: #248AFD;
+  color: #ffffff;
+}
+
+
+.accordion.accordion-solid-content .card {
+  padding: 0;
+}
+
+
+
+
+.accordion.accordion-solid-content .card .card-body {
+  padding: 2rem;
+  background: #57B657;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+
+.accordion.accordion-multi-colored .card:nth-child(1) {
+
+}
+
+.accordion.accordion-multi-colored .card:nth-child(2) {
+  background: #57B657;
+}
+
+.accordion.accordion-multi-colored .card:nth-child(3) {
+  background: #FF4747;
+}
+
+.accordion.accordion-multi-colored .card:nth-child(4) {
+  background: #FFC100;
+}
+
+.accordion.accordion-multi-colored .card:nth-child(5) {
+  background: #248AFD;
+}
+
+/* Cards */
+.card {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  transition: background 0.25s ease;
+  -webkit-transition: background 0.25s ease;
+  -moz-transition: background 0.25s ease;
+  -ms-transition: background 0.25s ease;
+  border: none;
+}
+
+.card-display{
+	display:inline-table !important;
+}
+
+.card.tale-bg {
+  background: #DAE7FF;
+}
+
+.card.transparent {
+  background: transparent;
+}
+
+.card .card-body {
+  padding: 1.25rem 1.25rem;
+}
+
+.card .card-body + .card-body {
+  padding-top: 1rem;
+}
+
+.card .card-title {
+  color: #010101;
+  margin-bottom: 1.2rem;
+  text-transform: capitalize;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.card .card-subtitle {
+  font-weight: 400;
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+.card .card-description {
+  margin-bottom: .875rem;
+  font-weight: 400;
+  color: #76838f;
+}
+
+.card.card-outline-success {
+  border: 1px solid #57B657;
+}
+
+.card.card-outline-primary {
+
+}
+
+.card.card-outline-warning {
+  border: 1px solid #FFC100;
+}
+
+.card.card-outline-danger {
+  border: 1px solid #FF4747;
+}
+
+.card.card-rounded {
+  border-radius: 5px;
+}
+
+.card.card-faded {
+  background: #b5b0b2;
+  border-color: #b5b0b2;
+}
+
+.card.card-circle-progress {
+  color: #ffffff;
+  text-align: center;
+}
+
+.card.card-img-holder {
+  position: relative;
+}
+
+.card.card-img-holder .card-img-absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+.card.card-weather .weather-daily .weather-day {
+  opacity: .5;
+  font-weight: 900;
+}
+
+.card.card-weather .weather-daily i {
+  font-size: 20px;
+}
+
+.card.card-weather .weather-daily .weather-temp {
+  margin-top: .5rem;
+  margin-bottom: 0;
+  opacity: .5;
+  font-size: .75rem;
+}
+
+.card.card-tale {
+  background: #7DA0FA;
+  color: #ffffff;
+}
+
+
+.card.card-dark-blue {
+  background: #4747A1;
+  color: #ffffff;
+}
+
+
+.card.card-light-blue {
+  background: #7978E9;
+  color: #ffffff;
+}
+
+
+
+.card.card-light-danger {
+  background: #F3797E;
+  color: #ffffff;
+}
+
+.card-inverse-primary {
+  background: rgba(75, 73, 172, 0.2);
+  border: 1px solid #45439e;
+  color: #393783;
+}
+
+.card-inverse-secondary {
+  background: rgba(163, 164, 165, 0.2);
+  border: 1px solid #969798;
+  color: #7c7d7d;
+}
+
+.card-inverse-success {
+  background: rgba(87, 182, 87, 0.2);
+  border: 1px solid #50a750;
+  color: #428a42;
+}
+
+.card-inverse-info {
+  background: rgba(36, 138, 253, 0.2);
+  border: 1px solid #217fe9;
+  color: #1b69c0;
+}
+
+.card-inverse-warning {
+  background: rgba(255, 193, 0, 0.2);
+  border: 1px solid #ebb200;
+  color: #c29300;
+}
+
+.card-inverse-danger {
+  background: rgba(255, 71, 71, 0.2);
+  border: 1px solid #eb4141;
+  color: #c23636;
+}
+
+.card-inverse-light {
+  background: rgba(248, 249, 250, 0.2);
+  border: 1px solid #e4e5e6;
+  color: #bcbdbe;
+}
+
+.card-inverse-dark {
+  background: rgba(40, 47, 58, 0.2);
+  border: 1px solid #252b35;
+  color: #1e242c;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #e3e3e3;
+  border-radius: 20px;
+}
+
+.card > hr {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.card > .list-group {
+  border-top: inherit;
+  border-bottom: inherit;
+}
+
+.card > .list-group:first-child {
+  border-top-width: 0;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.card > .list-group:last-child {
+  border-bottom-width: 0;
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+  margin-top: -0.375rem;
+  margin-bottom: 0;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+
+.card-link + .card-link {
+  margin-left: 1.25rem;
+}
+
+
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+  border-radius: calc(0.25rem - 1px);
+}
+
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.card-img,
+.card-img-top {
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.card-img,
+.card-img-bottom {
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.card-deck .card {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 576px) {
+  .card-deck {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  .card-deck .card {
+    flex: 1 0 0%;
+    margin-right: 15px;
+    margin-bottom: 0;
+    margin-left: 15px;
+  }
+}
+
+.card-group > .card {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 576px) {
+  .card-group {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .card-group > .card {
+    flex: 1 0 0%;
+    margin-bottom: 0;
+  }
+  .card-group > .card + .card {
+    margin-left: 0;
+    border-left: 0;
+  }
+  .card-group > .card:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+ 
+  }
+
+  .card-group > .card:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+ 
+
+
+.card-columns .card {
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 3;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
+  }
+  .card-columns .card {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.accordion {
+  overflow-anchor: none;
+}
+
+.accordion > .card {
+  overflow: hidden;
+}
+
+.accordion > .card:not(:last-of-type) {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.accordion > .card:not(:first-of-type) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.accordion > .card .card-body {
+  font-size: 14px;
+  padding: 0 2rem 2rem 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.accordion > .card .card-body i {
+  font-size: 1.25rem;
+}
+
+.accordion.accordion-filled .card .card-body {
+  padding: 0 2rem 2rem 2rem;
+  background: #248AFD;
+  color: #ffffff;
+}
+
+
+.accordion.accordion-solid-content .card .card-body {
+  padding: 2rem;
+  background: #57B657;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+
+.card .card-body {
+  padding: 1.25rem 1.25rem;
+}
+
+.card .card-body + .card-body {
+  padding-top: 1rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.data-icon-card-primary .card-title {
+  color: #000000;
+}
+
+.data-icon-card-secondary .card-title {
+  color: #000000;
+}
+
+.data-icon-card-success .card-title {
+  color: #000000;
+}
+
+.data-icon-card-info .card-title {
+  color: #000000;
+}
+
+.data-icon-card-warning .card-title {
+  color: #000000;
+}
+
+.data-icon-card-danger .card-title {
+  color: #000000;
+}
+
+.data-icon-card-light .card-title {
+  color: #000000;
+}
+
+.data-icon-card-dark .card-title {
+  color: #000000;
+}
+
+.d-flex, .loader-demo-box, .data-icon-card-primary .background-icon, .data-icon-card-secondary .background-icon, .data-icon-card-success .background-icon, .data-icon-card-info .background-icon, .data-icon-card-warning .background-icon, .data-icon-card-danger .background-icon, .data-icon-card-light .background-icon, .data-icon-card-dark .background-icon, .list-wrapper ul li, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user, .email-wrapper .mail-list-container .mail-list .details, .email-wrapper .message-body .attachments-sections ul li .thumb, .email-wrapper .message-body .attachments-sections ul li .details .buttons, .lightGallery .image-tile .demo-gallery-poster, .swal2-modal, .navbar .navbar-menu-wrapper .navbar-nav, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right .nav-item {
+  display: flex !important;
+}
+
+.justify-content-start, .list-wrapper ul li {
+  justify-content: flex-start !important;
+}
+
+.align-items-center, .loader-demo-box, .list-wrapper ul li, .email-wrapper .message-body .attachments-sections ul li .thumb, .email-wrapper .message-body .attachments-sections ul li .details .buttons, .navbar .navbar-menu-wrapper .navbar-nav, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-settings, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item, .navbar .navbar-menu-wrapper .navbar-nav.navbar-nav-right .nav-item {
+  align-items: center !important;
+}
+.ml-0, .rtl .preview-list .preview-item .preview-thumbnail .preview-icon i, .rtl .list-wrapper .remove,
+.mx-0 {
+  margin-left: 0 !important;
+}
+
+.mr-auto, .rtl .list-wrapper .remove,
+.mx-auto {
+  margin-right: auto !important;
+}
+
+.ml-auto, .list-wrapper .remove,
+.mx-auto {
+  margin-left: auto !important;
+}
+
+.text-primary, .list-wrapper .completed .remove {
+  color: #32C36C !important;
+}
+
+.text-secondary, .list-wrapper .remove {
+  color: #a3a4a5 !important;
+}
+
+.list-wrapper ul li .form-check, .list-wrapper ul li .form-check .form-check-label, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation, .email-wrapper .mail-list-container .mail-list .content .sender-name, .email-wrapper .message-body .attachments-sections ul li .details p.file-name, .settings-panel .chat-list .list .info p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.list-wrapper ul li .form-check, .list-wrapper ul li .form-check .form-check-label, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation, .email-wrapper .mail-list-container .mail-list .content .sender-name, .email-wrapper .message-body .attachments-sections ul li .details p.file-name, .settings-panel .chat-list .list .info p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.list-wrapper {
+  height: 100%;
+  max-height: 390px;
+  overflow: scroll;
+}
+
+.list-wrapper ul {
+  padding: 0;
+  text-align: left;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.list-wrapper ul li {
+  font-size: .9375rem;
+  padding: 1.063rem 1.4rem;
+  border: 1px solid #CED4DA;
+  margin-bottom: 0.812rem;
+  border-radius: 7px;
+}
+
+.list-wrapper ul li .form-check {
+  max-width: 90%;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+
+.list-wrapper input[type="checkbox"] {
+  margin-right: 15px;
+}
+
+.list-wrapper .remove {
+  cursor: pointer;
+  font-size: .7rem;
+  font-weight: 600;
+  width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.list-wrapper .completed .form-check {
+  text-decoration: line-through;
+  text-decoration-color: #32C36C;
+}
+
+.list-wrapper.list-wrapper-sm {
+  height: 320px;
+}
+
+.list-wrapper ul li .form-check, .list-wrapper ul li .form-check .form-check-label, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation, .email-wrapper .mail-list-container .mail-list .content .sender-name, .email-wrapper .message-body .attachments-sections ul li .details p.file-name, .settings-panel .chat-list .list .info p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.list-wrapper ul li .form-check, .list-wrapper ul li .form-check .form-check-label, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-designation, .email-wrapper .mail-list-container .mail-list .content .sender-name, .email-wrapper .message-body .attachments-sections ul li .details p.file-name, .settings-panel .chat-list .list .info p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.email-wrapper .mail-list-container .mail-list .form-check {
+  margin-top: 12px;
+  width: 11%;
+  min-width: 20px;
+}
+
+.form-check {
+  position: relative;
+  display: block;
+  padding-left: 1.25rem;
+}
+
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -1.25rem;
+}
+
+.form-check-input[disabled] ~ .form-check-label,
+.form-check-input:disabled ~ .form-check-label {
+  color: #737F8B;
+}
+
+.form-check-label {
+  margin-bottom: 0;
+}
+
+.form-check-inline {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0;
+  margin-right: 0.75rem;
+}
+
+.form-check-inline .form-check-input {
+  position: static;
+  margin-top: 0;
+  margin-right: 0.3125rem;
+  margin-left: 0;
+}
+
+.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+  color: #28a745;
+}
+
+.was-validated .form-check-input:valid ~ .valid-feedback,
+.was-validated .form-check-input:valid ~ .valid-tooltip, .form-check-input.is-valid ~ .valid-feedback,
+.form-check-input.is-valid ~ .valid-tooltip {
+  display: block;
+}
+
+
+.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
+  color: #dc3545;
+}
+
+.was-validated .form-check-input:invalid ~ .invalid-feedback,
+.was-validated .form-check-input:invalid ~ .invalid-tooltip, .form-check-input.is-invalid ~ .invalid-feedback,
+.form-check-input.is-invalid ~ .invalid-tooltip {
+  display: block;
+}
+
+.form-inline .form-check {
+  width: 100%;
+}
+
+.form-inline .form-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding-left: 0;
+  }
+  .form-inline .form-check-input {
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 0;
+    margin-right: 0.25rem;
+    margin-left: 0;
+  }
+  
+ Checkboxes and Radios
+.form-check {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 0;
+}
+
+.form-check .form-check-label {
+  min-height: 18px;
+  display: block;
+  margin-left: 1.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.rtl .form-check .form-check-label {
+  margin-left: 0;
+  margin-right: 1.75rem;
+}
+
+.form-check .form-check-label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 0;
+  margin-top: 0;
+  z-index: 1;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.rtl .form-check .form-check-label input {
+  left: auto;
+  right: 0;
+}
+
+.form-check .form-check-label input[type="checkbox"] + .input-helper:before, .form-check .form-check-label input[type="checkbox"] + .input-helper:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rtl .form-check .form-check-label input[type="checkbox"] + .input-helper:before, .rtl .form-check .form-check-label input[type="checkbox"] + .input-helper:after {
+  left: auto;
+  right: 0;
+}
+
+.form-check .form-check-label input[type="checkbox"] + .input-helper:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  border: solid #32C36C;
+  border-width: 2px;
+  -webkit-transition: all;
+  -moz-transition: all;
+  -ms-transition: all;
+  -o-transition: all;
+  transition: all;
+  transition-duration: 0s;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+}
+
+.form-check .form-check-label input[type="checkbox"] + .input-helper:after {
+  -webkit-transition: all;
+  -moz-transition: all;
+  -ms-transition: all;
+  -o-transition: all;
+  transition: all;
+  transition-duration: 0s;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  font-family: themify;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  content: '✔';
+  font-size: .9375rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.form-check .form-check-label input[type="checkbox"]:checked + .input-helper:before {
+  background: #32C36C;
+  border-width: 0;
+}
+
+.form-check .form-check-label input[type="checkbox"]:checked + .input-helper:after {
+  width: 18px;
+  opacity: 1;
+  line-height: 18px;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.form-check .form-check-label input[type="checkbox"]:disabled + .input-helper:before {
+  border-color: #CED4DA;
+}
+
+.form-check .form-check-label input[type="checkbox"]:disabled:checked + .input-helper:after {
+  background: #CED4DA;
+  color: #ffffff;
+}
+
+.form-check .form-check-label input[type="radio"] + .input-helper:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+
+  border-width: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  -webkit-transition: all;
+  -moz-transition: all;
+  -ms-transition: all;
+  -o-transition: all;
+  transition: all;
+  transition-duration: 0s;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+}
+
+.rtl .form-check .form-check-label input[type="radio"] + .input-helper:before {
+  left: auto;
+  right: 0;
+}
+
+.form-check .form-check-label input[type="radio"] + .input-helper:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  top: 6px;
+  left: 6px;
+  -webkit-transition: all;
+  -o-transition: all;
+  transition: all;
+  transition-duration: 0s;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  position: absolute;
+}
+
+.rtl .form-check .form-check-label input[type="radio"] + .input-helper:after {
+  left: auto;
+  right: 6px;
+}
+
+.form-check .form-check-label input[type="radio"]:checked + .input-helper:before {
+
+  border-width: 0;
+}
+
+.form-check .form-check-label input[type="radio"]:checked + .input-helper:after {
+  opacity: 1;
+  line-height: 1.5;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+.form-check .form-check-label input[type="radio"]:disabled + .input-helper:before {
+  border-color: #CED4DA;
+}
+
+.form-check .form-check-label input[type="radio"]:disabled:checked + .input-helper:before {
+  background: #CED4DA;
+}
+
+.form-check .form-check-label input[type="radio"]:disabled:checked + .input-helper:after {
+  background: #ffffff;
+}
+
+.form-check-primary.form-check label input[type="checkbox"] + .input-helper:before,
+.form-check-primary.form-check label input[type="radio"] + .input-helper:before {
+
+}
+
+.form-check-primary.form-check label input[type="checkbox"]:checked + .input-helper:before,
+.form-check-primary.form-check label input[type="radio"]:checked + .input-helper:before {
+
+}
+
+.form-check-secondary.form-check label input[type="checkbox"] + .input-helper:before,
+.form-check-secondary.form-check label input[type="radio"] + .input-helper:before {
+  border-color: #a3a4a5;
+}
+
+.form-check-secondary.form-check label input[type="checkbox"]:checked + .input-helper:before,
+.form-check-secondary.form-check label input[type="radio"]:checked + .input-helper:before {
+  background: #a3a4a5;
+}
+
+.form-check-success.form-check label input[type="checkbox"] + .input-helper:before,
+.form-check-success.form-check label input[type="radio"] + .input-helper:before {
+  border-color: #57B657;
+}
+
+.form-check-success.form-check label input[type="checkbox"]:checked + .input-helper:before,
+.form-check-success.form-check label input[type="radio"]:checked + .input-helper:before {
+  background: #57B657;
+}
+
+.form-check-info.form-check label input[type="checkbox"] + .input-helper:before,
+.form-check-info.form-check label input[type="radio"] + .input-helper:before {
+  border-color: #248AFD;
+}
+
+.form-check-info.form-check label input[type="checkbox"]:checked + .input-helper:before,
+.form-check-info.form-check label input[type="radio"]:checked + .input-helper:before {
+  background: #248AFD;
+}
+
+.form-check-warning.form-check label input[type="checkbox"] + .input-helper:before,
+.form-check-warning.form-check label input[type="radio"] + .input-helper:before {
+  border-color: #FFC100;
+}
+
+.form-check-warning.form-check label input[type="checkbox"]:checked + .input-helper:before,
+.form-check-warning.form-check label input[type="radio"]:checked + .input-helper:before {
+  background: #FFC100;
+}
+
+.form-check-danger.form-check label input[type="checkbox"] + .input-helper:before,
+.form-check-danger.form-check label input[type="radio"] + .input-helper:before {
+  border-color: #FF4747;
+}
+
+.form-check-danger.form-check label input[type="checkbox"]:checked + .input-helper:before,
+.form-check-danger.form-check label input[type="radio"]:checked + .input-helper:before {
+  background: #FF4747;
+}
+
+.form-check-light.form-check label input[type="checkbox"] + .input-helper:before,
+.form-check-light.form-check label input[type="radio"] + .input-helper:before {
+  border-color: #f8f9fa;
+}
+
+.form-check-light.form-check label input[type="checkbox"]:checked + .input-helper:before,
+.form-check-light.form-check label input[type="radio"]:checked + .input-helper:before {
+  background: #f8f9fa;
+}
+
+.form-check-dark.form-check label input[type="checkbox"] + .input-helper:before,
+.form-check-dark.form-check label input[type="radio"] + .input-helper:before {
+  border-color: #282f3a;
+}
+
+.form-check-dark.form-check label input[type="checkbox"]:checked + .input-helper:before,
+.form-check-dark.form-check label input[type="radio"]:checked + .input-helper:before {
+  background: #282f3a;
+}
+
+.preview-list .preview-item .form-check {
+  margin-top: 8px;
+  margin-right: 1rem;
+}
+
+.list-wrapper ul li .form-check {
+  max-width: 90%;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+
+.list-wrapper .completed .form-check {
+  text-decoration: line-through;
+  text-decoration-color: #32C36C;
+}
+
+.email-wrapper .mail-list-container .mail-list .form-check {
+  margin-top: 12px;
+  width: 11%;
+  min-width: 20px;
+}
+
+.form-check-input[disabled] ~ .form-check-label,
+.form-check-input:disabled ~ .form-check-label {
+  color: #737F8B;
+}
+
+.form-check-label {
+  margin-bottom: 0;
+}
+
+.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+  color: #28a745;
+}
+
+.was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
+  color: #dc3545;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.btn-group-toggle > .btn input[type="radio"], .fc .btn-group-toggle > button input[type="radio"], .ajax-upload-dragdrop .btn-group-toggle > .ajax-file-upload input[type="radio"], .swal2-modal .swal2-buttonswrapper .btn-group-toggle > .swal2-styled input[type="radio"], .wizard > .actions .btn-group-toggle > a input[type="radio"],
+.btn-group-toggle > .btn input[type="checkbox"],
+.fc .btn-group-toggle > button input[type="checkbox"],
+.ajax-upload-dragdrop .btn-group-toggle > .ajax-file-upload input[type="checkbox"],
+.swal2-modal .swal2-buttonswrapper .btn-group-toggle > .swal2-styled input[type="checkbox"],
+.wizard > .actions .btn-group-toggle > a input[type="checkbox"],
+.btn-group-toggle > .btn-group > .btn input[type="radio"],
+.fc .btn-group-toggle > .fc-button-group > .btn input[type="radio"],
+.fc .btn-group-toggle > .btn-group > button input[type="radio"],
+.fc .btn-group-toggle > .fc-button-group > button input[type="radio"],
+.ajax-upload-dragdrop .btn-group-toggle > .btn-group > .ajax-file-upload input[type="radio"],
+.fc .ajax-upload-dragdrop .btn-group-toggle > .fc-button-group > .ajax-file-upload input[type="radio"],
+.ajax-upload-dragdrop .fc .btn-group-toggle > .fc-button-group > .ajax-file-upload input[type="radio"],
+.swal2-modal .swal2-buttonswrapper .btn-group-toggle > .btn-group > .swal2-styled input[type="radio"],
+.fc .swal2-modal .swal2-buttonswrapper .btn-group-toggle > .fc-button-group > .swal2-styled input[type="radio"],
+.swal2-modal .swal2-buttonswrapper .fc .btn-group-toggle > .fc-button-group > .swal2-styled input[type="radio"],
+.wizard > .actions .btn-group-toggle > .btn-group > a input[type="radio"],
+.fc .wizard > .actions .btn-group-toggle > .fc-button-group > a input[type="radio"],
+.wizard > .actions .fc .btn-group-toggle > .fc-button-group > a input[type="radio"],
+.btn-group-toggle > .btn-group > .btn input[type="checkbox"],
+.fc .btn-group-toggle > .fc-button-group > .btn input[type="checkbox"],
+.fc .btn-group-toggle > .btn-group > button input[type="checkbox"],
+.fc .btn-group-toggle > .fc-button-group > button input[type="checkbox"],
+.ajax-upload-dragdrop .btn-group-toggle > .btn-group > .ajax-file-upload input[type="checkbox"],
+.fc .ajax-upload-dragdrop .btn-group-toggle > .fc-button-group > .ajax-file-upload input[type="checkbox"],
+.ajax-upload-dragdrop .fc .btn-group-toggle > .fc-button-group > .ajax-file-upload input[type="checkbox"],
+.swal2-modal .swal2-buttonswrapper .btn-group-toggle > .btn-group > .swal2-styled input[type="checkbox"],
+.fc .swal2-modal .swal2-buttonswrapper .btn-group-toggle > .fc-button-group > .swal2-styled input[type="checkbox"],
+.swal2-modal .swal2-buttonswrapper .fc .btn-group-toggle > .fc-button-group > .swal2-styled input[type="checkbox"],
+.wizard > .actions .btn-group-toggle > .btn-group > a input[type="checkbox"],
+.fc .wizard > .actions .btn-group-toggle > .fc-button-group > a input[type="checkbox"],
+.wizard > .actions .fc .btn-group-toggle > .fc-button-group > a input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+}
+
+
+Tabs
+.add-items {
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.add-items input[type="text"] {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding-left: 0;
+}
+
+.add-items input[type="text"]::-webkit-input-placeholder {
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.add-items input[type="text"]:-moz-placeholder {
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.add-items input[type="text"]::-moz-placeholder {
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.add-items input[type="text"]:-ms-input-placeholder {
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.add-items .btn, .add-items .fc button, .fc .add-items button, .add-items .ajax-upload-dragdrop .ajax-file-upload, .ajax-upload-dragdrop .add-items .ajax-file-upload, .add-items .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .add-items .swal2-styled, .add-items .wizard > .actions a, .wizard > .actions .add-items a {
+  margin-left: .5rem;
+}
+
+.add-items .btn i, .add-items .fc button i, .fc .add-items button i, .add-items .ajax-upload-dragdrop .ajax-file-upload i, .ajax-upload-dragdrop .add-items .ajax-file-upload i, .add-items .swal2-modal .swal2-buttonswrapper .swal2-styled i, .swal2-modal .swal2-buttonswrapper .add-items .swal2-styled i, .add-items .wizard > .actions a i, .wizard > .actions .add-items a i {
+  font-size: 1.25rem;
+}
+
+.rtl .add-items .btn, .rtl .add-items .fc button, .fc .rtl .add-items button, .rtl .add-items .ajax-upload-dragdrop .ajax-file-upload, .ajax-upload-dragdrop .rtl .add-items .ajax-file-upload, .rtl .add-items .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .rtl .add-items .swal2-styled, .rtl .add-items .wizard > .actions a, .wizard > .actions .rtl .add-items a {
+  margin-left: auto;
+  margin-right: .5rem;
+}
+
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+.container-scroller {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

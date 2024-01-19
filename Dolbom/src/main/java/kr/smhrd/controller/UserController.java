@@ -42,7 +42,7 @@ public class UserController {
 		return "Intro";
 	}
 	
-	@RequestMapping("/Main")
+	@RequestMapping("/goMain")
 	public String Main() {
 		return "Main";
 	}
@@ -95,7 +95,7 @@ public class UserController {
 				session.setAttribute("loginUser", loginUser);
 				loginState = "1";
 				session.setAttribute("loginState", loginState);
-				return "Intro";
+				return "Main";
 			} else { //입력한 아이디와 비밀번호가 맞지 않아서 로그인 실패!
 				System.out.println("올바르지 않은 아이디 또는 비밀번호입니다.");
 				loginState = "4";

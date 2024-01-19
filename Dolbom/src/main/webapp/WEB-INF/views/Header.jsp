@@ -66,7 +66,7 @@
                 <%} %>
                 <%} %>
                 			<%if(loginUser == null){ %>
-								<a href="goLogin" class="nav-item nav-link active">로그인</a>
+								<a href="goLoginButton" class="nav-item nav-link active">로그인</a>
 							<%}else { %>
 								<%if(loginUser.getUser_type().equals("a")) {%>
 									<a href="goAdmin" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
