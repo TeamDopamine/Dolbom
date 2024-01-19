@@ -42,8 +42,23 @@ public class UserController {
 		return "Intro";
 	}
 	
+//	@RequestMapping("/goMain")
+//	public String Main() {
+//		return "Main";
+//	}
+	
 	@RequestMapping("/goMain")
-	public String Main() {
+	public String Main(@RequestParam("class_idx") int class_idx, HttpSession session) {
+		
+		List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>) session.getAttribute("loginUserClassList");
+		for (int i = 0; i < loginUserClassList.size(); i++) {
+			if (loginUserClassList.get(i).getClass_idx() == class_idx) {
+				session.setAttribute("loginUserClass", loginUserClassList.get(i));
+			}
+		}
+		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
+		System.out.println("loginUserClass는 어떤반입니까? : " + loginUserClass.getClass_name() + "반을 선택했습니다.");
+		
 		return "Main";
 	}
 
@@ -95,7 +110,8 @@ public class UserController {
 				session.setAttribute("loginUser", loginUser);
 				loginState = "1";
 				session.setAttribute("loginState", loginState);
-				return "Main";
+				//return "Main";
+				return "redirect:/goClassSelect";
 			} else { //입력한 아이디와 비밀번호가 맞지 않아서 로그인 실패!
 				System.out.println("올바르지 않은 아이디 또는 비밀번호입니다.");
 				loginState = "4";

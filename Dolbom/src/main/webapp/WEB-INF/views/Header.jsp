@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="kr.smhrd.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -34,7 +35,14 @@
 
 <body>
 
-	<%User loginUser = (User)session.getAttribute("loginUser"); %>
+	<%
+	User loginUser = (User)session.getAttribute("loginUser"); 
+	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class) session
+			.getAttribute("loginUserClass");
+	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>) session
+			.getAttribute("loginUserClassList");
+	%>
+	
     <!-- Header Start -->
     
    		
@@ -63,6 +71,22 @@
                         <a href="goRecordSummary" class="dropdown-item">일지 요약</a>
                     </div>
                 </div>
+                <%if(loginUserClass != null){ %>
+                <div class="nav-item dropdown d-flex">
+				    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
+				    	<div style="background-color: lightgray; border-radius: 10px; color: black;">
+				    		<%=loginUserClass.getClass_name()%> 반
+				    	</div>
+				    </a>
+				    <div class="dropdown-menu bg-light m-0">
+				        <% for (int i = 0; i < loginUserClassList.size(); i++) { %>
+				            <% if (loginUserClassList.get(i).getClass_idx() != loginUserClass.getClass_idx()) { %>
+				                <a href="goMain?class_idx=<%=loginUserClassList.get(i).getClass_idx()%>" class="dropdown-item"><%=loginUserClassList.get(i).getClass_name() %></a>
+				            <% } %>
+				        <% } %>
+				    </div>
+				</div> 
+                <%} %>
                 <%} %>
                 <%} %>
                 			<%if(loginUser == null){ %>
