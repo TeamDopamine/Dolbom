@@ -54,7 +54,7 @@
 			 	<%}else {%>
                 <a href="goKgerList" class="nav-item nav-link">원생관리</a>
                 <a href="about.html" class="nav-item nav-link">출석부</a>
-                <a href="service.html" class="nav-item nav-link">일정관리</a>
+                <a href="goCalendar" class="nav-item nav-link">일정관리</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">일지</a>
                     <div class="dropdown-menu bg-light m-0">
