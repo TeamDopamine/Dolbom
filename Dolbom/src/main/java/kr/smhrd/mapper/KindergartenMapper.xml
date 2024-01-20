@@ -5,6 +5,23 @@
 	<update id="updateKindergarten" parameterType="kr.smhrd.entity.Profile">
 		UPDATE TB_KINDERGARTEN SET KG_NAME = #{user_name}, KG_TEL=#{user_tel}, KG_ADDR=#{user_addr} WHERE USER_ID=#{user_id}
 	</update>
+	
+	<insert id="insertKindergarten" parameterType="kr.smhrd.entity.Kindergarten">
+		INSERT INTO TB_KINDERGARTEN(
+		    KG_NAME,
+		    KG_ADDR,
+		    KG_TEL,
+		    KG_PERSONNEL,
+		    USER_ID
+		)
+		VALUES(
+		    #{kg_name}, 
+		    #{kg_addr},
+		    #{kg_tel},
+		    0, 
+		    #{user_id}
+		)
+	</insert>
 
 </mapper>
 

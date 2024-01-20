@@ -30,5 +30,8 @@
 			values (#{edu_name}, 'testid', #{edu_headcount}, #{edu_subject}, #{edu_content}, 'edu_photo', SYSDATE, #{edu_etc}, 2)
 	</insert>
 	
+	<select id="goRecordList" resultType="kr.smhrd.entity.Record">
+		select * from tb_daily_record
+	</select>
 	
 </mapper>

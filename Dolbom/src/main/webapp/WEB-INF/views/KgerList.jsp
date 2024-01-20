@@ -1,3 +1,5 @@
+<%@page import="org.springframework.ui.Model"%>
+<%@page import="com.fasterxml.jackson.annotation.JsonCreator.Mode"%>
 <%@page import="kr.smhrd.entity.KgerList"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -26,7 +28,10 @@
 </head>
 
 <body>
-    
+    <%
+    List<KgerList> kgerList = (List<KgerList>)session.getAttribute("kgerList"); 
+    System.out.println("kgerList.toString()를 .jsp 파일에서 찍어보기!! : " + kgerList.toString()); 
+    %>
     <!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
 
@@ -57,9 +62,10 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                  	<c:forEach items="${kgerList }" var="kg" varStatus="s">
+                                  	<c:forEach items="${kgerList }" var="kg" varStatus="status">
+                                  	<c:set var="pageNumber" value="${(page * pageSize) + status.count}" />
                                     	<tr>
-                                      		<td>${s.count }</td>
+                                      		<td>${pageNumber }</td>
                                       		<td>${kg.KGER_NAME }</td>
                                       		<td>${kg.KGER_BIRTHDATE }</td>
                                       		<td>${kg.KGER_GENDER}</td>
@@ -70,6 +76,42 @@
                                     </c:forEach>
                                   </tbody>
                                 </table>
+                                
+                                <div class="find-btn" style="padding-top: 3.5%;">
+										
+										<c:if test="${currentPage > 0}">
+										    <!-- 현재 페이지가 0보다 큰 경우에만 Prev 버튼을 활성화합니다 -->
+										    <a href="goKgerList?page=${currentPage - 10}">
+										        <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">이전</button>
+										    </a>
+										</c:if>
+										
+										<div class="btn-group" role="group">
+										    <c:forEach var="i" begin="${startPage}" end="${endPage}" >
+										            <a href="goKgerList?page=${i}">
+										            	<button type="button" class="btn navbar-btn find-btn1 pnt-no" style="margin: 3px" id="pgBtn${i}">${i + 1}</button>
+												            <script>
+												                if (${i eq currentPage}) {
+												                    var currentPageBtn = document.getElementById('pgBtn${i}');
+												                    currentPageBtn.style.backgroundColor = '#808080';  // 배경색 변경
+												                    currentPageBtn.style.color = '#ffffff';  // 글자색 변경
+												                    currentPageBtn.style.fontWeight = 'bold';  // 글자 굵기 변경
+												                }
+												            </script>
+										        	</a>
+										    </c:forEach>
+										</div>
+										
+										<c:if test="${currentPage < totalPages - 1}">
+										    <!-- 현재 페이지가 마지막 페이지가 아닌 경우에만 Next 버튼을 활성화합니다 -->
+										    <a href="goKgerList?page=${currentPage + 10}">
+										    	<c:if test=""></c:if>
+										        <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">다음</button>
+										    </a>
+										</c:if>
+										
+										</div>
+                                
                               </div>
                             </div>
                           </div>
@@ -77,16 +119,6 @@
                       </div>
                     </div>
                   </section>
-
-                <!--pagination start-->
-                <div class="find-btn" style="padding-top: 3.5%; text-align: center;">
-                    <button type="button" class="btn btn-navy navbar-btn find-btn1 pnt-yes" onclick="location.href='/  '">1</button >
-                    <button type="button" class="btn btn-grey navbar-btn find-btn1 pnt-no" onclick="location.href='/  '">2</button>
-                    <button type="button" class="btn btn-navy navbar-btn find-btn1 pnt-no" onclick="location.href='/  '">3</button>
-                    <button type="button" class="btn btn-grey navbar-btn find-btn1 pnt-no" onclick="location.href='/  '">NEXT</button>
-                    </div>
-                <!--pagination end-->
-
             </div>
         </div>
     </div>
@@ -99,5 +131,27 @@
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 </body>
+
+<script>
+     function goToPage(page) {
+         $.ajax({
+             type: "GET",
+             url: "goKgerList", // 컨트롤러의 매핑 주소
+             data: { 
+            	 currentPage: currentPage, 
+            	 startPage: startPage
+             },
+             
+             success: function(response) {
+                 // 성공 시 수행할 작업 (예: 결과를 화면에 반영)
+                 // response 변수에는 서버에서 전달한 데이터가 들어있을 수 있습니다.
+             },
+             error: function(error) {
+                 // 에러 시 수행할 작업
+                 console.error("Error:", error);
+             }
+         });
+     }
+</script>
 
 </html>
