@@ -67,7 +67,6 @@
 <body>
 <% 
  List<Calendar> calList = (List<Calendar>)session.getAttribute("calList");
- System.out.println("cal.jsp에서 찍어본 calList : " + calList.toString());
 %>
 <!-- Header -->
  	<jsp:include page="Header.jsp"></jsp:include> 
@@ -83,7 +82,6 @@
     <!-- Contact End -->
 
     <div id='calendar'></div>
-
     <div id='calendar'></div>
 
 	<!-- Footer -->
@@ -110,7 +108,7 @@
 				<div class="modal-body">
 					일정이름 : <input type="text" id="title" /><br /> 시작시간 : <input
 						type="datetime-local" id="start" /><br /> 종료시간 : <input
-						type="datetime-local" id="end" /><br /> 배경색상 : <select
+						type="datetime-local" id="end" /><br /> <!-- 배경색상 : <select
 						id="color">
 						<option value="red">빨강색</option>
 						<option value="orange">주황색</option>
@@ -119,7 +117,7 @@
 						<option value="blue">파랑색</option>
 						<option value="indigo">남색</option>
 						<option value="purple">보라색</option>
-					</select>
+					</select> -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
@@ -136,107 +134,116 @@
           // calendar element 취득
           var calendarEl = $('#calendar')[0];
           // full-calendar 생성하기
-          var calendar = new FullCalendar.Calendar(calendarEl, {
-            googleCalendarApiKey: '',// 여기에 구글캘린더 api키 입력하시면 됩니다.
-            height: '700px', // calendar 높이 설정
-            expandRows: true, // 화면에 맞게 높이 재설정
-            slotMinTime: '08:00', // Day 캘린더에서 시작 시간
-            slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
-            customButtons: {
-              myCustomButton: {
-                text: "일정 추가하기",
-                click: function () {
-                  //부트스트랩 모달 열기
-                  $("#exampleModal").modal("show");
-                }
-              },
-              mySaveButton: {
-                text: "저장하기",
-                click: async function () {
-                  if (confirm("저장하시겠습니까?")) {
-                    //지금까지 생성된 모든 이벤트 저장하기
-                    var allEvent = calendar.getEvents();
-                    console.log("모든 이벤트들", allEvent);
-                    alert("저장 완료")
-                    //이벤트 저장하기
-                    var allEvent = calendar.getEvents();
+          var calendar; 
+          
+          // 이벤트 배열 초기화
+          var evtList = [];
+          
+          $.ajax({
+            type: "POST",
+            url: "selectCalendar",
+            contentType: "application/json; charset=utf-8",
+            success: function (eventData) {
+              result = eventData
+              
+              evtList = [];
+              
+              for (let i = 0; i < result.length; i++) {
+                  // 종료일자에 1일을 더한 Date 객체 생성
+                  var endDate = new Date(result[i]['ended_AT']);
+                  endDate.setDate(endDate.getDate() + 1);
 
-                    var events = new Array();
-
-                    for (var i = 0; i < allEvent.length; i++) {
-
-                      var objt = new Object();
-                      objt.CAL_TITLE = allEvent[i]._def.title;
-                      objt.STARTED_AT = allEvent[i]._instance.range.start;
-                      objt.ENDED_AT = allEvent[i]._instance.range.end;
-
-                      events.push(objt);
-                    }
-                    console.log(objt)
-                    console.log(events)
-
-                    console.log(JSON.stringify(events))
-                    $.ajax({
-                      url: 'calSave',
-                      contentType: "application/json; charset=utf-8",
-                      data: JSON.stringify(events),
-                      type: 'post',
-                      success: function (result) {
-                        console.log(result);
-                      },
-                      error: function () {
-                        alert('ajax 통신 실패');
+                  var evt = {
+                      "title": result[i]['cal_TITLE'],
+                      "start": result[i]['started_AT'],
+                      "end": endDate
+                  };
+                  evtList.push(evt);
+          		}
+              calendar = new FullCalendar.Calendar(calendarEl, {
+            	  width:'350px',
+                  height:'700px', // calendar 높이 설정
+                  expandRows: true, // 화면에 맞게 높이 재설정
+                  slotMinTime: '08:00', // Day 캘린더에서 시작 시간
+                  slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
+                  customButtons: {
+                    myCustomButton: {
+                      text: "일정 추가하기",
+                      click: function () {
+                        //부트스트랩 모달 열기
+                        $("#exampleModal").modal("show");
                       }
-                    });
-                  }
-                },
-              },
-            },
-            // 해더에 표시할 툴바
-            headerToolbar: {
-              left: 'prev,next today,myCustomButton,mySaveButton',
-              center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-            },
-            initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-            // initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-            navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
-            editable: true, // 수정 가능?
-            selectable: true, // 달력 일자 드래그 설정가능
-            nowIndicator: true, // 현재 시간 마크
-            dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
-            locale: 'ko', // 한국어 설정
+                    },
+                    mySaveButton: {
+                      text: "저장하기",
+                      click: async function () {
+                        if (confirm("저장하시겠습니까?")) {	
+                        	
+                          //지금까지 생성된 모든 이벤트 저장하기
+                          var allEvent = calendar.getEvents();
+                          /* console.log("모든 이벤트들", allEvent); */
+                          alert("저장 완료")
+                          //이벤트 저장하기
+                          var allEvent = calendar.getEvents();
+                          var events = new Array();
+                          
+                          for (var i = 0; i < allEvent.length; i++) {
 
-            select: function (arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
+                            var objt = new Object();
+                            objt.CAL_TITLE = allEvent[i]._def.title;
+                            objt.STARTED_AT = allEvent[i]._instance.range.start;
+                            objt.ENDED_AT = allEvent[i]._instance.range.end;
 
-              calendar.unselect()
-            },
-            //데이터 가져오는 이벤트
-            events: [ 
-                   $.ajax({
-                     type: "GET",
-                     url: "selectCalendar",
-                     contentType: "application/json; charset=utf-8",
-                     success: function (eventData) {
-                       result = eventData.result
-                       for(i=0; i<result.length; i++){
-                        calendar.addEvent({
-                          title: res.title,
-                          start: res.start,
-                          end: res.end
-                        })
-                       }
-                     },
-                   })
-                  ]
-                });
+                            events.push(objt);
+                          }
+
+                          $.ajax({
+                            url: 'calSave',
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(events),
+                            type: 'post',
+                            success: function (result) {
+                              
+                            },
+                            error: function () {
+                              alert('ajax 통신 실패');
+                            }
+                          });
+                        }
+                      },
+                    },
+                  },  
+                  // 해더에 표시할 툴바
+                  headerToolbar: {
+                    left: 'prev,next today,myCustomButton,mySaveButton',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                  },
+                  initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+                  navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+                  nowIndicator: true, // 현재 시간 마크
+                  dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+                  locale: 'ko', // 한국어 설정
+
+                  select: function (arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
+
+                    calendar.unselect()
+                  },
+                  //데이터 가져오는 이벤트
+                  events: evtList
+                      });
+                
+                calendar.render();             
+            }
+          });    
+          
       //모달창 이벤트
       $("#saveChanges").on("click", function () {
               var eventData = {
                 title: $("#title").val(),
                 start: $("#start").val(),
                 end: $("#end").val(),
-                color: $("#color").val(),
+              /*color: $("#color").val(),*/
               };
               //빈값입력시 오류
               if (
@@ -256,11 +263,10 @@
                 $("#title").val("");
                 $("#start").val("");
                 $("#end").val("");
-                $("#color").val("");
+              /*$("#color").val("");*/
               }
             });
         
-            calendar.render();
           });
         })();
     </script>

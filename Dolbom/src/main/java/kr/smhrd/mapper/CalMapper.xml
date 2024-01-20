@@ -12,7 +12,7 @@
 	</insert> -->
 	
 	<select id="selectCalendar" parameterType="kr.smhrd.entity.Calendar" resultType="kr.smhrd.entity.Calendar">
-		SELECT * FROM TB_CALENDAR   
+		SELECT * FROM TB_CALENDAR 
 	</select>  
 	
 	<!--  WHERE CAL_TITLE AND TO_CHAR(STARTED_AT,'YYYY-MM-DD')=#{} AND TO_CHAR(STARTED_AT,'YYYY-MM-DD')=#{} -->

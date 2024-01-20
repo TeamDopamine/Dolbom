@@ -65,14 +65,14 @@ public class CalController {
 	}
 
 	
-//	@PostMapping("/selectCalendar")
-//	@ResponseBody
-//	public List<Calendar> selectCalendar(Model model){
-//		System.out.println("selectCalendar에 들어왔습니까?");
-////		List<Calendar> list = calMapper.selectCalendar();
-////		model.addAttribute("list", list);
-//				return list;
-//	}
+	@PostMapping("/selectCalendar")
+	@ResponseBody
+	public List<Calendar> selectCalendar(Model model){
+		// System.out.println("selectCalendar에 들어왔습니까?");
+		List<Calendar> list = calMapper.selectCalendar();
+		model.addAttribute("list", list);
+				return list;
+	}
 //	
 	
 	
