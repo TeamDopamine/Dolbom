@@ -99,7 +99,7 @@
 	        
         	 // 사용자로부터 이름 입력 받기
 	        var className = prompt("이름을 입력하세요.");
-
+			
 	        // 확인 버튼을 누르거나 이름이 비어있지 않을 경우 처리
 	        if (className !== null && className.trim() !== "") {
 	            // 버튼을 추가할 부분 선택 (예: body)

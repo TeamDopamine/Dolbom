@@ -10,4 +10,8 @@
 		DELETE FROM TB_KINDERGARTENER WHERE KGER_IDX = #{idx}
 	</delete>
 	
+	<select id="goKgerList" resultType="kr.smhrd.entity.KgerList">
+		SELECT * FROM TB_KINDERGARTENER
+	</select>
+	
 </mapper>

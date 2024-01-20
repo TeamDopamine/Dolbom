@@ -20,8 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import kr.smhrd.entity.Kindergarten;
 import kr.smhrd.entity.User;
+import kr.smhrd.mapper.KindergartenMapper;
 import kr.smhrd.mapper.UserMapper;
 
 @Controller
@@ -31,6 +32,9 @@ public class UserController {
 	
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private KindergartenMapper kindergartenMapper;
 
 	@RequestMapping("/")
 	public String Intro() {
@@ -42,6 +46,7 @@ public class UserController {
 		return "Intro";
 	}
 	
+
 //	@RequestMapping("/goMain")
 //	public String Main() {
 //		return "Main";
@@ -84,6 +89,8 @@ public class UserController {
 	public String userInsert(@ModelAttribute User user, Model model) {
 		System.out.println("회원가입입니다. : " + user.toString());
 		userMapper.userInsert(user);
+		Kindergarten kindergarten = new Kindergarten(0,user.getUser_nick(), user.getUser_addr(), user.getUser_phone(), 0, user.getUser_id());
+		kindergartenMapper.insertKindergarten(kindergarten);
 		model.addAttribute("ID", user.getUser_id());
 		return "Intro";
 	}
@@ -110,6 +117,10 @@ public class UserController {
 				session.setAttribute("loginUser", loginUser);
 				loginState = "1";
 				session.setAttribute("loginState", loginState);
+				
+				Kindergarten loginKindergarten = kindergartenMapper.selectKindergarten(loginUser.getUser_id());
+				session.setAttribute("loginKindergarten", loginKindergarten);
+				//System.out.println("로그인한 유치원입니다. : " + loginKindergarten);
 				//return "Main";
 				return "redirect:/goClassSelect";
 			} else { //입력한 아이디와 비밀번호가 맞지 않아서 로그인 실패!
@@ -151,15 +162,36 @@ public class UserController {
 		}
 
 	}
-
-	// admin 회원정보 조회하기
-	@RequestMapping("/goAdmin")
-	public String goAdmin(Model model) {
-		List<User> list = userMapper.goAdmin();
-		model.addAttribute("list", list);
-		return "Admin";
-	}
 	
+	
+	@RequestMapping("/goAdmin")
+    public String goAdmin(@RequestParam("page") int page,
+                          @RequestParam(defaultValue = "10") int pageSize,
+                          Model model) {
+        int offset = page * pageSize;
+        List<User> list = userMapper.getUsersWithPaging(offset, pageSize);
+        model.addAttribute("list", list);
+        model.addAttribute("page", page);
+        
+        List<User> AllList = userMapper.goAdmin();
+        model.addAttribute("AllListSize", AllList.size());
+        model.addAttribute("pageSize", pageSize);
+
+        // 페이징 정보 계산 및 모델에 추가
+        int totalPages = (int) Math.ceil((double) AllList.size() / pageSize);
+        int startPage = Math.max(0, page / 10 * 10);
+        int endPage = Math.min(totalPages - 1, startPage + 9);
+        int currentPage = page;
+
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("currentPage", currentPage);
+        
+        return "Admin";
+    }
+
+
 
 	// 회원삭제
 	@RequestMapping("/deleteUser")

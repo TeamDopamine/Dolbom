@@ -126,14 +126,7 @@
 							</div>
 							<input class="btn btn-primary rounded-pill py-3 px-5"
 								type="submit" value="로그인"
-								style="border-radius: 10px !important; margin-bottom: 20px;"
-								>
-								<!-- 							
-								<input class="btn btn-primary rounded-pill py-3 px-5"
-								type="button" value="로그인"
-								style="border-radius: 10px !important; margin-bottom: 20px;"
-								onclick="submitLoginForm();"> 
-								-->
+								style="border-radius: 10px !important; margin-bottom: 20px;">
 						</div>
 						<br>
 						<div style="text-align: center;">

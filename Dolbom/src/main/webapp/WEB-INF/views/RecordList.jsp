@@ -25,7 +25,9 @@
 </head>
 
 <body>
-
+	<%
+    List<Record> Record = (List<Record>)session.getAttribute("Record"); 
+    %>
     <!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
 
@@ -50,9 +52,10 @@
                                       <th scope="col">삭제</th>
                                     </tr>
                                   </thead>
- 									<c:forEach items="${rcList }" var="rc" varStatus="s">
+ 									<c:forEach items="${rcList }" var="rc" varStatus="status">
+ 									<c:set var="pageNumber" value="${(page * pageSize) + status.count}" />
 										<tr>
-											<td scope="row">${s.count }</td>
+											<td scope="row">${pageNumber }</td>
 											<td>${rc.edu_time.substring(0,10) }</td>
 											<td><a href="goRecordContent?idx=${rc.record_idx }" style="color: #666666a1;">${rc.edu_name }</a></td>
 											<td>${rc.user_id }</td>
@@ -61,6 +64,42 @@
 									</c:forEach>  
                                   </tbody>
                                 </table>
+                                
+                                <div class="find-btn" style="padding-top: 3.5%;">
+										
+										<c:if test="${currentPage > 0}">
+										    <!-- 현재 페이지가 0보다 큰 경우에만 Prev 버튼을 활성화합니다 -->
+										    <a href="goRecordList?page=${currentPage - 10}">
+										        <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">이전</button>
+										    </a>
+										</c:if>
+										
+										<div class="btn-group" role="group">
+										    <c:forEach var="i" begin="${startPage}" end="${endPage}" >
+										            <a href="goRecordList?page=${i}">
+										            	<button type="button" class="btn navbar-btn find-btn1 pnt-no" style="margin: 3px" id="pgBtn${i}">${i + 1}</button>
+												            <script>
+												                if (${i eq currentPage}) {
+												                    var currentPageBtn = document.getElementById('pgBtn${i}');
+												                    currentPageBtn.style.backgroundColor = '#808080';  // 배경색 변경
+												                    currentPageBtn.style.color = '#ffffff';  // 글자색 변경
+												                    currentPageBtn.style.fontWeight = 'bold';  // 글자 굵기 변경
+												                }
+												            </script>
+										        	</a>
+										    </c:forEach>
+										</div>
+										
+										<c:if test="${currentPage < totalPages - 1}">
+										    <!-- 현재 페이지가 마지막 페이지가 아닌 경우에만 Next 버튼을 활성화합니다 -->
+										    <a href="goRecordList?page=${currentPage + 10}">
+										    	<c:if test=""></c:if>
+										        <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">다음</button>
+										    </a>
+										</c:if>
+										
+										</div>
+										
                               </div>
                             </div>
                           </div>
@@ -80,5 +119,27 @@
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 </body>
+
+<script>
+     function goToPage(page) {
+         $.ajax({
+             type: "GET",
+             url: "goRecordList", // 컨트롤러의 매핑 주소
+             data: { 
+            	 currentPage: currentPage, 
+            	 startPage: startPage
+             },
+             
+             success: function(response) {
+                 // 성공 시 수행할 작업 (예: 결과를 화면에 반영)
+                 // response 변수에는 서버에서 전달한 데이터가 들어있을 수 있습니다.
+             },
+             error: function(error) {
+                 // 에러 시 수행할 작업
+                 console.error("Error:", error);
+             }
+         });
+     }
+</script>
 
 </html>

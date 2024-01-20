@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.smhrd.entity.Kindergarten;
 import kr.smhrd.entity.User;
 import kr.smhrd.mapper.ClassMapper;
 
@@ -42,20 +43,29 @@ public class ClassController {
 //      tb_kindergarten 테이블의 kg_idx를 조회하고 
 // 		해당 kg_idx값을 가진 것 row를 update 한다.
 
-        //Kindergarten loginKindergarten = (Kindergarten)session.getAttribute("loginKindergarten");
+        Kindergarten loginKindergarten = (Kindergarten)session.getAttribute("loginKindergarten");
         //classEntity = new kr.smhrd.entity.Class(0, className, "", loginKindergarten.getKg_idx());
         
         //아래 kg_idx는 임의로 값을 넣는 것. 추후 아래를 삭제하고 위와 같은 방식으로 할 것.
-        kr.smhrd.entity.Class classEntity = new kr.smhrd.entity.Class(0, className, "", 21);
+        
+      
+        kr.smhrd.entity.Class classEntity = new kr.smhrd.entity.Class(0, className, "", loginKindergarten.getKg_idx());
         classMapper.insertClass(classEntity);
-
+        
         // 응답 메시지
-        return "ClassSelect";
+//        return "ClassSelect";
+        
+        User loginUser = (User)session.getAttribute("loginUser");
+		List<kr.smhrd.entity.Class> loginUserClassList = classMapper.showLoginUserClass(loginUser.getUser_id());
+		session.setAttribute("loginUserClassList", loginUserClassList);
+		//System.out.println("loginUserClassList.toString()입니다. : " + loginUserClassList.toString());
+        
+        return "redirect:/ClassSelect";
     }
 	
 	
-	@GetMapping("/goClassSelect")
-    public String showClass(HttpSession session) {
+	@RequestMapping("/goClassSelect")
+    public String goClassSelect(HttpSession session) {
 		User loginUser = (User)session.getAttribute("loginUser");
 		List<kr.smhrd.entity.Class> loginUserClassList = classMapper.showLoginUserClass(loginUser.getUser_id());
 		session.setAttribute("loginUserClassList", loginUserClassList);
