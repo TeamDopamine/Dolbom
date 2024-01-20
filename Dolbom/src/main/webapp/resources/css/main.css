@@ -321,11 +321,11 @@
 }
 .card {
   position: absolute;
-  top: 102px;
+  top: 20px;
   left: 35px;
   border-radius: var(--br-3xs-3);
-  width: 310px;
-  height: 186px;
+  width: 30px;
+  height: auto;
   display: none;
   justify-content: flex-start;
   padding: 24.800003051757812px;

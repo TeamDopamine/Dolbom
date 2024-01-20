@@ -83,7 +83,7 @@
 	top: 800px;
 }
 
-/*         .footer {
+/*  .footer {
     position: relative;
     top: 800px;
     width: 126%;

@@ -3,20 +3,11 @@
 <mapper namespace="kr.smhrd.mapper.CalMapper">
 	<insert id="insertCalendar" parameterType="kr.smhrd.entity.Calendar">
 		INSERT INTO TB_CALENDAR(CAL_TITLE,CAL_CONTENT,STARTED_AT,ENDED_AT,CAL_COLOR,CAL_IMPORTANCE,USER_ID,CLASS_IDX) 
-		VALUES(#{CAL_TITLE},'/',#{STARTED_AT},#{ENDED_AT},'/','/','/',2)
+		                VALUES(#{CAL_TITLE},'/',#{STARTED_AT},#{ENDED_AT},'/','/','/',#{CLASS_IDX})
 	</insert>
-	
-	<!-- <insert id="insertCalendar" parameterType="kr.smhrd.entity.CalDto">
-		INSERT INTO TB_CALENDAR (CAL_TITLE,CAL_CONTENT,STARTED_AT,ENDED_AT,CAL_COLOR,CAL_IMPORTANCE,USER_ID,CLASS_IDX) 
-		VALUES (#{CAL_TITLE},"안녕하세요", TO_DATE(#{STARTED_AT},"YYYY-MM-DD"),TO_DATE(#{ENDED_AT},"YYYY-MM-DD"), "보라색","0","JHJ3",2)
-	</insert> -->
-	
-	<select id="selectCalendar" parameterType="kr.smhrd.entity.Calendar" resultType="kr.smhrd.entity.Calendar">
-		SELECT * FROM TB_CALENDAR 
+
+	<select id="selectCalendar" parameterType="int" resultType="kr.smhrd.entity.Calendar">
+		SELECT * FROM TB_CALENDAR WHERE CLASS_IDX = #{CLASS_IDX}
 	</select>  
-	
-	<!--  WHERE CAL_TITLE AND TO_CHAR(STARTED_AT,'YYYY-MM-DD')=#{} AND TO_CHAR(STARTED_AT,'YYYY-MM-DD')=#{} -->
-	
-	
-	
+
 </mapper>
