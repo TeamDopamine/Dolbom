@@ -64,24 +64,24 @@
 	font-size: 12px;
 }
 
-/* #contain {
+ #contain {
   max-width: 80%;
   margin: 0 auto;
-  display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  padding-bottom: 80px;
-}  */
+  padding-bottom: 0;
+} 
 .all {
 	position: relative;
+	align-items: center;
 	left: 105px;
 }
 
-.footer {
+/* .footer {
 	position: relative;
-	top: 800px;
-}
+	top: 300px;
+} */
 
 /*  .footer {
     position: relative;
@@ -99,9 +99,9 @@
 
 	<div id="contain"
 	style="background-image: url(${path}/resources/img/MainBackgroundIMG.png); background-size: cover;"
-	style="margin: 6rem 0;" style="align-self: center !important;">
+	style="align-self: center !important;">
 		<!-- partial -->
-		<div style="margin: 0 auto; text-align: center;">
+		<div style="text-align: center !important;">
 			<div class="all">
 				<div class="row">
 

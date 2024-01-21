@@ -89,10 +89,8 @@
                 </div>
                 <%if(loginUserClass != null){ %>
                 <div class="nav-item dropdown d-flex">
-				    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
-				    	<div style="background-color: lightgray; border-radius: 10px; color: black;">
+				    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 				    		<%=loginUserClass.getClass_name()%> 반
-				    	</div>
 				    </a>
 				    <div class="dropdown-menu bg-light m-0">
 				        <% for (int i = 0; i < loginUserClassList.size(); i++) { %>
