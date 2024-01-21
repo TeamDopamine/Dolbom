@@ -64,6 +64,8 @@ public class UserController {
 		for (int i = 0; i < loginUserClassList.size(); i++) {
 			if (loginUserClassList.get(i).getClass_idx() == class_idx) {
 				session.setAttribute("loginUserClass", loginUserClassList.get(i));
+				session.setAttribute("loginUserClassIdx", loginUserClassList.get(i).getClass_idx());
+				model.addAttribute("loginUserClassIdx", loginUserClassList.get(i).getClass_idx());
 			}
 		}
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
