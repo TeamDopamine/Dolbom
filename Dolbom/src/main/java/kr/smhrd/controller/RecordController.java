@@ -49,11 +49,8 @@ public class RecordController {
         model.addAttribute("list", list);
         model.addAttribute("page", page);
         
-        List<Record> rcList = recordMapper.recordList();
-		model.addAttribute("rcList", rcList);
-		for(int i=0; i<rcList.size(); i++) {
-			rcList.get(i).getEdu_name();
-		}
+       
+		
         
         List<Record> AllList = recordMapper.goRecordList();
         model.addAttribute("AllListSize", AllList.size());

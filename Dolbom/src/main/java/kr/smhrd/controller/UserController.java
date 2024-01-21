@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.smhrd.entity.Kindergarten;
+import kr.smhrd.entity.Record;
 import kr.smhrd.entity.User;
 import kr.smhrd.mapper.KindergartenMapper;
+import kr.smhrd.mapper.RecordMapper;
 import kr.smhrd.mapper.UserMapper;
 
 @Controller
@@ -35,6 +37,9 @@ public class UserController {
 	
 	@Autowired
 	private KindergartenMapper kindergartenMapper;
+	
+	@Autowired
+	private RecordMapper recordMapper;
 
 	@RequestMapping("/")
 	public String Intro() {
@@ -53,7 +58,7 @@ public class UserController {
 //	}
 	
 	@RequestMapping("/goMain")
-	public String Main(@RequestParam("class_idx") int class_idx, HttpSession session) {
+	public String Main(@RequestParam("class_idx") int class_idx, HttpSession session, Model model) {
 		
 		List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>) session.getAttribute("loginUserClassList");
 		for (int i = 0; i < loginUserClassList.size(); i++) {
@@ -64,6 +69,8 @@ public class UserController {
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
 		System.out.println("loginUserClass는 어떤반입니까? : " + loginUserClass.getClass_name() + "반을 선택했습니다.");
 		
+		List<Record> rcList = recordMapper.recordList();
+		model.addAttribute("rcList", rcList);
 		return "Main";
 	}
 
