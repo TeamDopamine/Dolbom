@@ -108,16 +108,7 @@
 				<div class="modal-body">
 					일정이름 : <input type="text" id="title" /><br /> 시작시간 : <input
 						type="datetime-local" id="start" /><br /> 종료시간 : <input
-						type="datetime-local" id="end" /><br /> <!-- 배경색상 : <select
-						id="color">
-						<option value="red">빨강색</option>
-						<option value="orange">주황색</option>
-						<option value="yellow">노랑색</option>
-						<option value="green">초록색</option>
-						<option value="blue">파랑색</option>
-						<option value="indigo">남색</option>
-						<option value="purple">보라색</option>
-					</select> -->
+						type="datetime-local" id="end" /><br /> 
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
@@ -166,6 +157,7 @@
                   expandRows: true, // 화면에 맞게 높이 재설정
                   slotMinTime: '08:00', // Day 캘린더에서 시작 시간
                   slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
+                  
                   customButtons: {
                     myCustomButton: {
                       text: "일정 추가하기",
@@ -193,7 +185,8 @@
                             objt.CAL_TITLE = allEvent[i]._def.title;
                             objt.STARTED_AT = allEvent[i]._instance.range.start;
                             objt.ENDED_AT = allEvent[i]._instance.range.end;
-
+                            objt.CLASS_IDX = allEvent[i]._def.class_idx;
+                           
                             events.push(objt);
                           }
 
