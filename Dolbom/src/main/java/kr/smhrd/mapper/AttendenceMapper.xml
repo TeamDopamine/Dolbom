@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.AttendenceMapper">
+
+	<insert id="insertAttendence" parameterType="kr.smhrd.entity.Attendence">
+		INSERT INTO TB_ATTENDANCE
+		    (ATTEN_TYPE, 
+		    KGER_IDX, 
+		    CLASS_IDX, 
+		    ATTEN_TIME, 
+		    ATTEN_MEMO)
+		VALUES
+		    (#{atten_type}, 
+		    #{kger_idx}, 
+		    #{class_idx}, 
+		    to_date(#{atten_time},'YYYY-MM'), 
+		    #{atten_memo})
+	</insert>
+	
+	<select id="showAttendence" parameterType="kr.smhrd.entity.Attendence" resultType="kr.smhrd.entity.Attendence">
+	<![CDATA[
+		SELECT TB_ATTENDANCE.*
+        FROM TB_ATTENDANCE
+        JOIN TB_KINDERGARTENER ON TB_ATTENDANCE.KGER_IDX = TB_KINDERGARTENER.KGER_IDX
+        WHERE TB_ATTENDANCE.class_idx = #{class_idx}
+        AND TO_CHAR(TB_ATTENDANCE.ATTEN_TIME, 'YYYY-MM') = #{atten_time}
+        ORDER BY TB_KINDERGARTENER.KGER_NAME, to_number(atten_memo)
+	]]>
+	</select>
+	
+	<update id="updateAttendence" parameterType="kr.smhrd.entity.Attendence">
+	    <![CDATA[
+	        UPDATE TB_ATTENDANCE
+			SET ATTEN_TYPE = #{atten_type}
+			WHERE to_number(ATTEN_MEMO) = to_number(#{atten_memo})
+			  AND KGER_IDX = #{kger_idx}
+			  AND CLASS_IDX = #{class_idx}
+			  AND TO_CHAR(ATTEN_TIME, 'YYYY-MM') = #{atten_time}
+	    ]]>
+	</update>
+	
+
+</mapper>
