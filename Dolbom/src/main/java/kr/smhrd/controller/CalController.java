@@ -23,7 +23,7 @@ import kr.smhrd.mapper.ClassMapper;
 
 @Controller
 public class CalController {
-
+	int beforeArrayLenth = 0;
 	@Autowired
 	private CalMapper calMapper;
 	
@@ -37,7 +37,7 @@ public class CalController {
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
 		int loginUserClassIdx= loginUserClass.getClass_idx();
 		List<Calendar> calList = calMapper.selectCalendar(loginUserClassIdx);
-		System.out.println(calList.toString());
+		beforeArrayLenth = calList.size();
 		session.setAttribute("calList", calList);
 		
 		return "Calendar";
@@ -49,16 +49,20 @@ public class CalController {
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
 		int loginUserClassIdx= loginUserClass.getClass_idx();
 		List<Calendar> list = calMapper.selectCalendar(loginUserClassIdx);
-		
+			
 		Calendar[] arr = new Gson().fromJson(params, Calendar[].class);
-		
-		for (int i = 0; i < arr.length; i++) {
+		System.out.println("arr.length의 값입니다 : " + arr.length);
+		System.out.println("beforeArrayLenth의 값입니다 : " + beforeArrayLenth);
+		for (int i = beforeArrayLenth; i < arr.length; i++) {
 			arr[i].setSTARTED_AT(arr[i].getSTARTED_AT().substring(0, 10));
 			arr[i].setENDED_AT(arr[i].getENDED_AT().substring(0, 10));
-
+			arr[i].setCLASS_IDX(loginUserClassIdx);
 			dto = arr[i];
+			
 			calMapper.insertCalendar(dto);
 		}
+		beforeArrayLenth = arr.length;
+		
 		return "success!";
 	}
 	
