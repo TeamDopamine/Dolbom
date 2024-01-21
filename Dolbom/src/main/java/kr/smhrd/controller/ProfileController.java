@@ -35,13 +35,13 @@ public class ProfileController {
 //   }
    
    // profile화면입니다.
-   @RequestMapping("/Profile")
+   @RequestMapping("/goProfile")
    public String memberSelect(kr.smhrd.entity.Class classProfile, HttpSession session) {
-      User loginUser = (User)session.getAttribute("loginUser");
-      String user_id = loginUser.getUser_id();
+      //User loginUser = (User)session.getAttribute("loginUser");
+      //String user_id = loginUser.getUser_id();
       //String user_id = "hanbit";
-      List<kr.smhrd.entity.Class> loginUserClass = classMapper.showLoginUserClass(user_id);
-      session.setAttribute("loginUserClass", loginUserClass);
+      //List<kr.smhrd.entity.Class> loginUserClass = classMapper.showLoginUserClass(user_id);
+      //session.setAttribute("loginUserClass", loginUserClass);
       
       return "Profile";
    }
@@ -53,9 +53,9 @@ public class ProfileController {
                            @RequestParam("user_id") String user_id, 
                            HttpSession session) {
       classMapper.deleteClass(class_idx);
-      List<kr.smhrd.entity.Class> loginUserClass = classMapper.showLoginUserClass(user_id);
-      session.setAttribute("loginUserClass", loginUserClass);
-      return "redirect:/Profile";
+      List<kr.smhrd.entity.Class> loginUserClassList = classMapper.showLoginUserClass(user_id);
+      session.setAttribute("loginUserClassList", loginUserClassList);
+      return "redirect:/goProfile";
    }
    
    // 회원 수정 기능 /updateMember
@@ -69,14 +69,14 @@ public class ProfileController {
 //         System.out.println("여기로 들어왔어요?1");
 //         System.out.println("프로필 정보 입니다. : " + profile.toString());
          
-         List<kr.smhrd.entity.Class> loginUserClass = classMapper.showLoginUserClass(profile.getUser_id());
-         session.setAttribute("loginUserClass", loginUserClass);
+         List<kr.smhrd.entity.Class> loginUserClassList = classMapper.showLoginUserClass(profile.getUser_id());
+         session.setAttribute("loginUserClassList", loginUserClassList);
          
-         User reloginUser = (User)session.getAttribute("loginUser");
-         User loginUser = userMapper.userSelect(reloginUser);
-         session.setAttribute("loginUser", loginUser);
+         //User reloginUser = (User)session.getAttribute("loginUser");
+         //User loginUser = userMapper.userSelect(reloginUser);
+         //session.setAttribute("loginUser", loginUser);
          
-         return "redirect:/Profile";
+         return "redirect:/goProfile";
       } else {
          //return "UpdateMember";
          return "";
