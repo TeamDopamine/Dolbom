@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.KindergartenerMapper">
+
+    <select id="findKinderOfClass" parameterType="long" resultType="kr.smhrd.entity.Kindergartener">
+        SELECT * FROM TB_KINDERGARTENER WHERE CLASS_IDX = #{class_idx} ORDER BY KGER_NAME
+    </select>
+
+</mapper>
