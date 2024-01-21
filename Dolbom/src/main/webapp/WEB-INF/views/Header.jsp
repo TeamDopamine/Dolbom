@@ -37,10 +37,8 @@
 
 	<%
 	User loginUser = (User)session.getAttribute("loginUser"); 
-	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class) session
-			.getAttribute("loginUserClass");
-	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>) session
-			.getAttribute("loginUserClassList");
+	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class) session.getAttribute("loginUserClass");
+	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClassList");
 	%>
 	
     <!-- Header Start -->
@@ -72,49 +70,47 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-             <%if(loginUser == null){ %>
-			 <%}else { %>
-			 	<%if(loginUser.getUser_type().equals("a")) {%>
-			 	<%}else {%>
-                <a href="goKgerList?page=0" class="nav-item nav-link">원생관리</a>
-                <a href="goAttendence" class="nav-item nav-link">출석부</a>
-                <a href="goCalendar" class="nav-item nav-link">일정관리</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">일지</a>
-                    <div class="dropdown-menu bg-light m-0">
-                        <a href="goRecordList?page=0" class="dropdown-item">일지 목록</a>
-                        <a href="goRecordWrite" class="dropdown-item">일지 작성</a>
-                        <a href="goRecordSummary" class="dropdown-item">일지 요약</a>
-                    </div>
-                </div>
-                <%if(loginUserClass != null){ %>
-                <div class="nav-item dropdown d-flex">
-				    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
-				    	<div style="background-color: lightgray; border-radius: 10px; color: black;">
-				    		<%=loginUserClass.getClass_name()%> 반
-				    	</div>
-				    </a>
-				    <div class="dropdown-menu bg-light m-0">
-				        <% for (int i = 0; i < loginUserClassList.size(); i++) { %>
-				            <% if (loginUserClassList.get(i).getClass_idx() != loginUserClass.getClass_idx()) { %>
-				                <a href="goMain?class_idx=<%=loginUserClassList.get(i).getClass_idx()%>" class="dropdown-item"><%=loginUserClassList.get(i).getClass_name() %></a>
-				            <% } %>
-				        <% } %>
-				    </div>
-				</div> 
-                <%} %>
-                <%} %>
-                <%} %>
-                			<%if(loginUser == null){ %>
-								<a href="goLoginButton" class="nav-item nav-link active">로그인</a>
-							<%}else { %>
-								<%if(loginUser.getUser_type().equals("a")) {%>
-									<a href="goAdmin?page=0" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
-								<%} else {%>
-									<a href="Profile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
-								<%System.out.println(loginUser.getUser_type()); %>
-								<%} %>
-							<%} %>
+	            <%if(loginUser != null ){ %><!-- && !loginUser.getUser_type().equals("a") -->
+	            	  <a href="goKgerList?page=0" class="nav-item nav-link">원생관리</a>
+	                <a href="goAttendence" class="nav-item nav-link">출석부</a>
+	                <a href="goCalendar" class="nav-item nav-link">일정관리</a>
+	                <div class="nav-item dropdown">
+	                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">일지</a>
+	                    <div class="dropdown-menu bg-light m-0">
+	                        <a href="goRecordList?page=0" class="dropdown-item">일지 목록</a>
+	                        <a href="goRecordWrite" class="dropdown-item">일지 작성</a>
+	                        <a href="goRecordSummary" class="dropdown-item">일지 요약</a>
+	                    </div>
+	                </div>
+	                <% if (loginUserClass != null && loginUserClassList != null && loginUserClassList.size() > 0) { %>
+	                <div class="nav-item dropdown d-flex">
+					    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
+					    	<div style="background-color: lightgray; border-radius: 10px; color: black;">
+					    		<%=loginUserClass.getClass_name()%> 반
+					    	</div>
+					    </a>
+					    <div class="dropdown-menu bg-light m-0">
+					        <% for (int i = 0; i < loginUserClassList.size(); i++) { %>
+					            <% if (loginUserClassList.get(i).getClass_idx() != loginUserClass.getClass_idx()) { %>
+					                <a href="goMain?class_idx=<%=loginUserClassList.get(i).getClass_idx()%>" class="dropdown-item"><%=loginUserClassList.get(i).getClass_name() %></a>
+					            <% } %>
+					        <% } %>
+					    </div>
+					</div> 
+					<% } %> 
+		 		<%}%>
+			 	
+               
+               	<%if(loginUser == null){ %>
+					<a href="goLoginButton" class="nav-item nav-link active">로그인</a>
+				<%}else { %>
+					<%if(loginUser.getUser_type().equals("a")) {%>
+						<a href="goAdmin?page=0" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
+					<%} else {%>
+						<a href="goProfile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
+						<%System.out.println(loginUser.getUser_type()); %>
+					<%} %>
+				<%} %>
                 
             </div>
            					<%if(loginUser == null){ %>
