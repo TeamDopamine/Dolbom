@@ -33,13 +33,15 @@ public class KgerListController {
     public String goKgerList(@RequestParam("page") int page,
                           @RequestParam(defaultValue = "10") int pageSize,
                           Model model, HttpSession session) {
+		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass"); 
+		
         int offset = page * pageSize;
-        List<KgerList> list = kgerlistMapper.getKgerListWithPaging(offset, pageSize);
+        List<KgerList> list = kgerlistMapper.getKgerListWithPaging(offset, pageSize, loginUserClass.getClass_idx());
         session.setAttribute("kgerList", list);
         model.addAttribute("list", list);
         model.addAttribute("page", page);
         
-        List<KgerList> AllList = kgerlistMapper.goKgerList();
+        List<KgerList> AllList = kgerlistMapper.goKgerList(loginUserClass.getClass_idx());
         model.addAttribute("AllListSize", AllList.size());
         model.addAttribute("pageSize", pageSize);
 
