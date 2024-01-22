@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="IncludeStyle.jsp" %>
@@ -32,7 +33,8 @@
 		Date currentDate = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String formattedDate = dateFormat.format(currentDate);
-	
+		User loginUser = (User)session.getAttribute("loginUser");
+		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");    
 	%>
     <!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
@@ -65,14 +67,17 @@
                                           <div class="col-sm-3 col-form-label text-center" style="width: 20%;">
                                               <input type="text" class="form-control" id="DOC_TOPIC" name="edu_subject">
                                           </div> 
-                                          <label for="DOC_TIME" class="col-sm-2 col-form-label text-center" style="width: 10%;">교육시간</label>
+                                          <label for="DOC_TIME" class="col-sm-2 col-form-label text-center" style="width: 10%;">작성시간</label>
                                           <div class="col-sm-3 col-form-label text-center" style="width: 15%;">
                                               <input type="text" class="form-control" id="DOC_TIME" value="<%=formattedDate.substring(11) %>" readonly>
                                           </div>
                                           <div class="mb-3 row">
                                               <label for="DOC_WRITER" class="col-sm-2 col-form-label text-center" style="width: 10%;">작성자</label>
                                                 <div class="col-sm-3 col-form-label text-center" style="width: 19.7%;">
-                                                    <input type="text" class="form-control" id="DOC_WRITER " value="${record.user_id}" readonly>
+                                                    <input type="text" class="form-control" id="DOC_WRITER " name="user_id" value="<%=loginUser.getUser_id()%>" readonly>
+                                                    <%-- 
+                                                    <input type="text" class="form-control" id="DOC_WRITER " value="${record.user_id}" readonly> 
+                                                    --%>
                                                 </div>
                                               <label for="DOC_NM" class="col-sm-2 col-form-label text-center" style="width: 11%;">교육명</label>
                                                 <div class="col-sm-3 col-form-label text-center" style="width: 20.8%;">
@@ -83,6 +88,7 @@
                                                     <input type="number" class="form-control" id="DOC_CNT" name="edu_headcount">
                                                 </div>
                                           </div>
+                                          <input type="hidden" class="form-control" id="DOC_CLASS" name="class_idx" value="<%=loginUserClass.getClass_idx()%>" readonly>
                                       </div>
                                     
                                       <div>
