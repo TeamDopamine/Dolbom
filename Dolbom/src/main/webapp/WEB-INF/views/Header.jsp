@@ -69,6 +69,7 @@
 	            	  <a href="goKgerList?page=0" class="nav-item nav-link">원생관리</a>
 	                <a href="goAttendence" class="nav-item nav-link">출석부</a>
 	                <a href="goCalendar" class="nav-item nav-link">일정관리</a>
+	                <a href="goChattingRoom" class="nav-item nav-link">채팅방</a>
 	                <div class="nav-item dropdown">
 	                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">일지</a>
 	                    <div class="dropdown-menu bg-light m-0">
