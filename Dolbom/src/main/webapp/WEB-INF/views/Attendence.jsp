@@ -115,16 +115,14 @@
 		System.out.println("moveMonth : " + moveMonth ); */
 	}
 	
-	
-	
     // 현재 날짜를 가져오기
     Calendar calendar = new GregorianCalendar();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat currntMont = new SimpleDateFormat("yyyy-MM");
     if(moveDate != null){
-    calendar.set(Calendar.YEAR, moveYear);
-    calendar.set(Calendar.MONTH, moveMonth-1);
-    calendar.set(Calendar.DAY_OF_MONTH, 1);
+	    calendar.set(Calendar.YEAR, moveYear);
+	    calendar.set(Calendar.MONTH, moveMonth-1);
+	    calendar.set(Calendar.DAY_OF_MONTH, 1);
     }
    
     int startingDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK); // 0부터 시작하도록 조정
@@ -134,7 +132,6 @@
     String formattedDateMonth = currntMont.format(calendar.getTime());
     
     //System.out.println("이것은 .jsp에서 출력한 것입니다. 이번달은 이겁니다!!!!! :  " + formattedDateMonth);
-
    
     session.setAttribute("currMonth", formattedDateMonth);
     // 현재 월의 마지막 날을 계산하기

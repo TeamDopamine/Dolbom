@@ -43,19 +43,18 @@ public class RecordController {
     public String goRecordList(@RequestParam("page") int page,
                           @RequestParam(defaultValue = "10") int pageSize,
                           Model model, HttpSession session) {
+		User loginUser = (User)session.getAttribute("loginUser");
+		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
         int offset = page * pageSize;
-        List<Record> list = recordMapper.getRecordWithPaging(offset, pageSize);
+        List<Record> list = recordMapper.getRecordWithPaging(offset, pageSize, loginUser.getUser_id(), loginUserClass.getClass_idx());
         session.setAttribute("rcList", list);
         model.addAttribute("list", list);
         model.addAttribute("page", page);
         
-       
-		
-        
-        List<Record> AllList = recordMapper.goRecordList();
+        List<Record> AllList = recordMapper.goRecordList(loginUser.getUser_id(), loginUserClass.getClass_idx());
         model.addAttribute("AllListSize", AllList.size());
         model.addAttribute("pageSize", pageSize);
-
+        
         // 페이징 정보 계산 및 모델에 추가
         int totalPages = (int) Math.ceil((double) AllList.size() / pageSize);
         int startPage = Math.max(0, page / 10 * 10);
@@ -99,13 +98,13 @@ public class RecordController {
 		return "RecordSummary";
 	}
 	
-	
-	
 	// 일지 삭제
 	@RequestMapping("/recordDelete")
 	public String recordDelete(@RequestParam ("idx") int idx) {
+		
+		System.out.println("recordDelete로 넘어온  record_idx값은 무엇일까요 : " + idx );
 		recordMapper.recordDelete(idx);
-		return "redirect:/goRecordList";
+		return "redirect:/goRecordList?page=0";
 	}
 	
 	// 일지 수정
@@ -121,8 +120,9 @@ public class RecordController {
 	// 일지 작성
 	@PostMapping("/recordWrite")
 	public String recordWrite(@ModelAttribute("record") Record record) {
+		// record 객체로 넘어오는 것에서 user_idx 값을 class_idx값으로 수정할 것.
 		recordMapper.insertRecord(record);
-		return "redirect:/goRecordList";
+		return "redirect:/goRecordList?page=0";
 	}
 
 

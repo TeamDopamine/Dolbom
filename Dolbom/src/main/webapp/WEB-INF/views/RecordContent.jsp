@@ -91,7 +91,7 @@
                                     
 
                                       <div class="col-auto text-end" style="padding-top: 3%; padding-left: 70%;" >
-                                          <a href="goRecordList"><button class="btn btn-light mb-3">목록</button></a>
+                                          <a href="goRecordList?page=0"><button class="btn btn-light mb-3">목록</button></a>
                                           <a href="goRecordEdit?idx=${record.record_idx }"><button type="submit" class="btn btn-warning mb-3">수정</button>
                                       </div>
                                   </div>
