@@ -57,7 +57,7 @@
 										<tr>
 											<td scope="row">${pageNumber }</td>
 											<td>${rc.edu_time.substring(0,10) }</td>
-											<td><a href="goRecordContent?idx=${rc.record_idx }" style="color: #666666a1;">${rc.edu_name }</a></td>
+											<td><a href="goRecordContent?idx=${rc.record_idx }" style="color: #4a4a4a;">${rc.edu_name }</a></td>
 											<td>${rc.user_id }</td>
 											<td><a href="recordDelete?idx=${rc.record_idx }"><img src="${path}/resources/img/delete.png" style="width: 20px; height: 20px;"></a></td>
 										</tr>

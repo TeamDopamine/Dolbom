@@ -72,8 +72,8 @@
 				style="background-image: url(${path}/resources/img/signup_bg2.png); background-size: cover;"
 				style="margin: 6rem 0;">
 				<div class="container px-lg-0">
-					<div class="container p-lg-5 pe-lg-0" style="margin: 6rem 0;">
-						<div class="row">
+					<div class="container p-lg-5 pe-lg-0">
+						<div class="row" style="margin-top:130px">
 							<h1 style="text-align: center">회원가입</h1>
 							<hr style="width: 40%; margin: 20px auto;">
 							<div class="col-md-6"
@@ -115,7 +115,7 @@
 										style="border-radius: 10px !important; margin-left: 65px;"></input>
 								</div>
 								<br>
-								<div style="text-align: center;">
+								<div style="text-align: center; margin-bottom: 90px">
 									이미 계정이 있으신가요? <a href="goLogin">로그인</a>
 								</div>
 							</div>

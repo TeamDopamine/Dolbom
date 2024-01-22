@@ -55,7 +55,7 @@
 							<div class="container">
 								<div class="row justify-content-center">
 									<div class="col-12">
-										<div class="table-responsive bg-white">	
+										<div class="table-responsive bg-white" style="margin-top: 30px">	
 																			
 											<b><%=loginUserClass.getClass_name()%></b>
 																					
@@ -96,7 +96,7 @@
 															<th scope="col">이름</th>
 															<th scope="col">생년월일</th>
 															<th scope="col">성별</th>
-															<th scope="col">주소</th>
+															<th scope="col">주소</tsh>
 															<th scope="col">전화번호</th>
 															<th scope="col">삭제</th>
 														</tr>
@@ -105,7 +105,7 @@
 												</tbody>
 											</table>
 
-											<div class="find-btn" style="padding-top: 3.5%;">
+											<div class="find-btn" style="padding-top: 10.0%;">
 
 												<c:if test="${currentPage > 0}">
 													<!-- 현재 페이지가 0보다 큰 경우에만 Prev 버튼을 활성화합니다 -->

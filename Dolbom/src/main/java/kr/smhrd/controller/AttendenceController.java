@@ -35,9 +35,9 @@ public class AttendenceController {
 	
 	@RequestMapping("/goAttendence")
 	public String goAttendence(HttpSession session) {
-//		kr.smhrd.entity.Class tempClass = new kr.smhrd.entity.Class(54, "저녁반", "곽팀원", 21);
-//		session.setAttribute("loginClass", tempClass);
-//		kr.smhrd.entity.Class loginClass = (kr.smhrd.entity.Class)session.getAttribute("loginClass");
+		//kr.smhrd.entity.Class tempClass = new kr.smhrd.entity.Class(54, "저녁반", "곽팀원", 21);
+		//session.setAttribute("loginClass", tempClass);
+		//kr.smhrd.entity.Class loginClass = (kr.smhrd.entity.Class)session.getAttribute("loginClass");
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
 		if(loginUserClass != null) {
 			List<Kindergartener> loginClassKinder = kindergartenerMapper.findKinderOfClass(loginUserClass.getClass_idx());
@@ -85,15 +85,15 @@ public class AttendenceController {
 		//System.out.println("여기에 들어왔습니다. date 값은 : " + date);
 		session.setAttribute("moveDate", date);
 		
-		kr.smhrd.entity.Class loginClass = (kr.smhrd.entity.Class)session.getAttribute("loginClass");
-		int class_idx = loginClass.getClass_idx();
+		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
+		int class_idx = loginUserClass.getClass_idx();
 		String atten_time = date;
 		//System.out.println("여기에 들어왔습니다. class_idx 값은 : " + class_idx);
 		//System.out.println("여기에 들어왔습니다. atten_time 값은 : " + atten_time);
 		//attendence = new Attendence(1, ' ', 1,class_idx, atten_time," ");
 		//List<Attendence> attendenceList = attendenceMapper.showAttendence(attendence);
 		
-		List<Kindergartener> loginClassKinder = kindergartenerMapper.findKinderOfClass(loginClass.getClass_idx());
+		List<Kindergartener> loginClassKinder = kindergartenerMapper.findKinderOfClass(loginUserClass.getClass_idx());
 		
 		
 		

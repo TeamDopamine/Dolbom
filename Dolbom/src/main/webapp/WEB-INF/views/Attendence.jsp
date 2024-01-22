@@ -28,13 +28,13 @@
 
         /* 어제 버튼 스타일 */
         button.Y {
-            background-color: #32C36C; /* 분홍색 배경 */
+            background-color: #ffffff; /* 분홍색 배경 */
             color: #333; /* 글자 색상 */
         }
 
         /* 내일 버튼 스타일 */
         button.T {
-            background-color: #32C36C; /* 녹색 배경 */
+            background-color: #ffffff; /* 녹색 배경 */
             color: #333; /* 글자 색상 */
         }
 
@@ -49,7 +49,7 @@
             border-radius: 4px;
             box-sizing: border-box;
             width: 220px; /* 원하는 너비로 조절 */
-            background-color: #32C36C;
+            background-color: #ffffff;
             font-size: larger;
             font-family: Georgia, 'Times New Roman', Times, serif;
         }
@@ -92,9 +92,9 @@
             border-radius: 4px;
             box-sizing: border-box;
             width: 275px; /* 원하는 너비로 조절 */
-            background-color: #32C36C;
+            background-color: #ffffff;
             font-size: larger;
-            font-family: Georgia, 'Times New Roman', Times, serif;
+            /* font-family: Georgia, 'Times New Roman', Times, serif; */
         }
     </style>
 </head>
@@ -160,11 +160,11 @@
     <jsp:include page="Header.jsp"></jsp:include>
 
     <!-- Contact Start -->
-    <div class="container-fluid overflow-hidden px-lg-0" style="margin: 6rem 0;">
+    <div class="container-fluid overflow-hidden">
         <div class="container contact px-lg-0">
-            <div class="row g-0 mx-lg-0">
+            <div class="row g-0 mx-lg-0" style="text-align: center;">
                 <!--여기에 적기-->
-                <h2 style="background-color: #32C36C;">
+                <h2 style="background-color: #ffffff; margin-bottom:1.5rem;">
     <button onclick="moveToPreviousMonth()" class="Y">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
@@ -231,7 +231,7 @@
 				            	int dayIndex = (startingDayOfWeek + i) % daysOfWeek.length;
 				                //int dayIndex = i % daysOfWeek.length;
 				                // 주말인 경우에는 옅은 핑크색 배경을 적용
-				                String backgroundColor = (dayIndex == 0 || dayIndex == 1) ? "#ffc0cb" : "#ffffff";
+				                String backgroundColor = (dayIndex == 0 || dayIndex == 1) ? "#fff0fa" : "#ffffff";
 				            %>
 				                <th style="background-color: <%= backgroundColor %>; text-align: center; border: 1px solid #ddd;">
 				                    <%= i + 1 %><br>
@@ -255,33 +255,34 @@
 						            int dayIndex = (startingDayOfWeek + i) % daysOfWeek.length;
 						            String selectBoxId = "select_" + j + "_" + i;
 						            // 주말인 경우에는 핑크색 배경을 적용
-						            String backgroundColor = (dayIndex == 0 || dayIndex == 1) ? "#ffc0cb" : "#ffffff";
+						            String backgroundColor = (dayIndex == 0 || dayIndex == 1) ? "#fff0fa" : "#ffffff";
 						        %>
 						            <td style="text-align: center; border: 1px solid #ddd; background-color: <%= backgroundColor %>;">
 						                <button type="button" id="attBtn<%=j %>_day<%=i %>" onclick="changeText(<%=j %>, <%=i %>)" style="background-color: rgba(0, 0, 0, 0); width: 50px; height: 50px;">
 						                	
 						                	<%-- <%=attendenceList.get(j * numberOfDays + i).getAtten_type() %> --%>
-						                	 
-						                	<%if(attendenceList.size() > 0) {%>
-						                	<script type="text/javascript">
-										        var attenTypeValue = '<%=attendenceList.get(j * numberOfDays + i).getAtten_type() %>';
-										        var buttonText;
-										
-										        switch (attenTypeValue) {
-										            case '1':
-										                buttonText = '√';
-										                break;
-										            case '2':
-										                buttonText = 'X';
-										                break;
-										            case '3':
-										                buttonText = '△';
-										                break;
-										            default:
-										                buttonText = '';
-										        }
-										        document.write(buttonText);
-										    </script>
+						                	<%if(attendenceList != null) {%>
+							                	<%if(attendenceList.size() > 0) {%>
+							                	<script type="text/javascript">
+											        var attenTypeValue = '<%=attendenceList.get(j * numberOfDays + i).getAtten_type() %>';
+											        var buttonText;
+											
+											        switch (attenTypeValue) {
+											            case '1':
+											                buttonText = '√';
+											                break;
+											            case '2':
+											                buttonText = 'X';
+											                break;
+											            case '3':
+											                buttonText = '△';
+											                break;
+											            default:
+											                buttonText = '';
+											        }
+											        document.write(buttonText);
+											    </script>
+							                	<%} %>						   
 						                	<%} %>						   
 						                	           
 						                
@@ -375,4 +376,5 @@
     </a>
 
 </body>
+
 </html>

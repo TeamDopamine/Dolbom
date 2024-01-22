@@ -27,6 +27,7 @@
             font-family: 'Pretendard';
             src: url(./css/Pretendard-Regular.otf);
         }
+     
     </style>
 </head>
 

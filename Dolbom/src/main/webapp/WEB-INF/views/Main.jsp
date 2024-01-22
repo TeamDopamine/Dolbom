@@ -96,10 +96,10 @@
 
 	<!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
-
-	<div id="contain"
-	style="background-image: url(${path}/resources/img/MainBackgroundIMG.png); background-size: cover;"
+	<div
+	style="background-image: url(${path}/resources/img/MainBackgroundIMG.png); background-size: cover; height: 880px;"
 	style="align-self: center !important;">
+	<div id="contain">
 		<!-- partial -->
 		<div style="text-align: center !important;">
 			<div class="all">
@@ -271,7 +271,7 @@
 																		<tr>
 																			<td scope="row">${s.count }</td>
 																			<td>${rc.edu_time.substring(0,10) }</td>
-																			<td><a href="goRecordContent?idx=${rc.record_idx }" style="color: #666666a1;">${rc.edu_name }</a></td>
+																			<td><a href="goRecordContent?idx=${rc.record_idx }" style="color: #4a4a4a;">${rc.edu_name }</a></td>
 																			<td>${rc.user_id }</td>
 																		</tr>
 																	</c:if>
@@ -303,8 +303,7 @@
 												<li>
 													<div class="form-check form-check-flat">
 														<label class="form-check-label" style="color: black;">
-															<input class="checkbox" type="checkbox"> Meeting
-															with Urban Team
+															<input class="checkbox" type="checkbox"> 하원 및 방과후과정반 특별 활동 점검하기
 														</label>
 													</div> <i class="remove bi bi-x" style="font-size: 25px;"></i>
 												</li>
@@ -312,15 +311,14 @@
 													<div class="form-check form-check-flat">
 														<label class="form-check-label" style="color: black;">
 															<input class="checkbox" type="checkbox" checked>
-															Duplicate a project for new customer
+															등원학생 출석부 확인하기 
 														</label>
 													</div> <i class="remove bi bi-x" style="font-size: 25px;"></i>
 												</li>
 												<li>
 													<div class="form-check form-check-flat">
 														<label class="form-check-label" style="color: black;">
-															<input class="checkbox" type="checkbox"> Project
-															meeting with CEO
+															<input class="checkbox" type="checkbox"> 실외활동(놀이터, 숲, 텃밭) 인원 점검하기
 														</label>
 													</div> <i class="remove bi bi-x" style="font-size: 25px;"></i>
 												</li>
@@ -328,7 +326,7 @@
 													<div class="form-check form-check-flat">
 														<label class="form-check-label" style="color: black;">
 															<input class="checkbox" type="checkbox" checked>
-															Follow up of team zilla
+															교실 점검 및 전달사항 확인하기
 														</label>
 													</div> <i class="remove bi bi-x" style="font-size: 25px;"></i>
 												</li>
@@ -337,8 +335,7 @@
 										<div class="add-items d-flex mb-0 mt-2">
 											<input type="text" class="todo-list-input" placeholder="입력하기">
 											<i
-												class="add btn btn-icon text-primary todo-list-add-btn bg-transparent bi bi-plus-circle"
-												style="margin-top: 5px;"></i>
+												class="add btn btn-icon text-primary todo-list-add-btn bg-transparent bi bi-plus-circle"></i>
 										</div>
 								</div>
 							</div>
@@ -347,7 +344,7 @@
 				</div>
 			</div>
 		</div>
-	
+	</div>
 		<!-- Footer -->
 		<jsp:include page="Footer.jsp"></jsp:include>
 

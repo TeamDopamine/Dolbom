@@ -106,7 +106,7 @@
 	<!-- Quote Start -->
 	<form id="loginForm" method="post" action="userSelect">
 		<div
-			style="background-image: url(${path}/resources/img/login_bg.png); background-size: cover;"
+			style="background-image: url(${path}/resources/img/login_bg.png); background-size: cover; height: 880px;"
 			style="margin: 6rem 0;" style="align-self: center !important;">
 			<div class="container px-lg-0">
 				<div class="container p-lg-5 pe-lg-0">
