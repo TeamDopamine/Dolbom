@@ -42,6 +42,7 @@
 	User loginUser = (User)session.getAttribute("loginUser"); 
 	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class) session.getAttribute("loginUserClass");
 	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClassList");
+	int openProfile = (int)session.getAttribute("openProfile");
 	%>
 	
     <!-- Header Start -->
@@ -101,8 +102,14 @@
 					<%if(loginUser.getUser_type().equals("a")) {%>
 						<a href="goAdmin?page=0" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
 					<%} else {%>
-						<a href="goProfile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
-						<%System.out.println(loginUser.getUser_type()); %>
+						<%if(openProfile == 1){ %>
+							<%openProfile = 0; %>
+							<%session.setAttribute("openProfile", openProfile);%>
+							<a href="goClassSelect" class="nav-item nav-link active">반 생성</a>
+							<a href="goProfile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
+						<%}else { %>
+							<a href="goProfile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
+						<%} %>
 					<%} %>
 				<%} %>
                 

@@ -42,7 +42,8 @@ public class ProfileController {
       //String user_id = "hanbit";
       //List<kr.smhrd.entity.Class> loginUserClass = classMapper.showLoginUserClass(user_id);
       //session.setAttribute("loginUserClass", loginUserClass);
-      
+	  int openProfile = 1;
+	  session.setAttribute("openProfile", openProfile);
       return "Profile";
    }
    

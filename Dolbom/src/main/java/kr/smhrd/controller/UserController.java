@@ -42,7 +42,9 @@ public class UserController {
 	private RecordMapper recordMapper;
 
 	@RequestMapping("/")
-	public String Intro() {
+	public String Intro(HttpSession session) {
+		int openProfile = 0;
+		session.setAttribute("openProfile", openProfile);
 		return "Intro";
 	}
 
