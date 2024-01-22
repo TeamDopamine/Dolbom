@@ -13,7 +13,7 @@ public interface KgerListMapper {
 
 	List<KgerList> kgerList();
 	
-	public void kgerDelete(int idx);
+	public int kgerDelete(int idx);
 
 	@Select("SELECT * FROM (SELECT t.*, ROWNUM AS rnum FROM (SELECT * FROM tb_kindergartener) t WHERE ROWNUM <= #{offset} + #{pageSize} AND CLASS_IDX = #{class_idx}) WHERE rnum > #{offset} AND rnum <= #{offset} + #{pageSize}")
 	List<KgerList> getKgerListWithPaging(@Param("offset") int offset, @Param("pageSize") int pageSize, @Param("class_idx") int class_idx);

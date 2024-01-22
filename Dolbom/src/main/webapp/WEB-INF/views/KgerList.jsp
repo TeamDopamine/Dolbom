@@ -38,6 +38,8 @@
 	<%
     List<KgerList> kgerList = (List<KgerList>)session.getAttribute("kgerList"); 
     //System.out.println("kgerList.toString()를 .jsp 파일에서 찍어보기!! : " + kgerList.toString()); 
+    kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
+    //System.out.println("kr.smhrd.entity.Class 찍어보기 : " + loginUserClassList.toString());
     %>
 	<!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
@@ -53,8 +55,11 @@
 							<div class="container">
 								<div class="row justify-content-center">
 									<div class="col-12">
-										<div class="table-responsive bg-white">
-											<b>새싹반</b> <br> <br>
+										<div class="table-responsive bg-white">	
+																			
+											<b><%=loginUserClass.getClass_name()%></b>
+																					
+											<br> <br>										
 											<table class="table mb-0">
 												<thead>
 													<tr>
@@ -84,10 +89,19 @@
 																	style="width: 20px; height: 20px;"></a></td>
 														</tr>
 													</c:forEach>
-													<%}%>
-													<%-- <%} else { %>
-														<h1>등록된 원생 정보가 없습니다.</h1>
-													<%} %> --%>
+													<%} else {%>
+														<thead>
+														<tr>
+															<th scope="col">순번</th>
+															<th scope="col">이름</th>
+															<th scope="col">생년월일</th>
+															<th scope="col">성별</th>
+															<th scope="col">주소</th>
+															<th scope="col">전화번호</th>
+															<th scope="col">삭제</th>
+														</tr>
+														</thead>
+													<%} %>
 												</tbody>
 											</table>
 

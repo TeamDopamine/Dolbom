@@ -135,16 +135,19 @@
 								              console.log(result);
 								              
 								              for(let i = 0; i < result.length; i++){
-									              var evt = {
-									            		  "title" : result[i]['cal_TITLE'],
-									            		  "start" : result[i]['started_AT'],
-									            		  "end" : result[i]['ended_AT']
-									              }
-									              evtList.push(evt)
+								            	  var endDate = new Date(result[i]['ended_AT']);
+								                  endDate.setDate(endDate.getDate() + 1);
+
+								                  var evt = {
+								                      "title": result[i]['cal_TITLE'],
+								                      "start": result[i]['started_AT'],
+								                      "end": endDate
+								                  };
+								                  evtList.push(evt);
 								          		}
 								              calendar = new FullCalendar.Calendar(calendarEl, {
 								                  width:'350px',
-								                  height: '500px', // calendar 높이 설정
+								                  height: '400px', // calendar 높이 설정
 								                  expandRows: true, // 화면에 맞게 높이 재설정
 								                  slotMinTime: '08:00', // Day 캘린더에서 시작 시간
 								                  slotMaxTime: '20:00', // Day 캘린더에서 종료 시간                 
@@ -200,16 +203,19 @@
 					                          console.log(result);
 					                          
 					                          for(let i = 0; i < result.length; i++){
-					                            var evt = {
-					                                "title" : result[i]['cal_TITLE'],
-					                                "start" : result[i]['started_AT'],
-					                                "end" : result[i]['ended_AT']
-					                            }
-					                            evtList.push(evt)
+					                        	  var endDate = new Date(result[i]['ended_AT']);
+					                              endDate.setDate(endDate.getDate() + 1);
+
+					                              var evt = {
+					                                  "title": result[i]['cal_TITLE'],
+					                                  "start": result[i]['started_AT'],
+					                                  "end": endDate
+					                              };
+					                              evtList.push(evt);
 					                          }
 					                          calendar = new FullCalendar.Calendar(calendarEl, {
 					                              width:'350px',
-					                              height: '500px', // calendar 높이 설정
+					                              height: '400px', // calendar 높이 설정
 					                              expandRows: true, // 화면에 맞게 높이 재설정
 					                              slotMinTime: '08:00', // Day 캘린더에서 시작 시간
 					                              slotMaxTime: '20:00', // Day 캘린더에서 종료 시간

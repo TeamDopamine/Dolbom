@@ -31,7 +31,7 @@ public class KgerListController {
 	
 	@RequestMapping("/goKgerList")
     public String goKgerList(@RequestParam("page") int page,
-                          @RequestParam(defaultValue = "10") int pageSize,
+                             @RequestParam(defaultValue = "10") int pageSize, 
                           Model model, HttpSession session) {
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass"); 
 		
@@ -44,6 +44,9 @@ public class KgerListController {
         List<KgerList> AllList = kgerlistMapper.goKgerList(loginUserClass.getClass_idx());
         model.addAttribute("AllListSize", AllList.size());
         model.addAttribute("pageSize", pageSize);
+        
+        System.out.println("getKgerListWithPaging으로 받아온 list입니다 : " + list.toString());
+        System.out.println("goKgerList으로 받아온 AllList입니다 : " + AllList.toString());
 
         // 페이징 정보 계산 및 모델에 추가
         int totalPages = (int) Math.ceil((double) AllList.size() / pageSize);
@@ -63,8 +66,16 @@ public class KgerListController {
 	// 원생 데이터 삭제
 	@RequestMapping("/kgerDelete")
 	public String kgerDelete(@RequestParam ("idx") int idx) {
-		kgerlistMapper.kgerDelete(idx);
-		return "redirect:/goKgerList";
+		
+		int cnt = kgerlistMapper.kgerDelete(idx);
+		
+		if (cnt > 0) {
+			System.out.println("데이터 삭제 성공");
+		} else {
+			System.out.println("데이터 삭제 실패");
+		}
+		
+		return "redirect:/goKgerList?page=0";
 	}
 	
 	
