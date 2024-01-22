@@ -261,27 +261,28 @@
 						                <button type="button" id="attBtn<%=j %>_day<%=i %>" onclick="changeText(<%=j %>, <%=i %>)" style="background-color: rgba(0, 0, 0, 0); width: 50px; height: 50px;">
 						                	
 						                	<%-- <%=attendenceList.get(j * numberOfDays + i).getAtten_type() %> --%>
-						                	 
-						                	<%if(attendenceList.size() > 0) {%>
-						                	<script type="text/javascript">
-										        var attenTypeValue = '<%=attendenceList.get(j * numberOfDays + i).getAtten_type() %>';
-										        var buttonText;
-										
-										        switch (attenTypeValue) {
-										            case '1':
-										                buttonText = '√';
-										                break;
-										            case '2':
-										                buttonText = 'X';
-										                break;
-										            case '3':
-										                buttonText = '△';
-										                break;
-										            default:
-										                buttonText = '';
-										        }
-										        document.write(buttonText);
-										    </script>
+						                	<%if(attendenceList != null) {%>
+							                	<%if(attendenceList.size() > 0) {%>
+							                	<script type="text/javascript">
+											        var attenTypeValue = '<%=attendenceList.get(j * numberOfDays + i).getAtten_type() %>';
+											        var buttonText;
+											
+											        switch (attenTypeValue) {
+											            case '1':
+											                buttonText = '√';
+											                break;
+											            case '2':
+											                buttonText = 'X';
+											                break;
+											            case '3':
+											                buttonText = '△';
+											                break;
+											            default:
+											                buttonText = '';
+											        }
+											        document.write(buttonText);
+											    </script>
+							                	<%} %>						   
 						                	<%} %>						   
 						                	           
 						                
