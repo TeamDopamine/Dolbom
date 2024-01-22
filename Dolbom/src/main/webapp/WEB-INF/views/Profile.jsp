@@ -36,7 +36,8 @@
 <%
 	//이건 헤더에서 할 것이니까 삭제할 것
 	User loginUser = (User)session.getAttribute("loginUser");
-	List<kr.smhrd.entity.Class> loginUserClass = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClass");
+	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
+	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClassList");
 	if(loginUser != null){
 		//List<kr.smhrd.entity.Class> loginUserClass = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClass");
 		//System.out.println(loginUserClass.size()); 
@@ -101,14 +102,33 @@
             <!-- 반 정보 폼 -->
             <div class="col-md-6 offset-md-3">
                 <form class="row g-3">
+                	<!-- 반 정보 표시 및 삭제 버튼 -->
+                	<%for(int i = 0 ; i < loginUserClassList.size(); i++){ %>
+                		 <div class="mb-3 row align-items-center">
+                            <div class="col-sm-2 text-center">
+                                <label for="className" class="col-form-label">반 이름<%=i+1 %></label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="className<%=i+1 %>" value="<%=loginUserClassList.get(i).getClass_name() %>">
+                            </div>
+                            <div class="col-auto">
+                                <a href="deleteClass?class_idx=<%=loginUserClassList.get(i).getClass_idx()%>&user_id=<%=loginUser.getUser_id()%>">
+                                    <img src="${img}/delete.png" style="width: 20px; height: 20px;">
+                                </a>
+                            </div>
+                        </div>
+                	<%} %>
+                    
+                
+                    <%-- 
                     <!-- 반 정보 표시 및 삭제 버튼 -->
-                    <c:forEach items="${loginUserClass}" var="userClass" varStatus="status">
+                    <c:forEach items="${loginUserClassList}" var="userClass" varStatus="status">
                         <div class="mb-3 row align-items-center">
                             <div class="col-sm-2 text-center">
                                 <label for="className" class="col-form-label">반 이름${status.count}</label>
                             </div>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="className${status.count}" value="${userClass.class_name}">
+                                <input type="text" class="form-control" id="className${status.count}" value="${loginUserClassList.class_name}">
                             </div>
                             <div class="col-auto">
                                 <a href="deleteClass?class_idx=${userClass.class_idx}&user_id=hanbit">
@@ -117,7 +137,8 @@
                             </div>
                         </div>
                         <%inputcount++; %>
-                    </c:forEach>
+                    </c:forEach> 
+                    --%>
                     
                     <!-- 취소 버튼 -->
                     <div class="col-sm-7 offset-sm-8"> <!-- 수정된 부분 -->
