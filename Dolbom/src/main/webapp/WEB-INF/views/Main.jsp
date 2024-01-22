@@ -107,10 +107,9 @@
 
 					<div class="col-md-5 grid-margin stretch-card">
 						<div class="card card-display">
-							<div class="card-body">
+							<div>
 							
 								<!-- 1 -->
-								<p class="card-title">캘린더</p>
 								<!-- Contact End -->
 								<div id='calendar1'></div>
 							
@@ -147,7 +146,7 @@
 								          		}
 								              calendar = new FullCalendar.Calendar(calendarEl, {
 								                  width:'350px',
-								                  height: '400px', // calendar 높이 설정
+								                  height: '350px', // calendar 높이 설정
 								                  expandRows: true, // 화면에 맞게 높이 재설정
 								                  slotMinTime: '08:00', // Day 캘린더에서 시작 시간
 								                  slotMaxTime: '20:00', // Day 캘린더에서 종료 시간                 
@@ -175,9 +174,8 @@
 
 						<div class="col-md-5 grid-margin stretch-card">
 							<div class="card card-display">
-								<div class="card-body">
+								<div>
 									<!-- 2 -->
-									<p class="card-title">주간일정</p>
                   	<!-- Contact Start -->
 								
               		<!-- Contact End -->
@@ -215,7 +213,7 @@
 					                          }
 					                          calendar = new FullCalendar.Calendar(calendarEl, {
 					                              width:'350px',
-					                              height: '400px', // calendar 높이 설정
+					                              height: '350px', // calendar 높이 설정
 					                              expandRows: true, // 화면에 맞게 높이 재설정
 					                              slotMinTime: '08:00', // Day 캘린더에서 시작 시간
 					                              slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
@@ -246,10 +244,10 @@
 
 						<div class="col-md-5 grid-margin stretch-card">
 							<div class="card card-display">
-								<div class="card-body">
+								<div>
 									<p class="card-title">최근일지</p>
 								  <!-- Contact Start -->
-								    <div class="container-fluid overflow-hidden px-lg-0" style="margin: 6rem 0;">
+								    <div class="container-fluid overflow-hidden px-lg-0">
 								        <div class="container contact px-lg-0">
 								            <div class="row g-0 mx-lg-0">
 								                <section class="col intro">
@@ -297,8 +295,7 @@
 
 						<div class="col-md-5 grid-margin stretch-card">
 							<div class="card card-display" style="size: 50px;">
-								<div class="card-body">
-									<div class="card-body">
+								<div>
 										<h4 class="card-title">To Do Lists</h4>
 										<div class="list-wrapper pt-2">
 											<ul
@@ -335,14 +332,6 @@
 														</label>
 													</div> <i class="remove bi bi-x" style="font-size: 25px;"></i>
 												</li>
-												<li>
-													<div class="form-check form-check-flat">
-														<label class="form-check-label" style="color: black;">
-															<input class="checkbox" type="checkbox"> Level up
-															for Antony
-														</label>
-													</div> <i class="remove bi bi-x" style="font-size: 25px;"></i>
-												</li>
 											</ul>
 										</div>
 										<div class="add-items d-flex mb-0 mt-2">
@@ -351,7 +340,6 @@
 												class="add btn btn-icon text-primary todo-list-add-btn bg-transparent bi bi-plus-circle"
 												style="margin-top: 5px;"></i>
 										</div>
-									</div>
 								</div>
 							</div>
 						</div>

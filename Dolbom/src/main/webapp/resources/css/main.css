@@ -131,7 +131,7 @@
   height: 737px;
   overflow: hidden;
   flex-shrink: 0;
-  padding: 180px 0 450px;
+  padding: 300px 0 450px;
   box-sizing: border-box;
   background-size: cover;
   background-repeat: no-repeat;
@@ -334,9 +334,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
-  font-size: var(--font-size-lgi-8);
+  /* font-size: var(--font-size-lgi-8); */
   color: var(--background-default);
-  font-family: var(--heading-h5);
+  /* font-family: var(--heading-h5); */
 }
 .button26,
 .transactions {

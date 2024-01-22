@@ -41,7 +41,7 @@
         <div class="container contact px-lg-0">
             <div class="row g-0 mx-lg-0">          
                 <div class="main">
-                    <div class="hero" style="width: 100%; background-image: url(${path}/resources/img/maintop.png);
+                    <div class="hero" style="width: 100%; height: 880px; background-image: url(${path}/resources/img/maintop.png);
                     ">
                       <div class="grid43">
                         <div class="grid44">
