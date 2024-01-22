@@ -33,14 +33,14 @@ public class AttendenceController {
 	private Attendence attendence;
 	
 	
-	
 	@RequestMapping("/goAttendence")
 	public String goAttendence(HttpSession session) {
-		kr.smhrd.entity.Class tempClass = new kr.smhrd.entity.Class(54, "저녁반", "곽팀원", 21);
-		session.setAttribute("loginClass", tempClass);
-		kr.smhrd.entity.Class loginClass = (kr.smhrd.entity.Class)session.getAttribute("loginClass");
-		if(loginClass != null) {
-			List<Kindergartener> loginClassKinder = kindergartenerMapper.findKinderOfClass(loginClass.getClass_idx());
+//		kr.smhrd.entity.Class tempClass = new kr.smhrd.entity.Class(54, "저녁반", "곽팀원", 21);
+//		session.setAttribute("loginClass", tempClass);
+//		kr.smhrd.entity.Class loginClass = (kr.smhrd.entity.Class)session.getAttribute("loginClass");
+		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
+		if(loginUserClass != null) {
+			List<Kindergartener> loginClassKinder = kindergartenerMapper.findKinderOfClass(loginUserClass.getClass_idx());
 			session.setAttribute("loginClassKinder", loginClassKinder);
 			
 			Calendar calendar = new GregorianCalendar();
@@ -48,7 +48,7 @@ public class AttendenceController {
 			SimpleDateFormat currntMont = new SimpleDateFormat("yyyy-MM");
 			String formattedCurrntMont = currntMont.format(calendar.getTime());
 			//System.out.println("controller에서 출력한 것입니다. loginClass session값이 null이 아니고, 이번달은 이겁니다. : " + formattedCurrntMont);
-			int class_idx = loginClass.getClass_idx();
+			int class_idx = loginUserClass.getClass_idx();
 			String atten_time = formattedCurrntMont;
 			//System.out.println(class_idx);
 			//System.out.println(atten_time);
