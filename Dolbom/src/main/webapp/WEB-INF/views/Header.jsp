@@ -39,6 +39,9 @@
 <body>
 
 	<%
+	int sessParentsChat = (int)session.getAttribute("sessParentsChat");
+	int sessParentsCal = (int)session.getAttribute("sessParentsCal");
+	
 	User loginUser = (User)session.getAttribute("loginUser"); 
 	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class) session.getAttribute("loginUserClass");
 	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClassList");
@@ -108,6 +111,9 @@
 	                        <button type="submit" class="btn btn-light mb-3" style="opacity: 0;"></button>
 	                    </div>
 	                </form>
+	                <%if (sessParentsCal == 1) { %>
+	                	<a href="goChattingRoom" class="nav-item nav-link">채팅방</a>
+	                <% } %>
 	            <% } %>
                
                	<%if(loginUser == null){ %>

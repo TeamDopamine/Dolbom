@@ -17,7 +17,7 @@
 %>
 
 <!-- Header -->
-<jsp:include page="Header.jsp"></jsp:include> 
+<jsp:include page="Header.jsp"></jsp:include>
 <div class="wrap">
  	<%-- 
  	<section class="menu-section">
@@ -75,7 +75,9 @@
 	<main class="chat-wrap">
 		<div class="chat-wrap-inner">
 			<div class="chat-container">
-				<h2 class="chat-title"><%=loginUserClass.getClass_name()%> 반</h2>
+				<%if(loginUserClass != null){%>
+					<h2 class="chat-title"><%=loginUserClass.getClass_name()%> 반</h2>
+				<%}%>
 				<!-- chat-area -->
 				<div class="chat-area" id="chatView">
 					<div class="date"></div>

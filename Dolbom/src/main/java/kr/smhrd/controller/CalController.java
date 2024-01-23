@@ -100,6 +100,7 @@ public class CalController {
 	@RequestMapping("/goCalendarParents")
 	public String goCalendarParents(Model model, HttpSession session, @RequestParam int calendarCode){
 		this.calendarCode = calendarCode;
+		session.setAttribute("sessParentsCal", 1);
 		return "redirect:/goCalendar";
 	}
 

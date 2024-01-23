@@ -51,17 +51,15 @@
                  	<button type="button" class="createdClass createListClass"><%=loginUserClassList.get(i).getClass_name() %></button>
                  	<script>
 	    	            var color<%=i%> = [
-	    	            	 "#FFD1DC", "#FFC0CB", "#FFB6C1", "#FF69B4", "#FF1493", // 분홍 계열
-	          			    "#ADD8E6", "#B0E0E6", "#87CEEB", "#87CEFA", "#00BFFF", // 파랑 계열
-	          			    "#98FB98", "#90EE90", "#00FA9A", "#00FF7F", "#00FF00", // 녹색 계열
-	          			    "#FFB6C1", "#FF69B4", "#FF1493", "#DB7093", "#C71585", // 핑크/마젠타 계열
-	          			    "#D3D3D3", "#A9A9A9", "#696969", "#808080", "#778899", // 회색 계열
-	          			    "#FFA07A", "#FA8072", "#E9967A", "#F08080", "#CD5C5C", // 살구/주황 계열
-	          			    "#87CEEB", "#48D1CC", "#40E0D0", "#00CED1", "#20B2AA", // 청록/하늘색 계열
-	          			    "#FFD700", "#FFC125", "#FFB90F", "#FFA500", "#FF8C00", // 금색/주황색 계열
-	          			    "#98FB98", "#90EE90", "#00FA9A", "#00FF7F", "#00FF00", // 연한 녹색 계열
-	          			    "#FF69B4", "#FF1493", "#DB7093", "#C71585", "#FF00FF", // 연한 핑크/마젠타 계열
-	          			    "#E6E6FA", "#D8BFD8", "#DDA0DD", "#8A2BE2", "#4B0082"  // 연한 보라색 계열
+	    	            	"#FFD1DC", "#FFC0CB", "#FFB6C1", // 연한 분홍
+	    	            	"#ADD8E6", "#87CEEB", "#87CEFA", // 연한 파랑
+	    	            	"#98FB98", "#90EE90", "#00FA9A", // 연한 녹색
+	    	            	"#D3D3D3", "#A9A9A9", "#808080", // 연한 회색
+	    	            	"#FFA07A", "#FA8072", "#E9967A", // 연한 살구/주황
+	    	            	"#87CEEB", "#48D1CC", "#40E0D0", // 연한 청록/하늘색
+	    	            	"#FFD700", "#FFC125", "#FFB90F", // 연한 금색/주황색
+	    	            	"#98FB98", "#90EE90", "#00FA9A", // 연한 녹색
+	    	            	"#E6E6FA", "#D8BFD8", "#DDA0DD"  // 연한 보라색
 	                    ];
 	                    var num<%=i%> = Math.floor(Math.random() * color<%=i%>.length);
 	                    $('.createListClass:eq(<%=i%>)').css('background-color', color<%=i%>[num<%=i%>]); // 버튼에 동적으로 색상 적용
@@ -83,17 +81,15 @@
 	<script>
 	    function addNewButton() {
 			 var color = [
-			    "#FFD1DC", "#FFC0CB", "#FFB6C1", "#FF69B4", "#FF1493", // 분홍 계열
-			    "#ADD8E6", "#B0E0E6", "#87CEEB", "#87CEFA", "#00BFFF", // 파랑 계열
-			    "#98FB98", "#90EE90", "#00FA9A", "#00FF7F", "#00FF00", // 녹색 계열
-			    "#FFB6C1", "#FF69B4", "#FF1493", "#DB7093", "#C71585", // 핑크/마젠타 계열
-			    "#D3D3D3", "#A9A9A9", "#696969", "#808080", "#778899", // 회색 계열
-			    "#FFA07A", "#FA8072", "#E9967A", "#F08080", "#CD5C5C", // 살구/주황 계열
-			    "#87CEEB", "#48D1CC", "#40E0D0", "#00CED1", "#20B2AA", // 청록/하늘색 계열
-			    "#FFD700", "#FFC125", "#FFB90F", "#FFA500", "#FF8C00", // 금색/주황색 계열
-			    "#98FB98", "#90EE90", "#00FA9A", "#00FF7F", "#00FF00", // 연한 녹색 계열
-			    "#FF69B4", "#FF1493", "#DB7093", "#C71585", "#FF00FF", // 연한 핑크/마젠타 계열
-			    "#E6E6FA", "#D8BFD8", "#DDA0DD", "#8A2BE2", "#4B0082"  // 연한 보라색 계열
+				 "#FFD1DC", "#FFC0CB", "#FFB6C1", // 연한 분홍
+				 "#ADD8E6", "#87CEEB", "#87CEFA", // 연한 파랑
+				 "#98FB98", "#90EE90", "#00FA9A", // 연한 녹색
+				 "#D3D3D3", "#A9A9A9", "#808080", // 연한 회색
+				 "#FFA07A", "#FA8072", "#E9967A", // 연한 살구/주황
+				 "#87CEEB", "#48D1CC", "#40E0D0", // 연한 청록/하늘색
+				 "#FFD700", "#FFC125", "#FFB90F", // 연한 금색/주황색
+				 "#98FB98", "#90EE90", "#00FA9A", // 연한 녹색
+				 "#E6E6FA", "#D8BFD8", "#DDA0DD"  // 연한 보라색
 			];
 	        var num = Math.floor(Math.random() * color.length);
 	        
