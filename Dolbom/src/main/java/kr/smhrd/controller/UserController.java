@@ -29,8 +29,7 @@ import kr.smhrd.mapper.UserMapper;
 
 @Controller
 public class UserController {
-	
-	String loginState;
+String loginState;
 	
 	@Autowired
 	private UserMapper userMapper;
@@ -42,7 +41,10 @@ public class UserController {
 	private RecordMapper recordMapper;
 
 	@RequestMapping("/")
-	public String Intro() {
+	public String Intro(HttpSession session) {
+		int openProfile = 0;
+		session.setAttribute("openProfile", openProfile);
+		session.setAttribute("sessParentsCal", 0);
 		return "Intro";
 	}
 
@@ -50,8 +52,12 @@ public class UserController {
 	public String goIntro() {
 		return "Intro";
 	}
-	
 
+	@RequestMapping("/goChattingRoom")
+	public String goChattingRoom() {
+		return "ChattingRoom";
+	}
+	
 //	@RequestMapping("/goMain")
 //	public String Main() {
 //		return "Main";
@@ -69,7 +75,6 @@ public class UserController {
 			}
 		}
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
-		System.out.println("loginUserClass는 어떤반입니까? : " + loginUserClass.getClass_name() + "반을 선택했습니다.");
 		
 		List<Record> rcList = recordMapper.recordList();
 		model.addAttribute("rcList", rcList);
@@ -129,6 +134,7 @@ public class UserController {
 				
 				Kindergarten loginKindergarten = kindergartenMapper.selectKindergarten(loginUser.getUser_id());
 				session.setAttribute("loginKindergarten", loginKindergarten);
+				session.setAttribute("sessParentsCal", 0);
 				//System.out.println("로그인한 유치원입니다. : " + loginKindergarten);
 				//return "Main";
 				return "redirect:/goClassSelect";

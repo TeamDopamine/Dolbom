@@ -45,116 +45,104 @@
 	<jsp:include page="Header.jsp"></jsp:include>
 
 	<!-- Contact Start -->
-	<div class="container-fluid overflow-hidden px-lg-0"
-		style="margin: 6rem 0;">
-		<div class="container contact px-lg-0">
-			<div class="row g-0 mx-lg-0">
-				<section class="intro">
-					<div class="gradient-custom-1 h-100">
-						<div class="mask d-flex align-items-center h-100">
-							<div class="container">
-								<div class="row justify-content-center">
-									<div class="col-12">
-										<div class="table-responsive bg-white" style="margin-top: 30px">	
-																			
-											<b><%=loginUserClass.getClass_name()%></b>
-																					
-											<br> <br>										
-											<table class="table mb-0">
-												<thead>
-													<tr>
-														<th scope="col">순번</th>
-														<th scope="col">이름</th>
-														<th scope="col">생년월일</th>
-														<th scope="col">성별</th>
-														<th scope="col">주소</th>
-														<th scope="col">전화번호</th>
-														<th scope="col">삭제</th>
-													</tr>
-												</thead>
-												<tbody>
-													<% if (kgerList != null) {%>
-													<c:forEach items="${kgerList }" var="kg" varStatus="status">
-														<c:set var="pageNumber"
-															value="${(page * pageSize) + status.count}" />
-														<tr>
-															<td>${pageNumber }</td>
-															<td>${kg.KGER_NAME }</td>
-															<td>${kg.KGER_BIRTHDATE }</td>
-															<td>${kg.KGER_GENDER}</td>
-															<td>${kg.KGER_ADDR }</td>
-															<td>${kg.KGER_PARENT_PHONE }</td>
-															<td><a href="kgerDelete?idx=${kg.KGER_IDX }"><img
-																	src="${img}/delete.png"
-																	style="width: 20px; height: 20px;"></a></td>
-														</tr>
-													</c:forEach>
-													<%} else {%>
-														<thead>
-														<tr>
-															<th scope="col">순번</th>
-															<th scope="col">이름</th>
-															<th scope="col">생년월일</th>
-															<th scope="col">성별</th>
-															<th scope="col">주소</tsh>
-															<th scope="col">전화번호</th>
-															<th scope="col">삭제</th>
-														</tr>
-														</thead>
-													<%} %>
-												</tbody>
-											</table>
+	<div class="container-fluid overflow-hidden px-lg-0" style="margin: 6rem 0;">
+        <div class="container contact px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <section class="intro">
+                    <div class="gradient-custom-1 h-100">
+                        <div class="mask d-flex align-items-center h-100">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        <div class="table-responsive bg-white">
+                                            <b><%=loginUserClass.getClass_name()%></b>
+                                            <br> <br> 
 
-											<div class="find-btn" style="padding-top: 10.0%;">
+                                            
+											    <table class="table mb-0">
+											        <thead>
+											            <tr>
+											                <th scope="col">순번</th>
+											                <th scope="col">이름</th>
+											                <th scope="col">생년월일</th>
+											                <th scope="col">성별</th>
+											                <th scope="col">주소</th>
+											                <th scope="col">전화번호</th>
+											                <th scope="col">삭제</th>
+											            </tr>
+											        </thead>
+											        <tbody>
+											            <c:if test="${kgerList != null}">
+											                <c:forEach items="${kgerList}" var="kg" varStatus="status">
+											                    <tr>
+											                        <td>${(page * pageSize) + status.count}</td>
+											                        <td>${kg.KGER_NAME}</td>
+											                        <td>${kg.KGER_BIRTHDATE}</td>
+											                        <td>${kg.KGER_GENDER}</td>
+											                        <td>${kg.KGER_ADDR}</td>
+											                        <td>${kg.KGER_PARENT_PHONE}</td>
+											                        <td><a href="kgerDelete?idx=${kg.KGER_IDX}"><img src="${img}/delete.png" style="width: 20px; height: 20px;"></a></td>
+											                    </tr>
+											                </c:forEach>
+											            </c:if>
+											            <tr>
+											            	<td colspan="7" ></td>
+											            </tr>
+										            	<tr>
+											            	<form action="kgerInsert" method="post">
+												                <td><b>+</b></td>
+												                <td><input type="text" name="KGER_NAME" placeholder="이름" class="form-control" required></td>
+												                <td><input type="text" name="KGER_BIRTHDATE" placeholder="생일" class="form-control" required></td>
+												                <td><input type="text" name="KGER_GENDER" placeholder="성별" class="form-control" required></td>
+												                <td><input type="text" name="KGER_ADDR" placeholder="주소" class="form-control" required></td>
+												                <td><input type="text" name="KGER_PARENT_PHONE" placeholder="전화" class="form-control" required></td>
+												                <td><input type="submit" value="추가" class="btn btn-light mb-3"></td>
+												            </form>
+										            	</tr>
+											        </tbody>
+											    </table>
+											
 
-												<c:if test="${currentPage > 0}">
-													<!-- 현재 페이지가 0보다 큰 경우에만 Prev 버튼을 활성화합니다 -->
-													<a href="goKgerList?page=${currentPage - 10}">
-														<button type="button"
-															class="btn navbar-btn find-btn1 pnt-yes"
-															style="margin: 5px" onclick="goToPage(currentPage)">이전</button>
-													</a>
-												</c:if>
 
-												<div class="btn-group" role="group">
-													<c:forEach var="i" begin="${startPage}" end="${endPage}">
-														<a href="goKgerList?page=${i}">
-															<button type="button"
-																class="btn navbar-btn find-btn1 pnt-no"
-																style="margin: 3px" id="pgBtn${i}">${i + 1}</button> <script>
-												                if (${i eq currentPage}) {
-												                    var currentPageBtn = document.getElementById('pgBtn${i}');
-												                    currentPageBtn.style.backgroundColor = '#808080';  // 배경색 변경
-												                    currentPageBtn.style.color = '#ffffff';  // 글자색 변경
-												                    currentPageBtn.style.fontWeight = 'bold';  // 글자 굵기 변경
-												                }
-												            </script>
-														</a>
-													</c:forEach>
-												</div>
+                                            <div class="find-btn" style="padding-top: 3.5%;">
+                                                <c:if test="${currentPage > 0}">
+                                                    <a href="goKgerList?page=${currentPage - 10}">
+                                                        <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">이전</button>
+                                                    </a>
+                                                </c:if>
 
-												<c:if test="${currentPage < totalPages - 1}">
-													<!-- 현재 페이지가 마지막 페이지가 아닌 경우에만 Next 버튼을 활성화합니다 -->
-													<a href="goKgerList?page=${currentPage + 10}"> <c:if
-															test=""></c:if>
-														<button type="button"
-															class="btn navbar-btn find-btn1 pnt-yes"
-															style="margin: 5px" onclick="goToPage(currentPage)">다음</button>
-													</a>
-												</c:if>
+                                                <div class="btn-group" role="group">
+                                                    <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                                                        <a href="goKgerList?page=${i}">
+                                                            <button type="button" class="btn navbar-btn find-btn1 pnt-no" style="margin: 3px" id="pgBtn${i}">${i + 1}</button>
+                                                            <script>
+                                                                if (${i eq currentPage}) {
+                                                                    var currentPageBtn = document.getElementById('pgBtn${i}');
+                                                                    currentPageBtn.style.backgroundColor = '#808080';
+                                                                    currentPageBtn.style.color = '#ffffff';
+                                                                    currentPageBtn.style.fontWeight = 'bold';
+                                                                }
+                                                            </script>
+                                                        </a>
+                                                    </c:forEach>
+                                                </div>
 
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-	</div>
+                                                <c:if test="${currentPage < totalPages - 1}">
+                                                    <a href="goKgerList?page=${currentPage + 10}">
+                                                        <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">다음</button>
+                                                    </a>
+                                                </c:if>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 	<!-- Contact End -->
 
 	<!-- Footer -->

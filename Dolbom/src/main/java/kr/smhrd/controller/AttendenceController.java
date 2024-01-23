@@ -23,7 +23,7 @@ import kr.smhrd.mapper.KindergartenerMapper;
 
 @Controller
 public class AttendenceController {
-	
+
 	@Autowired
 	private KindergartenerMapper kindergartenerMapper;
 	

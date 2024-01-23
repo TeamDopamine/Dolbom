@@ -106,7 +106,7 @@
                 	<%for(int i = 0 ; i < loginUserClassList.size(); i++){ %>
                 		 <div class="mb-3 row align-items-center">
                             <div class="col-sm-2 text-center">
-                                <label for="className" class="col-form-label">반 이름<%=i+1 %></label>
+                                <label for="className" class="col-form-label">반<%=i+1 %></label>
                             </div>
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" id="className<%=i+1 %>" value="<%=loginUserClassList.get(i).getClass_name() %>">
@@ -115,6 +115,9 @@
                                 <a href="deleteClass?class_idx=<%=loginUserClassList.get(i).getClass_idx()%>&user_id=<%=loginUser.getUser_id()%>">
                                     <img src="${img}/delete.png" style="width: 20px; height: 20px;">
                                 </a>
+                            </div>
+                             <div class="col-sm-3 text-center">
+                                <label for="className" class="col-form-label">공유 코드 : <%=loginUserClassList.get(i).getClass_idx()%></label>
                             </div>
                         </div>
                 	<%} %>

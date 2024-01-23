@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -24,6 +25,8 @@ import kr.smhrd.mapper.ClassMapper;
 @Controller
 public class CalController {
 	int beforeArrayLenth = 0;
+	int calendarCode = -1;
+	int sessParentsCal;
 	@Autowired
 	private CalMapper calMapper;
 	
@@ -31,21 +34,29 @@ public class CalController {
 	private ClassMapper classMapper; 
 
 	private Calendar dto;
+	
+	private int loginUserClassIdx;
 
 	@RequestMapping("/goCalendar")
 	public String cal(HttpSession session) {
-		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
-		int loginUserClassIdx= loginUserClass.getClass_idx();
-		List<Calendar> calList = calMapper.selectCalendar(loginUserClassIdx);
+		if (calendarCode != -1) {
+	    	loginUserClassIdx = calendarCode;
+	    	sessParentsCal = 1;
+	    	session.setAttribute("sessParentsCal", sessParentsCal);
+	    }else {
+	    	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
+			loginUserClassIdx= loginUserClass.getClass_idx();
+	    }
+	    System.out.println("loginUserClassIdxt의 값입니다. : " + loginUserClassIdx);
+	    List<Calendar> calList = calMapper.selectCalendar(loginUserClassIdx);
 		beforeArrayLenth = calList.size();
 		session.setAttribute("calList", calList);
-		
+		System.out.println("calList의 값입니다. : " + calList.toString());
 		return "Calendar";
 	}
 
 	@RequestMapping(value = "/calSave", method = RequestMethod.POST)
 	public @ResponseBody String addEvent(@RequestBody String params ,HttpSession session ) {
-
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
 		int loginUserClassIdx= loginUserClass.getClass_idx();
 		List<Calendar> list = calMapper.selectCalendar(loginUserClassIdx);
@@ -69,12 +80,29 @@ public class CalController {
 	@PostMapping("/selectCalendar")
 	@ResponseBody
 	public List<Calendar> selectCalendar(Model model, HttpSession session){
-		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
-		int loginUserClassIdx= loginUserClass.getClass_idx();
-
+		if (calendarCode != -1) {
+	    	loginUserClassIdx = calendarCode;
+	    	sessParentsCal = 1;
+	    	session.setAttribute("sessParentsCal", sessParentsCal);
+	    }else {
+	    	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
+			loginUserClassIdx= loginUserClass.getClass_idx();
+	    }
+		
 		List<Calendar> list = calMapper.selectCalendar(loginUserClassIdx);
 		model.addAttribute("list", list);
-				return list;
+		
+		this.calendarCode = -1;
+		
+		return list;
 	}
+	
+	@RequestMapping("/goCalendarParents")
+	public String goCalendarParents(Model model, HttpSession session, @RequestParam int calendarCode){
+		this.calendarCode = calendarCode;
+		return "redirect:/goCalendar";
+	}
+
+
 
 }
