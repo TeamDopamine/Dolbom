@@ -335,7 +335,7 @@
   background-repeat: no-repeat;
   background-position: top;
   /* font-size: var(--font-size-lgi-8); */
-  color: var(--background-default);
+  color: #000000;
   /* font-family: var(--heading-h5); */
 }
 .button26,
