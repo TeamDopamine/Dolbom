@@ -87,7 +87,7 @@
                           </div>
                         </div>
                         <div class="app" style="height: 700px;" >
-                            <img src="${path}/resources/img/sample.png" class="mainmobile" style="width: 360px; height:680px;">
+                            <img src="${path}/resources/img/callendar.png" class="mainmobile" style="width: 360px; height:680px;">
                         </div>
                       </div>
 
@@ -115,7 +115,7 @@
                           </div>
                         </div>
                         <div class="app" style="height: 700px;" >
-                            <img src="${path}/resources/img/sample.png" class="mainmobile" style="width: 360px; height:680px;">
+                            <img src="${path}/resources/img/daily.png" class="mainmobile" style="width: 360px; height:680px;">
                         </div>
                       </div>
 
@@ -149,7 +149,7 @@
                           </div>
                         </div>
                         <div class="app" style="height: 700px;" >
-                            <img src="${path}/resources/img/sample.png" class="mainmobile" style="width: 360px; height:680px;">
+                            <img src="${path}/resources/img/chatting.png" class="mainmobile" style="width: 360px; height:680px;">
                         </div>
                       </div>
 
