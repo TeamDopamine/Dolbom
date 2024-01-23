@@ -101,7 +101,7 @@
 	            	
 	                var data = {
 	                        user_id: $("#user_id").val(),
-	                        class_idx: $("#class_idx").val()
+	                        class_idx: $("#class_idx").val(),
 	                        startDate: $("#startDate").val(),
 	                        endDate: $("#endDate").val()
 	                    };
