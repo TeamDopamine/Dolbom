@@ -3,7 +3,7 @@
 <mapper namespace="kr.smhrd.mapper.KgerListMapper">
 
 	<select id="kgerList" resultType="kr.smhrd.entity.KgerList">
-		SELECT * FROM TB_KINDERGARTENER 
+		SELECT * FROM TB_KINDERGARTENER order by kger_name
 	</select>
 	
 	<delete id="kgerDelete" parameterType="int">
@@ -11,7 +11,7 @@
 	</delete>
 	
 	<select id="goKgerList" parameterType="int" resultType="kr.smhrd.entity.KgerList">
- 		SELECT * FROM TB_KINDERGARTENER WHERE CLASS_IDX = #{class_idx}
+ 		SELECT * FROM TB_KINDERGARTENER WHERE CLASS_IDX = #{class_idx} order by kger_name
     </select>
     
 	<insert id="kgerInsert" parameterType="kr.smhrd.entity.KgerList"> INSERT INTO TB_KINDERGARTENER( KGER_NAME, KGER_GENDER, KGER_BIRTHDATE, KGER_ADDR, KGER_PARENT_NAME, KGER_PARENT_PHONE, KG_IDX, CLASS_IDX, USER_ID ) VALUES( #{KGER_NAME}, #{KGER_GENDER}, #{KGER_BIRTHDATE}, #{KGER_ADDR}, #{KGER_PARENT_NAME}, #{KGER_PARENT_PHONE}, #{KG_IDX}, #{CLASS_IDX}, #{USER_ID} ) </insert>
