@@ -42,7 +42,9 @@ public class UserController {
 	private RecordMapper recordMapper;
 
 	@RequestMapping("/")
-	public String Intro() {
+	public String Intro(HttpSession session) {
+		int openProfile = 0;
+		session.setAttribute("openProfile", openProfile);
 		return "Intro";
 	}
 
@@ -50,8 +52,12 @@ public class UserController {
 	public String goIntro() {
 		return "Intro";
 	}
-	
 
+	@RequestMapping("/goChattingRoom")
+	public String goChattingRoom() {
+		return "ChattingRoom";
+	}
+	
 //	@RequestMapping("/goMain")
 //	public String Main() {
 //		return "Main";
