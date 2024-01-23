@@ -19,6 +19,8 @@ public interface KgerListMapper {
 	List<KgerList> getKgerListWithPaging(@Param("offset") int offset, @Param("pageSize") int pageSize, @Param("class_idx") int class_idx);
 
 	public List<KgerList> goKgerList(int class_idx);
+	
+	public void kgerInsert(KgerList kgerList);
 
 }
  

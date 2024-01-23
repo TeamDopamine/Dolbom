@@ -29,8 +29,7 @@ import kr.smhrd.mapper.UserMapper;
 
 @Controller
 public class UserController {
-	
-	String loginState;
+String loginState;
 	
 	@Autowired
 	private UserMapper userMapper;
@@ -45,11 +44,14 @@ public class UserController {
 	public String Intro(HttpSession session) {
 		int openProfile = 0;
 		session.setAttribute("openProfile", openProfile);
+		session.setAttribute("sessParentsCal", 0);
+		session.setAttribute("sessParentsChat", 0);
 		return "Intro";
 	}
 
 	@RequestMapping("/Intro")
-	public String goIntro() {
+	public String goIntro(HttpSession session) {
+		session.setAttribute("sessParentsCal", 0);
 		return "Intro";
 	}
 
@@ -75,38 +77,42 @@ public class UserController {
 			}
 		}
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
-		System.out.println("loginUserClass는 어떤반입니까? : " + loginUserClass.getClass_name() + "반을 선택했습니다.");
 		
 		List<Record> rcList = recordMapper.recordList();
 		model.addAttribute("rcList", rcList);
+		session.setAttribute("sessParentsCal", 0);
 		return "Main";
 	}
 
 	@RequestMapping("/goLogin")
 	public String goLogin(HttpSession session) {
+		session.setAttribute("sessParentsCal", 0);
 		return "Login";
 	}
 	
 	@RequestMapping("/goLoginButton")
 	public String goLoginButton(HttpSession session) {
+		session.setAttribute("sessParentsCal", 0);
 		loginState = "5";
 		session.setAttribute("loginState", loginState);
 		return "Login";
 	}
 
 	@RequestMapping("/goSignUp")
-	public String goSignUp() {
+	public String goSignUp(HttpSession session) {
+		session.setAttribute("sessParentsCal", 0);
 		return "SignUp";
 	}
 
 	// 회원가입
 	@RequestMapping("/userInsert")
-	public String userInsert(@ModelAttribute User user, Model model) {
+	public String userInsert(@ModelAttribute User user, Model model, HttpSession session) {
 		System.out.println("회원가입입니다. : " + user.toString());
 		userMapper.userInsert(user);
 		Kindergarten kindergarten = new Kindergarten(0,user.getUser_nick(), user.getUser_addr(), user.getUser_phone(), 0, user.getUser_id());
 		kindergartenMapper.insertKindergarten(kindergarten);
 		model.addAttribute("ID", user.getUser_id());
+		session.setAttribute("sessParentsCal", 0);
 		return "Intro";
 	}
 
@@ -135,6 +141,8 @@ public class UserController {
 				
 				Kindergarten loginKindergarten = kindergartenMapper.selectKindergarten(loginUser.getUser_id());
 				session.setAttribute("loginKindergarten", loginKindergarten);
+				session.setAttribute("sessParentsCal", 0);
+				session.setAttribute("sessParentsChat", 0);
 				//System.out.println("로그인한 유치원입니다. : " + loginKindergarten);
 				//return "Main";
 				return "redirect:/goClassSelect";
@@ -145,6 +153,7 @@ public class UserController {
 				return "redirect:/goLogin";
 			}
 		}
+		
 	}
 
 	// 로그아웃

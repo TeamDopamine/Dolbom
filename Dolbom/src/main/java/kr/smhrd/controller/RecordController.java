@@ -94,7 +94,12 @@ public class RecordController {
 
 	// 일지 요약 페이지로 이동
 	@RequestMapping("/goRecordSummary")
-	public String goRecordSummary() {
+	public String goRecordSummary(Model model, HttpSession session) {
+		User loginUser = (User)session.getAttribute("loginUser");
+		model.addAttribute("user_id", loginUser.getUser_id());
+		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass"); 
+		model.addAttribute("classIdx", loginUserClass.getClass_idx());
+		
 		return "RecordSummary";
 	}
 	
@@ -124,7 +129,6 @@ public class RecordController {
 		recordMapper.insertRecord(record);
 		return "redirect:/goRecordList?page=0";
 	}
-
 
 }
 

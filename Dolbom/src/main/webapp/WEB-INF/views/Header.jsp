@@ -39,10 +39,14 @@
 <body>
 
 	<%
+	int sessParentsChat = (int)session.getAttribute("sessParentsChat");
+	int sessParentsCal = (int)session.getAttribute("sessParentsCal");
+	
 	User loginUser = (User)session.getAttribute("loginUser"); 
 	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class) session.getAttribute("loginUserClass");
 	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClassList");
 	int openProfile = (int)session.getAttribute("openProfile");
+	String loginState = (String)session.getAttribute("loginState");
 	%>
 	
     <!-- Header Start -->
@@ -96,23 +100,38 @@
 					<% } %> 
 		 		<%}%>
 			 	
+			 	<% if (loginState == null || loginUser == null) { %>
+	                <form action="goCalendarParents" method="POST" class="row">
+	                    <!-- 텍스트 입력을 받을 input -->
+	                    <div class="col-md-6 mb-3 mx-auto mt-3">
+	                        <input type="text" id="text_input" placeholder="공유 코드 입력" name="calendarCode" class="form-control" style="width: 180%;">
+	                    </div>
+	                    <!-- 버튼 (submit 역할) -->
+	                    <div class="col-md-6 mb-3 mx-auto">
+	                        <button type="submit" class="btn btn-light mb-3" style="opacity: 0;"></button>
+	                    </div>
+	                </form>
+	                <%if (sessParentsCal == 1) { %>
+	                	<a href="goChattingRoom" class="nav-item nav-link">채팅방</a>
+	                <% } %>
+	            <% } %>
                
                	<%if(loginUser == null){ %>
 					<a href="goLoginButton" class="nav-item nav-link active">로그인</a>
 				<%}else { %>
 					<%if(loginUser.getUser_type().equals("a")) {%>
 						<a href="goAdmin?page=0" class="nav-item nav-link active">회원관리<i class="bi bi-list"></i></a>
-					<%} else {%>
-						<%if(openProfile == 1){ %>
-							<%openProfile = 0; %>
-							<%session.setAttribute("openProfile", openProfile);%>
-							<a href="goClassSelect" class="nav-item nav-link active">반 생성</a>
-							<a href="goProfile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
-						<%}else { %>
-							<a href="goProfile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
-						<%} %>
-					<%} %>
-				<%} %>
+					<%} else { %>
+	                    <% if(openProfile == 1) { %>
+		                    <% openProfile = 0; %>
+		                    <% session.setAttribute("openProfile", openProfile); %>
+		                    <a href="goClassSelect" class="nav-item nav-link active">반 생성</a>
+		                    <a href="goProfile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
+		                <% } else { %>
+		                    <a href="goProfile" class="nav-item nav-link active">${loginUser.user_id } 님 <i class="bi bi-file-person"></i></a>
+		                <% } %>
+		            <% } %>
+		        <% } %>
                 
             </div>
            					<%if(loginUser == null){ %>

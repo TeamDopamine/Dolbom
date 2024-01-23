@@ -7,10 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.KgerList;
+import kr.smhrd.entity.Kindergarten;
+import kr.smhrd.entity.User;
 import kr.smhrd.mapper.KgerListMapper;
 
 @Controller
@@ -18,6 +21,8 @@ public class KgerListController {
 
 	@Autowired
 	private KgerListMapper kgerlistMapper;
+	
+	private KgerList kgerList;
 	
 //	// 원생 관리 페이지로 이동
 //	@RequestMapping("/goKgerList")
@@ -66,17 +71,26 @@ public class KgerListController {
 	// 원생 데이터 삭제
 	@RequestMapping("/kgerDelete")
 	public String kgerDelete(@RequestParam ("idx") int idx) {
-		
 		int cnt = kgerlistMapper.kgerDelete(idx);
-		
 		if (cnt > 0) {
 			System.out.println("데이터 삭제 성공");
 		} else {
 			System.out.println("데이터 삭제 실패");
 		}
-		
 		return "redirect:/goKgerList?page=0";
 	}
+	
+	// 원생 추가
+		@RequestMapping("/kgerInsert")
+		public String kgerDelete(@ModelAttribute KgerList kgerList, HttpSession session) {
+			User loginUser = (User)session.getAttribute("loginUser");
+		    Kindergarten loginKindergarten = (Kindergarten)session.getAttribute("loginKindergarten");
+		    kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
+			this.kgerList = new KgerList(0,kgerList.getKGER_NAME(),kgerList.getKGER_GENDER(),kgerList.getKGER_BIRTHDATE(),kgerList.getKGER_ADDR(),"송현준",kgerList.getKGER_PARENT_PHONE(),loginKindergarten.getKg_idx(),loginUserClass.getClass_idx(),loginUser.getUser_id());
+			kgerlistMapper.kgerInsert(this.kgerList);
+			
+			return "redirect:/goKgerList?page=0";
+		}
 	
 	
 }

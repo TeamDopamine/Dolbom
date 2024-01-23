@@ -23,7 +23,7 @@ import kr.smhrd.mapper.KindergartenerMapper;
 
 @Controller
 public class AttendenceController {
-	
+
 	@Autowired
 	private KindergartenerMapper kindergartenerMapper;
 	
@@ -72,7 +72,6 @@ public class AttendenceController {
 			    }
 			}
 			
-			
 			session.setAttribute("attendenceList", attendenceList);
 			//System.out.println("attendenceList의 값입니다."+attendenceList.toString());
 		}
@@ -94,9 +93,6 @@ public class AttendenceController {
 		//List<Attendence> attendenceList = attendenceMapper.showAttendence(attendence);
 		
 		List<Kindergartener> loginClassKinder = kindergartenerMapper.findKinderOfClass(loginUserClass.getClass_idx());
-		
-		
-		
 		
 		Calendar calendar = new GregorianCalendar();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -125,15 +121,7 @@ public class AttendenceController {
 		    }
 		}
 		
-		
 		//session.setAttribute("attendenceList", attendenceList);
-		
-		
-		
-		
-		
-		
-		
 		
 		session.setAttribute("attendenceList", attendenceList);
 		//System.out.println("attendenceList의 값입니다."+attendenceList.toString());
@@ -229,5 +217,4 @@ public class AttendenceController {
 		return "redirect:/goAttendence";
 	}
 	
-
 }
