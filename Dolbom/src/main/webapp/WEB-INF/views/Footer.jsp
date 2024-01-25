@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
+    
     <title>돌봄</title>
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -27,10 +32,8 @@
             font-family: 'Pretendard';
             src: url(./css/Pretendard-Regular.otf);
         }
-     
     </style>
 </head>
-
 <body>
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -96,7 +99,6 @@
                         &copy; <a href="#">Dolbom</a>, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                         Designed By <a href="https://htmlcodex.com">HTML Codex</a>
                         <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                     </div>

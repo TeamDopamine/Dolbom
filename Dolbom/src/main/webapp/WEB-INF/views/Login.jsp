@@ -8,76 +8,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-
-<!-- <script>
-	function submitLoginForm() {
-		var userId = document.getElementById("user_id").value;
-		var password = document.getElementById("user_pw").value;
-		alert(loginUser.user_id)
-		if (userId.trim() === "" || password.trim() === "") {
-			alert("아이디와 비밀번호를 모두 입력하세요.");
-		} else if (userId.trim() != loginUser.user_id
-				|| password.trim() != loginUser.user_pw) {
-			alert("올바르지 않은 아이디 또는 비밀번호입니다.");
-		} else {
-
-			var form = document.getElementById("loginForm");
-			form.action = "userSelect";
-			form.method = "post";
-
-			var userIdField = document.createElement("input");
-			userIdField.type = "hidden";
-			userIdField.name = "user_id";
-			userIdField.value = userId;
-			form.appendChild(userIdField);
-
-			var passwordField = document.createElement("input");
-			passwordField.type = "hidden";
-			passwordField.name = "user_pw";
-			passwordField.value = password;
-			form.appendChild(passwordField);
-
-			form.submit();
-
-		}
-	}
-</script> -->
 
 </head>
 
 <body>
 	<%
 	User loginUser = (User) session.getAttribute("loginUser");
-	if (loginUser != null) {
-		System.out.println("loginUser가 null이 아닙니다!");
-	} else {
-		System.out.println("loginUser가 null입니다.");
-	}
-	
 	String loginState = (String)session.getAttribute("loginState");
-	if(loginState != null){
-		if(loginState.equals("1")){
-			System.out.println("로그인 성공!");
-		}else if(loginState.equals("2")){
-			System.out.println("아이디를 입력해주세요!");
-		}else if(loginState.equals("3")){
-			System.out.println("비밀번호를 입력해주세요!");
-		}else if(loginState.equals("4")){
-			System.out.println("아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.");
-			System.out.println("입력하신 내용을 다시 확인해주세요.");
-		}else{
-			System.out.println("로그인 버튼을 눌렀을 뿐입니다..");
-		}
-	}
 	%>
-
 	<script>
     // Spring 표현식을 사용하여 loginState 값을 가져오기
     var loginState = "${sessionScope.loginState}";
-	
     if (loginState != "") {
         switch (loginState) {
             case "1":
@@ -97,11 +42,8 @@
         }
     }
 	</script>
-
-	
 	<!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
-
 
 	<!-- Quote Start -->
 	<form id="loginForm" method="post" action="userSelect">
@@ -138,8 +80,6 @@
 			</div>
 		</div>
 	</form>
-
-
 
 	<!-- Footer -->
 	<jsp:include page="Footer.jsp"></jsp:include>

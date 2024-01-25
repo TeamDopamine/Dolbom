@@ -3,14 +3,18 @@
 <%@include file="IncludeStyle.jsp" %>
 <%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
+    
     <title>돌봄</title>
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -23,13 +27,11 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
 </head>
 
 <body>
    <%
    List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClassList");
-   /* System.out.println("loginUserClassList.toString()입니다. : " + loginUserClassList.toString()); */  
    %>
    
 	<!-- Header -->
@@ -40,13 +42,6 @@
         <button type="button" class="createClass" onclick="addNewButton()">+</button>
         <% if(loginUserClassList != null){ %>
         	<% for(int i = 0; i < loginUserClassList.size(); i++){%>
-	        	  <!--   
-	        	  for문을 돌면서 버튼을 그린다.
-	        	  버튼에 써지는 글자는 리스트가 가지고 있는 class_name이다.
-	        		
-	        	  해당 버튼이 눌리면 리스트의 그 값이 session에 입력된다.
-	              session 이름은 loginUserClass 
-	              -->
 	             <a href="goMain?class_idx=<%=loginUserClassList.get(i).getClass_idx() %>">
                  	<button type="button" class="createdClass createListClass"><%=loginUserClassList.get(i).getClass_name() %></button>
                  	<script>
@@ -65,7 +60,6 @@
 	                    $('.createListClass:eq(<%=i%>)').css('background-color', color<%=i%>[num<%=i%>]); // 버튼에 동적으로 색상 적용
                  	</script>
                  </a>
-        	
         	<% }%>
         <% }%>
     </div>
@@ -92,30 +86,24 @@
 				 "#E6E6FA", "#D8BFD8", "#DDA0DD"  // 연한 보라색
 			];
 	        var num = Math.floor(Math.random() * color.length);
-	        
         	 // 사용자로부터 이름 입력 받기
 	        var className = prompt("이름을 입력하세요.");
-			
 	        // 확인 버튼을 누르거나 이름이 비어있지 않을 경우 처리
 	        if (className !== null && className.trim() !== "") {
 	            // 버튼을 추가할 부분 선택 (예: body)
 	            let targetElement = $('.bodybutton');
-
 	            // 새로운 버튼 생성 및 스타일링
 	            var newButton = $(`<a href="#"><button class='createdClass'></button></a>`);
 	            newButton.find('button').css('background-color', color[num]); // 버튼에 동적으로 색상 적용
 	            targetElement.append(newButton);
 	            var newButtonLast = targetElement.find('.createdClass').last(); // 마지막으로 추가된 버튼 선택
 	            newButtonLast.text(className);
-	            
 	         	// 백엔드로 데이터 전송 (Ajax 사용)
 	            sendDataToBackend(className);
 	        } else {
 	            alert("이름을 입력하지 않았거나 취소하셨습니다. 새로운 버튼이 생성되지 않습니다.");
 	        }
-        
 	    }
-	    
 	    function sendDataToBackend(className) {
 	        // Ajax 요청 보내기
 	        $.ajax({
@@ -132,7 +120,6 @@
 	        });
 	    }
 	</script>
-
 </body>
 
 </html>

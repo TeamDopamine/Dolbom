@@ -3,14 +3,21 @@
 <%@page import="kr.smhrd.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <c:set var="img" value="${pageContext.request.contextPath}/resources/img"/>
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
+    
     <title>돌봄</title>
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -33,15 +40,12 @@
         src: url(./css/Pretendard-Regular.otf);
       }
     </style>
-       
 </head>
 
 <body>
-
 	<%
 	int sessParentsChat = (int)session.getAttribute("sessParentsChat");
 	int sessParentsCal = (int)session.getAttribute("sessParentsCal");
-	
 	User loginUser = (User)session.getAttribute("loginUser"); 
 	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class) session.getAttribute("loginUserClass");
 	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClassList");
@@ -63,7 +67,6 @@
        		</a>
         <%} %>
             
-        
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -85,9 +88,7 @@
 	                <% if (loginUserClass != null && loginUserClassList != null && loginUserClassList.size() > 0) { %>
 	                <div class="nav-item dropdown d-flex">
 					    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" >
-					    	
 					    		<%=loginUserClass.getClass_name()%> 반
-					    
 					    </a>
 					    <div class="dropdown-menu bg-light m-0">
 					        <% for (int i = 0; i < loginUserClassList.size(); i++) { %>
@@ -99,7 +100,6 @@
 					</div> 
 					<% } %> 
 		 		<%}%>
-			 	
 			 	<% if (loginState == null || loginUser == null) { %>
 	                <form action="goCalendarParents" method="POST" class="row">
 	                    <!-- 텍스트 입력을 받을 input -->
@@ -140,10 +140,8 @@
 								<a href="logoutUser" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">로그아웃<i class="fa fa-arrow-right ms-3"></i></a>
 							<%} %>
         </div>
-        
     </nav>
     <!-- Header End -->
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

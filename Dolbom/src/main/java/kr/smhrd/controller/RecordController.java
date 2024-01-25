@@ -30,15 +30,7 @@ public class RecordController {
 	@Autowired
 	private RecordMapper recordMapper;
 	
-//	// 일지 목록 페이지로 이동
-//	@RequestMapping("/goRecordList")
-//	public String goRecordList(Model model) {
-//		List<Record> rcList =  recordMapper.recordList();
-//		model.addAttribute("rcList", rcList);
-//		return "RecordList";
-//	}
-	
-	
+	// 일지목록 페이지로 이동
 	@RequestMapping("/goRecordList")
     public String goRecordList(@RequestParam("page") int page,
                           @RequestParam(defaultValue = "10") int pageSize,
@@ -50,17 +42,14 @@ public class RecordController {
         session.setAttribute("rcList", list);
         model.addAttribute("list", list);
         model.addAttribute("page", page);
-        
         List<Record> AllList = recordMapper.goRecordList(loginUser.getUser_id(), loginUserClass.getClass_idx());
         model.addAttribute("AllListSize", AllList.size());
         model.addAttribute("pageSize", pageSize);
-        
         // 페이징 정보 계산 및 모델에 추가
         int totalPages = (int) Math.ceil((double) AllList.size() / pageSize);
         int startPage = Math.max(0, page / 10 * 10);
         int endPage = Math.min(totalPages - 1, startPage + 9);
         int currentPage = page;
-
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
@@ -68,13 +57,13 @@ public class RecordController {
         
         return "RecordList";
     }
-
 	
 	// 일지 내용 페이지로 이동
 	@RequestMapping("/goRecordContent") 
 	public String goRecordContent(@RequestParam("idx") int idx, Model model) {
 		Record record = recordMapper.recordContent(idx);
 		model.addAttribute("record", record);
+		
 		return "RecordContent";
 	}
 	
@@ -83,12 +72,14 @@ public class RecordController {
 	public String goRecordEdit(@RequestParam("idx") int idx, Model model) {
 		Record record = recordMapper.recordContent(idx);
 		model.addAttribute("record", record);
+		
 		return "RecordEdit";
 	}
 	
 	// 일지 작성 페이지로 이동
 	@RequestMapping("/goRecordWrite")
 	public String goRecordWrite() {
+		
 		return "RecordWrite";
 	}
 
@@ -103,12 +94,12 @@ public class RecordController {
 		return "RecordSummary";
 	}
 	
+	// 기능 ------------------------------------------------------
 	// 일지 삭제
 	@RequestMapping("/recordDelete")
 	public String recordDelete(@RequestParam ("idx") int idx) {
-		
-		System.out.println("recordDelete로 넘어온  record_idx값은 무엇일까요 : " + idx );
 		recordMapper.recordDelete(idx);
+		
 		return "redirect:/goRecordList?page=0";
 	}
 	
@@ -118,6 +109,7 @@ public class RecordController {
 		record.setRecord_idx(idx);
 		recordMapper.updateRecord(record);
 		model.addAttribute("record", record);
+		
 		return "redirect:/goRecordContent?idx="+idx;
 		
 	}
@@ -125,10 +117,9 @@ public class RecordController {
 	// 일지 작성
 	@PostMapping("/recordWrite")
 	public String recordWrite(@ModelAttribute("record") Record record) {
-		// record 객체로 넘어오는 것에서 user_idx 값을 class_idx값으로 수정할 것.
 		recordMapper.insertRecord(record);
+		
 		return "redirect:/goRecordList?page=0";
 	}
 
 }
-

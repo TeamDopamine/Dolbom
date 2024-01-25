@@ -18,7 +18,6 @@ import kr.smhrd.mapper.UserMapper;
 @Controller
 public class ProfileController {
    
-
 	@Autowired
 	   private ClassMapper classMapper;
 	   
@@ -28,28 +27,18 @@ public class ProfileController {
 	   @Autowired
 	   private KindergartenMapper kindergartenMapper;
 	   
-	   
-	      
-	//   @RequestMapping("/")
-	//   public String main() {
-//	      return "Profile";
-	//   }
-	   
-	   // profile화면입니다.
+	   // 프로필 페이지로 이동
 	   @RequestMapping("/goProfile")
 	   public String memberSelect(kr.smhrd.entity.Class classProfile, HttpSession session) {
-	      //User loginUser = (User)session.getAttribute("loginUser");
-	      //String user_id = loginUser.getUser_id();
-	      //String user_id = "hanbit";
-	      //List<kr.smhrd.entity.Class> loginUserClass = classMapper.showLoginUserClass(user_id);
-	      //session.setAttribute("loginUserClass", loginUserClass);
+	
 		  int openProfile = 1;
 		  session.setAttribute("openProfile", openProfile);
+		  
 	      return "Profile";
 	   }
 	   
-	   
-	   
+	   // 기능 ------------------------------------------------------
+	   // 반 삭제
 	   @RequestMapping("/deleteClass")
 	   public String DeleteClass(@RequestParam("class_idx") int class_idx, 
 	                           @RequestParam("user_id") String user_id, 
@@ -57,10 +46,11 @@ public class ProfileController {
 	      classMapper.deleteClass(class_idx);
 	      List<kr.smhrd.entity.Class> loginUserClassList = classMapper.showLoginUserClass(user_id);
 	      session.setAttribute("loginUserClassList", loginUserClassList);
+	      
 	      return "redirect:/goProfile";
 	   }
 	   
-	   // 회원 수정 기능 /updateMember
+	   // 회원 정보 수정  
 	   @RequestMapping("/updateProfile")
 	   public String updateMember(Profile profile, HttpSession session) {
 	      int cnt = 0;
@@ -68,22 +58,14 @@ public class ProfileController {
 	      cnt += kindergartenMapper.updateKindergarten(profile);
 	      System.out.println("cnt는 몇일까요" + cnt);
 	      if (cnt >= 2) {
-//	         System.out.println("여기로 들어왔어요?1");
-//	         System.out.println("프로필 정보 입니다. : " + profile.toString());
 	         
 	         List<kr.smhrd.entity.Class> loginUserClassList = classMapper.showLoginUserClass(profile.getUser_id());
 	         session.setAttribute("loginUserClassList", loginUserClassList);
 	         
-	         //User reloginUser = (User)session.getAttribute("loginUser");
-	         //User loginUser = userMapper.userSelect(reloginUser);
-	         //session.setAttribute("loginUser", loginUser);
-	         
 	         return "redirect:/goProfile";
 	      } else {
-	         //return "UpdateMember";
+	    	  
 	         return "";
 	      }
-
 	   }
-   
 }

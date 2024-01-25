@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Data // 만능
-@Getter // getter메소드
+@Data 
+@Getter 
 @ToString
-@Setter // setter메소드
+@Setter 
 public class Attendence {
 	private int atten_idx;
 	private char atten_type;

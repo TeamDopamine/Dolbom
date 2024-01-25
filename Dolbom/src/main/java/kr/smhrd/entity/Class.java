@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Data // 만능
-@Getter // getter메소드
+@Data 
+@Getter 
 @ToString
-@Setter // setter메소드
+@Setter 
 @AllArgsConstructor
 public class Class {
 	private int class_idx;

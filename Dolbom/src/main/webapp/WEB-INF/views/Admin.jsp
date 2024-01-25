@@ -6,11 +6,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
 <meta charset="utf-8">
+
 <title>돌봄</title>
+
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -22,7 +26,6 @@
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
 	rel="stylesheet">
 
-<!-- Icon Font Stylesheet -->
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
 	rel="stylesheet">
@@ -30,6 +33,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
 	rel="stylesheet">
 </head>
+
 <style>
 .btn-group {
 	white-space: nowrap;
@@ -37,7 +41,6 @@
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 
 <body>
 
@@ -50,6 +53,7 @@
 		<div class="container contact px-lg-0">
 			<div class="row g-0 mx-lg-0"
 				style="padding-left: 5%; padding-right: 5%;">
+				
 				<!-- 교사 섹션  start-->
 				<section class="col intro" style="padding-right: 2%;">
 					<div class="gradient-custom-1 h-100">
@@ -66,19 +70,7 @@
 														<th scope="col">닉네임</th>
 														<th scope="col">삭제</th>
 													</tr>
-												</thead>
-												<%-- <tbody>
-													<c:forEach items="${list}" var="user" varStatus="status">
-														<tr>
-															<td>${status.count}</td>
-															<td>${user.user_id}</td>
-															<td>${user.user_nick}</td>
-															<td><a href="deleteUser?user_id=${user.user_id}"><img
-																	src="${path}/resources/img/delete.png"
-																	style="width: 20px; height: 20px;"></a></td>
-														</tr>
-													</c:forEach>
-												</tbody> --%>
+												</thead>												
 												<tbody>
 													<c:forEach var="user" items="${list}" varStatus="status">
 													<c:set var="pageNumber" value="${(page * pageSize) + status.count}" />
@@ -89,21 +81,17 @@
 															<td><a href="deleteUser?user_id=${user.user_id}"><img
 																	src="${path}/resources/img/delete.png"
 																	style="width: 20px; height: 20px;"></a></td>
-															<!-- Add other user fields as needed -->
 														</tr>
 													</c:forEach>
 												</tbody>
 											</table>
-
 										<div class="find-btn" style="padding-top: 3.5%;">
-										
 										<c:if test="${currentPage > 0}">
 										    <!-- 현재 페이지가 0보다 큰 경우에만 Prev 버튼을 활성화합니다 -->
 										    <a href="goAdmin?page=${currentPage - 10}">
 										        <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">이전</button>
 										    </a>
 										</c:if>
-										
 										<div class="btn-group" role="group">
 										    <c:forEach var="i" begin="${startPage}" end="${endPage}" >
 										            <a href="goAdmin?page=${i}">
@@ -119,7 +107,6 @@
 										        	</a>
 										    </c:forEach>
 										</div>
-										
 										<c:if test="${currentPage < totalPages - 1}">
 										    <!-- 현재 페이지가 마지막 페이지가 아닌 경우에만 Next 버튼을 활성화합니다 -->
 										    <a href="goAdmin?page=${currentPage + 10}">
@@ -127,10 +114,7 @@
 										        <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">다음</button>
 										    </a>
 										</c:if>
-										
 										</div>
-
-
 										</div>
 									</div>
 								</div>
@@ -161,7 +145,6 @@
             	 currentPage: currentPage, 
             	 startPage: startPage
              },
-             
              success: function(response) {
                  // 성공 시 수행할 작업 (예: 결과를 화면에 반영)
                  // response 변수에는 서버에서 전달한 데이터가 들어있을 수 있습니다.

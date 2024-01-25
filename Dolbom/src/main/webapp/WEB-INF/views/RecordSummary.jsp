@@ -2,11 +2,15 @@
 <%@include file="IncludeStyle.jsp" %>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
+    
     <title>돌봄</title>
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -23,11 +27,9 @@
 	<!-- progressbar -->
 	<link rel="stylesheet" href="${path}/resources/css/progress.css">
 	
-
 </head>
 
 <body>
-		
     <!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
     
@@ -69,12 +71,12 @@
                                       	</form>
                                       	
                                     </div>
-					                    
 					                    <!-- loading bar -->
 	                                      <div style="padding-left: 25%; padding-right: 19%; padding-top: 2%;">
 						                      <div id="loading" style="padding-bottom: 17%"></div>
                                      	 </div>
 					                    <!-- /loading show -->
+					                    
                                       	<!-- result show -->
 	                                      <div style="padding-left: 25%; padding-right: 19%; padding-top: 2%;">
 											<div id="show_Result"></div>
@@ -94,7 +96,6 @@
         </div>
     </div>
     <!-- Contact End -->
-    
 		<script>
 	    $(document).ready(function() {
 	            $("#getSummary").on("click", function() {
@@ -147,7 +148,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 </body>
 
 </html>

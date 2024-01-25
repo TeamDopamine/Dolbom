@@ -7,26 +7,14 @@
 	</update>
 	
 	<insert id="insertKindergarten" parameterType="kr.smhrd.entity.Kindergarten">
-		INSERT INTO TB_KINDERGARTEN(
-		    KG_NAME,
-		    KG_ADDR,
-		    KG_TEL,
-		    KG_PERSONNEL,
-		    USER_ID
-		)
-		VALUES(
-		    #{kg_name}, 
-		    #{kg_addr},
-		    #{kg_tel},
-		    0, 
-		    #{user_id}
-		)
+		INSERT INTO TB_KINDERGARTEN
+		    (KG_NAME, KG_ADDR, KG_TEL, KG_PERSONNEL, USER_ID)
+		VALUES
+		    (#{kg_name}, #{kg_addr},#{kg_tel},0, #{user_id})
 	</insert>
 	
 	<select id="selectKindergarten" parameterType="String" resultType="kr.smhrd.entity.Kindergarten">
-		select * 
-		  from tb_kindergarten 
-		 where user_id=#{user_id}
+		select * from tb_kindergarten where user_id=#{user_id}
 	</select>
 
 </mapper>

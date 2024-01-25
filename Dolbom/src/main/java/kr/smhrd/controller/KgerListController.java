@@ -24,41 +24,25 @@ public class KgerListController {
 	
 	private KgerList kgerList;
 	
-//	// 원생 관리 페이지로 이동
-//	@RequestMapping("/goKgerList")
-//	public String KgerList(Model model) {
-//		List<KgerList> kgerList = kgerlistMapper.kgerList();
-//		System.out.println("원생관리 페이지입니다.");
-//		
-//		model.addAttribute("kgerList",kgerList);
-//		return "KgerList";
-//	}
-	
+	// 원생관리 페이지로 이동
 	@RequestMapping("/goKgerList")
     public String goKgerList(@RequestParam("page") int page,
                              @RequestParam(defaultValue = "10") int pageSize, 
                           Model model, HttpSession session) {
 		kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass"); 
-		
         int offset = page * pageSize;
         List<KgerList> list = kgerlistMapper.getKgerListWithPaging(offset, pageSize, loginUserClass.getClass_idx());
         session.setAttribute("kgerList", list);
         model.addAttribute("list", list);
         model.addAttribute("page", page);
-        
         List<KgerList> AllList = kgerlistMapper.goKgerList(loginUserClass.getClass_idx());
         model.addAttribute("AllListSize", AllList.size());
         model.addAttribute("pageSize", pageSize);
-        
-        System.out.println("getKgerListWithPaging으로 받아온 list입니다 : " + list.toString());
-        System.out.println("goKgerList으로 받아온 AllList입니다 : " + AllList.toString());
-
         // 페이징 정보 계산 및 모델에 추가
         int totalPages = (int) Math.ceil((double) AllList.size() / pageSize);
         int startPage = Math.max(0, page / 10 * 10);
         int endPage = Math.min(totalPages - 1, startPage + 9);
         int currentPage = page;
-
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
@@ -67,7 +51,7 @@ public class KgerListController {
         return "KgerList";
     }
 	
-	
+	// 기능 ------------------------------------------------------
 	// 원생 데이터 삭제
 	@RequestMapping("/kgerDelete")
 	public String kgerDelete(@RequestParam ("idx") int idx) {
@@ -79,7 +63,6 @@ public class KgerListController {
 		}
 		return "redirect:/goKgerList?page=0";
 	}
-	
 	// 원생 추가
 		@RequestMapping("/kgerInsert")
 		public String kgerDelete(@ModelAttribute KgerList kgerList, HttpSession session) {
@@ -91,6 +74,4 @@ public class KgerListController {
 			
 			return "redirect:/goKgerList?page=0";
 		}
-	
-	
 }

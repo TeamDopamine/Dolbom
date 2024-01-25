@@ -20,8 +20,6 @@ public class Kindergarten {
 	@NonNull private int kg_personnel;
 	@NonNull private String user_id;
 	
-	
-	
 	public Kindergarten(int kg_idx, @NonNull String kg_name, @NonNull String kg_addr, @NonNull String kg_tel,
 			@NonNull int kg_personnel, @NonNull String user_id) {
 		super();
@@ -33,11 +31,8 @@ public class Kindergarten {
 		this.user_id = user_id;
 	}
 
-
-
 	public Kindergarten() {
 		super();
 	}
 	
-
 }

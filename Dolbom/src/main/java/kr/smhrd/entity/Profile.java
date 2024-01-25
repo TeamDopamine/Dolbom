@@ -9,11 +9,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Data // 만능
+@Data 
 @AllArgsConstructor
-@Getter // getter메소드
+@Getter 
 @ToString
-@Setter // setter메소드
+@Setter
 public class Profile {
 	private String user_id;
 	private String user_pw;

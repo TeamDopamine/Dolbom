@@ -15,17 +15,10 @@
 	</delete>
 	
 	<insert id="insertClass" parameterType="kr.smhrd.entity.Class">
-		INSERT INTO TB_CLASS(
-		    CLASS_NAME,
-		    TEACHER_NAME,
-		    KG_IDX
-		) 
-		VALUES(
-		    #{class_name},
-		    '돌봄',
-		    #{kg_idx}
-		)
+		INSERT INTO TB_CLASS
+		    (CLASS_NAME, TEACHER_NAME, KG_IDX) 
+		VALUES
+		    (#{class_name}, '돌봄', #{kg_idx})
 	</insert>
 	
-
 </mapper>

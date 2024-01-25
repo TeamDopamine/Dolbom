@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="IncludeStyle.jsp" %>
 
-    
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
+    
     <title>돌봄</title>
+    
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -24,7 +27,6 @@
 </head>
 
 <body>
-
    <!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
 
@@ -91,7 +93,6 @@
                                         </div>
                                       </div>
                                     
-
                                       <div class="col-auto text-end" style="padding-top: 3%; padding-left: 70%;" >
                                           <button type="reset" class="btn btn-light mb-3">초기화</button></a>
                                           <button type="submit" class="btn btn-warning mb-3">수정완료</button>
@@ -116,7 +117,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 </body>
 
 </html>

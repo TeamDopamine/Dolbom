@@ -8,11 +8,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
 <meta charset="utf-8">
+
 <title>돌봄</title>
+
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -31,15 +35,12 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
 	rel="stylesheet">
-
 </head>
 
 <body>
 	<%
     List<KgerList> kgerList = (List<KgerList>)session.getAttribute("kgerList"); 
-    //System.out.println("kgerList.toString()를 .jsp 파일에서 찍어보기!! : " + kgerList.toString()); 
     kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
-    //System.out.println("kr.smhrd.entity.Class 찍어보기 : " + loginUserClassList.toString());
     %>
 	<!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
@@ -57,8 +58,6 @@
                                         <div class="table-responsive bg-white">
                                             <b><%=loginUserClass.getClass_name()%></b>
                                             <br> <br> 
-
-                                            
 											    <table class="table mb-0">
 											        <thead>
 											            <tr>
@@ -101,16 +100,12 @@
 										            	</tr>
 											        </tbody>
 											    </table>
-											
-
-
                                             <div class="find-btn" style="padding-top: 3.5%;">
                                                 <c:if test="${currentPage > 0}">
                                                     <a href="goKgerList?page=${currentPage - 10}">
                                                         <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">이전</button>
                                                     </a>
                                                 </c:if>
-
                                                 <div class="btn-group" role="group">
                                                     <c:forEach var="i" begin="${startPage}" end="${endPage}">
                                                         <a href="goKgerList?page=${i}">
@@ -126,7 +121,6 @@
                                                         </a>
                                                     </c:forEach>
                                                 </div>
-
                                                 <c:if test="${currentPage < totalPages - 1}">
                                                     <a href="goKgerList?page=${currentPage + 10}">
                                                         <button type="button" class="btn navbar-btn find-btn1 pnt-yes" style="margin: 5px" onclick="goToPage(currentPage)">다음</button>
@@ -152,7 +146,6 @@
 	<a href="#"
 		class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
 		class="bi bi-arrow-up"></i></a>
-
 </body>
 
 <script>
@@ -164,7 +157,6 @@
             	 currentPage: currentPage, 
             	 startPage: startPage
              },
-             
              success: function(response) {
                  // 성공 시 수행할 작업 (예: 결과를 화면에 반영)
                  // response 변수에는 서버에서 전달한 데이터가 들어있을 수 있습니다.

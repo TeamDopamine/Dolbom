@@ -5,34 +5,40 @@
 <%@page import="kr.smhrd.entity.Calendar"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="kr.smhrd.entity.Record"%>
-<!DOCTYPE html>
-<html>
-<head>
-<!-- Required meta tags -->
 
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<!-- Required meta tags -->
 <title>돌봄</title>
+
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
+
 <!-- 화면 해상도에 따라 글자 크기 대응(모바일 대응) -->
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	
 <!-- jquery CDN -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!-- fullcalendar CDN -->
 <link
 	href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css'
 	rel='stylesheet' />
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+	
 <!-- fullcalendar 언어 CDN -->
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
 <!-- inject:css -->
 <link rel="stylesheet" href="${path}/resources/css/style2.css">
-<!-- endinject -->
-
 <style>
 #calendar1 {
 	margin: 40px 10px;
@@ -44,7 +50,6 @@
 	margin: 0 auto;
     color: black;
 }
-
 #calendar2 {
 	margin: 40px 10px;
 	padding: 0;
@@ -54,16 +59,12 @@
 	max-width: 800px;
 	margin: 0 auto;
 }
-
-
-/* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
 .fc-header-toolbar {
 	padding-top: 1em;
 	padding-left: 1em;
 	padding-right: 1em;
 	font-size: 12px;
 }
-
  #contain {
   max-width: 80%;
   margin: 0 auto;
@@ -77,23 +78,10 @@
 	align-items: center;
 	left: 105px;
 }
-
-/* .footer {
-	position: relative;
-	top: 300px;
-} */
-
-/*  .footer {
-    position: relative;
-    top: 800px;
-    width: 126%;
-    right: 167px;
-} */
 </style>
-
 </head>
-<body>
 
+<body>
 	<!-- Header -->
 	<jsp:include page="Header.jsp"></jsp:include>
 	<div
@@ -104,11 +92,9 @@
 		<div style="text-align: center !important;">
 			<div class="all">
 				<div class="row">
-
 					<div class="col-md-5 grid-margin stretch-card">
 						<div class="card card-display">
 							<div>
-							
 								<!-- 1 -->
 								<!-- Contact End -->
 								<div id='calendar1'></div>
@@ -123,20 +109,15 @@
 								          // full-calendar 생성하기
 								          var calendar; 
 								          var evtList = [];
-								          
 								          $.ajax({
 								            type: "POST",
 								            url: "selectCalendar",
 								            contentType: "application/json; charset=utf-8",
 								            success: function (eventData) {
 								              result = eventData
-								              
-								              console.log(result);
-								              
 								              for(let i = 0; i < result.length; i++){
 								            	  var endDate = new Date(result[i]['ended_AT']);
 								                  endDate.setDate(endDate.getDate() + 1);
-
 								                  var evt = {
 								                      "title": result[i]['cal_TITLE'],
 								                      "start": result[i]['started_AT'],
@@ -154,9 +135,7 @@
 								                  nowIndicator: true, // 현재 시간 마크
 								                  dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
 								                  locale: 'ko', // 한국어 설정
-								
 								                  select: function (arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-								
 								                    calendar.unselect()
 								                  },
 								                  //데이터 가져오는 이벤트
@@ -171,11 +150,10 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="col-md-5 grid-margin stretch-card">
 							<div class="card card-display">
 								<div>
-									<!-- 2 -->
+					<!-- 2 -->
                   	<!-- Contact Start -->
 								
               		<!-- Contact End -->
@@ -190,20 +168,15 @@
 					                      // full-calendar 생성하기
 					                      var calendar; 
 					                      var evtList = [];
-					                      
 					                      $.ajax({
 					                        type: "POST",
 					                        url: "selectCalendar",
 					                        contentType: "application/json; charset=utf-8",
 					                        success: function (eventData) {
 					                          result = eventData
-					                          
-					                          console.log(result);
-					                          
 					                          for(let i = 0; i < result.length; i++){
 					                        	  var endDate = new Date(result[i]['ended_AT']);
 					                              endDate.setDate(endDate.getDate() + 1);
-
 					                              var evt = {
 					                                  "title": result[i]['cal_TITLE'],
 					                                  "start": result[i]['started_AT'],
@@ -221,9 +194,7 @@
 					                              nowIndicator: true, // 현재 시간 마크
 					                              dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
 					                              locale: 'ko', // 한국어 설정
-					            
 					                              select: function (arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-					            
 					                                calendar.unselect()
 					                              },
 					                              //데이터 가져오는 이벤트
@@ -239,9 +210,7 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="row" style="margin-top: 10px;">
-
 						<div class="col-md-5 grid-margin stretch-card">
 							<div class="card card-display">
 								<div>
@@ -292,7 +261,6 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="col-md-5 grid-margin stretch-card">
 							<div class="card card-display" style="size: 50px;">
 								<div>
@@ -351,6 +319,7 @@
 		<!-- plugins:js -->
 		<script src="${path}/resources/js/vendor.bundle.base.js"></script>
 		<!-- endinject -->
+		
 		<!-- Plugin js for this page -->
 		<script src="${path}/resources/js/Chart.min.js"></script>
 		<script src="${path}/resources/js/jquery.dataTables.js"></script>

@@ -2,8 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.smhrd.mapper.CalMapper">
 	<insert id="insertCalendar" parameterType="kr.smhrd.entity.Calendar">
-		INSERT INTO TB_CALENDAR(CAL_TITLE,CAL_CONTENT,STARTED_AT,ENDED_AT,CAL_COLOR,CAL_IMPORTANCE,USER_ID,CLASS_IDX) 
-		                VALUES(#{CAL_TITLE},'/',#{STARTED_AT},#{ENDED_AT},'/','/','/',#{CLASS_IDX})
+		INSERT INTO TB_CALENDAR
+		    (CAL_TITLE,CAL_CONTENT,STARTED_AT,ENDED_AT,CAL_COLOR,CAL_IMPORTANCE,USER_ID,CLASS_IDX) 
+	    VALUES
+	        (#{CAL_TITLE},'/',#{STARTED_AT},#{ENDED_AT},'/','/','/',#{CLASS_IDX})
 	</insert>
 
 	<select id="selectCalendar" parameterType="int" resultType="kr.smhrd.entity.Calendar">

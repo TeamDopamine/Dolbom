@@ -27,31 +27,25 @@
 
 	<insert id="insertRecord" parameterType="kr.smhrd.entity.Record">
 		insert into tb_daily_record (
-		           edu_name, 
-		           user_id, 
-		           edu_headcount, 
-		           edu_subject, 
-		           edu_content, 
-		           edu_photo, 
-		           edu_time, 
-		           edu_etc, 
-		           class_idx) 
+		            edu_name, 
+		            user_id, 
+		            edu_headcount, 
+		            edu_subject, 
+		            edu_content, 
+		            edu_photo, 
+		            edu_time, 
+		            edu_etc, 
+		            class_idx) 
 			values (
-			       #{edu_name}, 
-			       #{user_id},
-			       #{edu_headcount}, 
-			       #{edu_subject}, 
-			       #{edu_content}, 
-			       'edu_photo', 
-			       SYSDATE, 
-			       #{edu_etc}, 
-			       #{class_idx})
+			        #{edu_name}, 
+			        #{user_id},
+			        #{edu_headcount}, 
+			        #{edu_subject}, 
+			        #{edu_content}, 
+			        'edu_photo', 
+			        SYSDATE, 
+			        #{edu_etc}, 
+			        #{class_idx})
 	</insert>
-	
-	<!-- 
-	<select id="goRecordList" resultType="kr.smhrd.entity.Record">
-		select * from tb_daily_record
-	</select> 
-	-->
 	
 </mapper>

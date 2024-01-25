@@ -7,8 +7,8 @@
 <%@include file="IncludeStyle.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -30,29 +30,26 @@
 </head>
 
 <body>
+
 <!-- Header -->
 <jsp:include page="Header.jsp"></jsp:include>
 <%! int inputcount = 1; %>
 <%
-	//이건 헤더에서 할 것이니까 삭제할 것
 	User loginUser = (User)session.getAttribute("loginUser");
 	kr.smhrd.entity.Class loginUserClass = (kr.smhrd.entity.Class)session.getAttribute("loginUserClass");
 	List<kr.smhrd.entity.Class> loginUserClassList = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClassList");
 	if(loginUser != null){
-		//List<kr.smhrd.entity.Class> loginUserClass = (List<kr.smhrd.entity.Class>)session.getAttribute("loginUserClass");
-		//System.out.println(loginUserClass.size()); 
 		
 		System.out.println("loginMember가 null이 아닙니다!");
 	}else{
 		System.out.println("loginMember가 null입니다.");
 	}
 %>
-
- 
     <!-- Contact Start -->
    <div class="container-fluid overflow-hidden px-lg-0" style="margin: 3rem 0;">
     <div class="container contact px-lg-0">
         <div class="row g-0 mx-lg-0">
+        
             <!-- 프로필 수정 폼 -->
             <div class="col-md-6 offset-md-3">
                 <form class="row g-3" action="updateProfile">
@@ -88,9 +85,9 @@
                             <input type="text" class="form-control" name="user_tel" value=${loginUser.getUser_phone() }>
                         </div>
                     </div>
+                    
                     <!-- 수정 버튼 -->
                     <div class="col-sm-7 offset-sm-8"> <!-- 수정된 부분 -->
-                        <!-- <a href="updateProfile" class="btn btn-primary mb-3">수정</a> -->
                         <input type="submit" value="수정" class="btn btn-primary mb-3">
                     </div>
                 </form>
@@ -102,6 +99,7 @@
             <!-- 반 정보 폼 -->
             <div class="col-md-6 offset-md-3">
                 <form class="row g-3">
+                
                 	<!-- 반 정보 표시 및 삭제 버튼 -->
                 	<%for(int i = 0 ; i < loginUserClassList.size(); i++){ %>
                 		 <div class="mb-3 row align-items-center">
@@ -122,27 +120,6 @@
                         </div>
                 	<%} %>
                     
-                
-                    <%-- 
-                    <!-- 반 정보 표시 및 삭제 버튼 -->
-                    <c:forEach items="${loginUserClassList}" var="userClass" varStatus="status">
-                        <div class="mb-3 row align-items-center">
-                            <div class="col-sm-2 text-center">
-                                <label for="className" class="col-form-label">반 이름${status.count}</label>
-                            </div>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control" id="className${status.count}" value="${loginUserClassList.class_name}">
-                            </div>
-                            <div class="col-auto">
-                                <a href="deleteClass?class_idx=${userClass.class_idx}&user_id=hanbit">
-                                    <img src="${img}/delete.png" style="width: 20px; height: 20px;">
-                                </a>
-                            </div>
-                        </div>
-                        <%inputcount++; %>
-                    </c:forEach> 
-                    --%>
-                    
                     <!-- 취소 버튼 -->
                     <div class="col-sm-7 offset-sm-8"> <!-- 수정된 부분 -->
                         <button type="submit" class="btn btn-light mb-3">취소</button>
@@ -153,7 +130,6 @@
       </div>
    </div>
 
-
     <!-- Contact End -->
 
 	<!-- Footer -->
@@ -161,7 +137,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 </body>
 
 </html>

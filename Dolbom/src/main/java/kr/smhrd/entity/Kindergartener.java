@@ -16,9 +16,6 @@ public class Kindergartener {
     private String user_Id;
     
     public Kindergartener() {
-        // 기본 생성자
     }
-
-    // 필요에 따라 다른 생성자 추가
 }
 

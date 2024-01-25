@@ -9,7 +9,6 @@ import kr.smhrd.entity.Attendence;
 
 @Mapper
 public interface AttendenceMapper {
-
 	public void insertAttendence(Attendence attendence);
 	public List<Attendence> showAttendence(Attendence attendence);
 	public void updateAttendence(Attendence attendence);

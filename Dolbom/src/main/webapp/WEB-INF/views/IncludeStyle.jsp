@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <c:set var="img" value="${pageContext.request.contextPath}/resources/img"/>
+
 <!DOCTYPE html>
+
 <html>
+
 <head>
 
 <!-- css -->
@@ -43,9 +48,24 @@
 <!-- favicon -->
 <link rel="icon" href="${path}/resources/img/logo.png" type="image/x-icon">
 
+<!-- Chatting Room -->
+<link href="${path}/resources/css/_common.css" rel="stylesheet"/> 	
+<link href="${path}/resources/css/_reset.css" rel="stylesheet"/> 	
+<link href="${path}/resources/css/style.css" rel="stylesheet"/> 	
+<link href="${path}/resources/css/style3.css" rel="stylesheet"/> 	
+
+<!-- javaScript -->
+<script src="${path}/resources/js/imgbase64.js" type="module"></script>
+<script src="${path}/resources/js/index.js" type="module"></script>
+<script src="${path}/resources/js/videobase64.js" type="module"></script>
+<script src="${path}/resources/js/composer.js" type="module"></script>
+
+<?php include_once("index.html"); ?>
 
 </head>
+
 <body>
 
 </body>
+
 </html>

@@ -7,9 +7,7 @@ import kr.smhrd.entity.Calendar;
 
 @Mapper
 public interface CalMapper {
-	
 	public void insertCalendar(Calendar dto);
-
 	public List<Calendar> selectCalendar(int loginUserClassIdx); 
 
 }
